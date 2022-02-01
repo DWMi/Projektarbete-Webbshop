@@ -1,0 +1,63 @@
+
+
+
+/* ----------------Media Querris------------------------ */
+
+@media only screen and (max-width: 1414px) and (min-width: 979px){
+   
+    .productCard-container  {
+      justify-content: space-evenly;
+    }
+   
+    .productSwiper-container{
+        height: 100%;
+        order: 2;
+        top: 20%;
+    }
+    
+    
+    
+    .productInfo-container {
+        flex-direction: column;
+       
+        order: 1;
+       
+    }
+    
+    .productSize-container {
+        flex-direction: column;
+        
+        order: 3;
+
+    }
+}
+@media only screen and (max-width: 978px){
+   
+    .productCard-container  {
+      justify-content: center;
+    }
+   
+    .productSwiper-container{
+      
+        order: 1;
+      
+    }
+    .productCardInfo-MQ-container {
+        order: 2;
+    }
+    
+    
+    .productInfo-container {
+        
+        
+        order: 1;
+       
+    }
+    
+    .productSize-container {
+        
+        
+        order: 3;
+
+    }
+}

@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Title */
+h1 {
+
+}
+
+/* Category */
+h2 {
+    font-size: 1.5vw;
+}
+
+/* Product title */
+h3{
+    font-size: 2.5vw;
+}
+
+/* product description */
+h4{
+    font-size: 1.5vw;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+ 
+/*------Z-Index ---------*/ 
+ 
+.zindexOne {
+    z-index: 1;
+}
+.zindexTwo {
+    z-index: 2;
+}
+.zindexThree {
+    z-index: 3;
+} 
+
+/*--------BACKGROUND ---------*/ 
+.background {
+    top: 0;
+    background-color: rgba(195, 195, 195, 0.486);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+
+
+

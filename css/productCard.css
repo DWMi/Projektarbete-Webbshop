@@ -1,0 +1,163 @@
+/* ---------- Product card WRAPPERS ----------- */
+.productInfo-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.productInfo-wrapper h2,h3,h4{
+   padding: 4%;
+}
+
+.productCardSize-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.productCardSize-wrapper p {
+    font-size: 18px;
+}
+
+.productCardSize-wrapper h2,.productCardSize-btn-wrapper {
+    padding: 4%;
+}
+
+.productCardSize-btn-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.size-btn {
+    margin:  0 6% 6% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: rgba(0, 0, 0, 0.239) solid 2px;
+    min-width: 40px;
+    height: 40px;
+}
+
+
+/* ------------------------------------------------- */
+
+/* ---------- Product card CONTAINER ----------- */
+.productSwiper-container{
+    order: 2;
+}
+
+
+.productCard-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4% 4%;
+}
+
+.productInfo-container {
+    display: flex;
+    order:1;
+    width: 400px;
+    
+    
+}
+
+.productSize-container {
+    display: flex;
+    order:3;
+    width: 400px;
+    
+    
+}
+
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 80%;
+    background-color: green;
+    margin: auto;
+}
+            .categorycard-wrapper {
+                display: flex;
+                border: 2px solid black;
+                width: 10%;
+                height: 100px;
+            }
+/* ------------------------------------------------- */
+
+/*------SWIPER---------*/
+/*------This is the css for the productCardPHP layout---------*/
+
+.swiper {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 500px;
+    
+    object-fit:cover;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* -----------------swiper bar ------------------ */
+
+      .swiperTwo {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slideTwo {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slideTwo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
