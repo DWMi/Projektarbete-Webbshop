@@ -18,8 +18,24 @@
     font-size: 18px;
 }
 
-.productCardSize-wrapper h2,.productCardSize-btn-wrapper {
+.productCardSize-wrapper h2,.productCardSize-btn-wrapper,.productAddToCart-btn-wrapper {
     padding: 4%;
+}
+
+.productAddToCart-btn-wrapper {
+  display: flex;
+}
+
+.productAddToCart-btn {
+  margin:  0 6% 6% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: rgba(0, 0, 0, 0.239) solid 2px;
+  min-width: 40px;
+  height: 40px;
+  padding: 4%;
 }
 
 .productCardSize-btn-wrapper{
@@ -74,9 +90,8 @@
 .category-container {
     display: flex;
     justify-content: center;
-    height: 100px;
+    height: 250px;
     width: 80%;
-    background-color: green;
     margin: auto;
 }
             .categorycard-wrapper {
@@ -90,13 +105,13 @@
 /*------SWIPER---------*/
 /*------This is the css for the productCardPHP layout---------*/
 
-.swiper {
+.mySwiper {
     width: 500px;
     height: 500px;
     border-radius: 50%;
   }
 
-  .swiper-slide {
+  .swiper-product-div {
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -116,26 +131,26 @@
     align-items: center;
   }
 
-  .swiper-slide img {
+  .swiper-product-div img {
     display: block;
-    width: 500px;
+    width: 450px;
     
     object-fit:cover;
   }
 
-  .swiper {
+  .mySwiper {
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* -----------------swiper bar ------------------ */
+  /* -----------------swiper Category ------------------ */
 
-      .swiperTwo {
+      .mySwiper2 {
         width: 100%;
         height: 100%;
       }
 
-      .swiper-slideTwo {
+      .swiper-footer-div {
         text-align: center;
         font-size: 18px;
         background: #fff;
@@ -155,7 +170,7 @@
         align-items: center;
       }
 
-      .swiper-slideTwo img {
+      .swiper-footer-div img {
         display: block;
         width: 100%;
         height: 100%;
