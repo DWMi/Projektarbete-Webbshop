@@ -31,6 +31,9 @@ function myFunction(x) {
                             <div class="size-btn"><p>45</p></div>
                             <div class="size-btn"><p>46</p></div>
                         </div>
+                        <div class="productAddToCart-btn-wrapper">
+                            <div class="productAddToCart-btn">Add To Cart</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,13 +44,13 @@ function myFunction(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next swiper-button-next-one"></div>
+                    <div class="swiper-button-prev swiper-button-prev-one"></div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
@@ -73,13 +76,13 @@ function myFunction(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next swiper-button-next-one"></div>
+                    <div class="swiper-button-prev swiper-button-prev-one"></div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
@@ -97,6 +100,9 @@ function myFunction(x) {
                             <div class="size-btn"><p>44</p></div>
                             <div class="size-btn"><p>45</p></div>
                             <div class="size-btn"><p>46</p></div>
+                        </div>
+                        <div class="productAddToCart-btn-wrapper">
+                            <div class="productAddToCart-btn">Add To Cart</div>
                         </div>
                     </div>
                 </div>
