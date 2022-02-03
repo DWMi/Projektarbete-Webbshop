@@ -7,19 +7,20 @@ var swiper = new Swiper(".mySwiper", {
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".swiper-button-next-one",
+    prevEl: ".swiper-button-prev-one",
   },
 });
 
-var swipertwo = new Swiper(".s2", {
-  slidesPerView: 1,
+var swiper2 = new Swiper(".mySwiper2", {
+  slidesPerView: 3,
   spaceBetween: 10,
+  loop: true,
   pagination: {
-    el: ".swiper-paginationTwo",
+    el: ".swiper-pagination2",
     clickable: true,
   },
-  breakpoints: {
+ /*  breakpoints: {
     640: {
       slidesPerView: 2,
       spaceBetween: 20,
@@ -32,7 +33,11 @@ var swipertwo = new Swiper(".s2", {
       slidesPerView: 5,
       spaceBetween: 50,
     },
+  }, */
+  navigation: {
+    nextEl: ".swiper-button-next-two",
+    prevEl: ".swiper-button-prev-two",
   },
 });
 
-console.log(swipertwo)
+console.log(swiper2)
