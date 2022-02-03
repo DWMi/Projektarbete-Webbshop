@@ -16,11 +16,12 @@
     <script defer src="./components/productCard.js"></script>
     <script defer src="./components/navbar.js"></script>
     <script defer src="./components/footer.js"></script>
+    <script defer src="./js/main.js"></script>
 
 
     <!-- SWIPER -->
-   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> 
-   <script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> 
+    <script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script defer src="swiper.js" type="text/javascript"></script> 
 
 </head>
@@ -38,7 +39,7 @@
 
     <!-- footer -->
     <div id="footer" class="zindexOne"></div>
-   
+
 </body>
 </html>
 
