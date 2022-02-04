@@ -3,7 +3,10 @@
 
 /* ----------------Media Querris------------------------ */
 
-@media only screen and (max-width: 1414px) and (min-width: 979px){
+
+
+
+@media only screen and (max-width: 1521px) and (min-width: 979px){
    
     .productCard-container  {
       justify-content: space-evenly;
@@ -16,14 +19,13 @@
     }
     
     .mySwiper {
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
+        width: 550px;
+        height: 550px;
       }
 
     .swiper-product-div img {
         display: block;
-        width: 350px;
+        width: 550px;
         
         object-fit:cover;
     }
@@ -70,7 +72,7 @@
 
 
 
-@media only screen and (max-width: 978px){
+@media only screen and (max-width: 1032px){
    
     .productCard-container  {
       justify-content: center;
@@ -88,18 +90,16 @@
         order: 2;
         display: flex;
         justify-content: center;
-       
         width: 100%;
     }
     
     .mySwiper {
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
+        width: 450px;
+        height: 450px;
       }
     .swiper-product-div img {
         display: block;
-        width: 300px;
+        width: 450px;
         
         object-fit:cover;
     } 
@@ -145,14 +145,13 @@
 @media only screen and (max-width: 500px) {
    
     .mySwiper {
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
+        width: 350px;
+        height: 350px;
       }
 
       .swiper-product-div img {
         display: block;
-        width: 200px;
+        width: 350px;
         
         object-fit:cover;
     }

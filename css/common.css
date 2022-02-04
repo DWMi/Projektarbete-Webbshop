@@ -5,12 +5,21 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Heebo', sans-serif;
+    background-color: #f8f8f8;
 }
 
 /* Remove hyperlink color */
 a{
     text-decoration: none;
     color: black;
+}
+
+/* P tag text */
+
+p{
+    font-size: 10px;
+    color: black;
+    font-weight: 500;
 }
 
 
@@ -61,7 +70,7 @@ h6{
 /*--------BACKGROUND ---------*/ 
 .background {
     top: 0;
-    background-color: rgba(195, 195, 195, 0.486);
+    background-color: #f8f8f8;
     width: 100%;
     height: 100vh;
     position: absolute;
