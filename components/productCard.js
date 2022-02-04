@@ -12,8 +12,8 @@ function myFunction(x) {
                 <!-- Info text container -->
                 <div class="productInfo-container">
                     <div class="productInfo-wrapper">
-                        <h2>Category</h2>
-                        <h3>Nike Air Max 90</h3>
+                        <h2>CATEGORY</h2>
+                        <h3>PRODUCT NAME</h3>
                         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, iusto.</h4>
                     </div>
                 </div>
@@ -45,10 +45,10 @@ function myFunction(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 1.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 2.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 3.jpeg" alt=""></div>
+                        
                     </div>
                     <div class="swiper-button-next swiper-button-next-one"></div>
                     <div class="swiper-button-prev swiper-button-prev-one"></div>
@@ -66,8 +66,8 @@ function myFunction(x) {
             <!-- Info text container -->
             <div class="productInfo-container">
                 <div class="productInfo-wrapper">
-                    <h2>Category</h2>
-                    <h3>Nike Air Max 90</h3>
+                    <h2>CATEGORY</h2>
+                    <h3>PRODUCT NAME</h3>
                     <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, iusto.</h4>
                 </div>
             </div>
@@ -77,10 +77,9 @@ function myFunction(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="https://static.feber.se/article_images/52/00/53/520053_1280.jpg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 1.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 2.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 3.jpeg" alt=""></div>
                     </div>
                     <div class="swiper-button-next swiper-button-next-one"></div>
                     <div class="swiper-button-prev swiper-button-prev-one"></div>
@@ -91,7 +90,7 @@ function myFunction(x) {
                 <!-- Size container -->
                 <div class="productSize-container">
                     <div class="productCardSize-wrapper">
-                        <h2>Select Size</h2>
+                        <h2>SELECT SIZE</h2>
                         <div class="productCardSize-btn-wrapper">
                             <div class="size-btn"><p>39</p></div>
                             <div class="size-btn"><p>40</p></div>
@@ -112,6 +111,6 @@ function myFunction(x) {
     }
   }
   var y = window.matchMedia("(min-width: 983px)")
-  var x = window.matchMedia("(max-width: 1414px)")
+  var x = window.matchMedia("(max-width: 1521px)")
   myFunction(x,y) // Call listener function at run time
   x.addListener(myFunction) // Attach listener function on state changes
