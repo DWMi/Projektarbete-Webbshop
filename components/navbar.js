@@ -3,13 +3,14 @@ document.getElementById("navbar").innerHTML = `
 
 <div class="navBar-container">
 
-    <div class="navBar-logo"><h1>Sneakers</h1></div>
+    <div class="navBar-logo"><a href="./landing.html"><h1>Sneakers</h1></a></div>
 
     <div class="navBar-category ">
         <div class="navbtn dropdown">
-            <button class="dropbtn">BRANDS 
-                <i class="fa fa-caret-down"></i>
-            </button>
+            <div id="btnContainer" ><button class="dropbtn"><h5>BRANDS</h5>
+            <i class="fa fa-caret-down"></i> 
+            </button></div>
+            
             <div class="dropdown-content">
                 <div class="dropdown-brand"><img src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo-1978-present.jpg" alt=""></div>
                 <div class="dropdown-brand"><img src="https://brandfinder.org/sv/wp-content/uploads/Axel-Arigato-logo.png" alt=""></div>
@@ -17,13 +18,13 @@ document.getElementById("navbar").innerHTML = `
                 <div class="dropdown-brand"><img src="https://brandfinder.org/sv/wp-content/uploads/Axel-Arigato-logo.png" alt=""></div>
             </div>
         </div> 
-        <div class="navbtn">About</div>
-        <div class="navbtn">Contact</div>
+        <div class="navbtn"><h5>About</h5></div>
+        <div class="navbtn"><h5>Contacts</h5></div>
     </div> 
 
     <div class="navBar-user">
         <div class="userbtn navicon"><i class="far fa-user-circle"></i></div>
-        <div class="userbtn">fName Lname</div>
+        <div class="userbtn"><h6>fName Lname</h6></div>
         <div class="userbtn navicon"><i class="fas fa-shopping-bag"></i></div>
     </div>
 </div>

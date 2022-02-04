@@ -5,6 +5,7 @@ function myFunction(x) {
         document.getElementById("productCard").innerHTML = `
        
         <!-- Product Card  -->
+        
         <div class="productCard-container">
             
             <div class="productCardInfo-MQ-container">

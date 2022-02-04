@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap');
+
+*{
+  font-family: 'Heebo', sans-serif;
+}
+
 /* ---------- Product card WRAPPERS ----------- */
 .productInfo-wrapper{
     display: flex;
@@ -81,7 +87,7 @@
 .productSize-container {
     display: flex;
     order:3;
-    width: 400px;
+    width: 300px;
     
     
 }
