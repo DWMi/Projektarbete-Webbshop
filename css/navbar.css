@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap');
+
+*{
+  font-family: 'Heebo', sans-serif;
+}
+
 .navBar-container {
     display: flex;
     height: 80px;
@@ -12,9 +18,14 @@
     padding: 0 4%;
 }
 
+.fa-caret-down{
+  margin-left: 5px
+}
+
 .navBar-category {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 33%;
 }
 .navBar-user {
@@ -47,20 +58,22 @@
     float: left;
     overflow: hidden;
   }
-  
+
 .dropdown .dropbtn {
+    display: flex;
+    align-items: center;
     font-size: 16px;  
     border: none;
     outline: none;
-   
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
     margin: 0;
   }
   
-.navbar .dropdown-brand:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+.navbar .dropdown-brand:hover, #btnContainer:hover, .dropdown:hover .dropbtn {
+    background-color: green;
+    
   }
   
 .dropdown-content {
@@ -76,7 +89,7 @@
 
 .dropdown-brand img {
     width: 100px;
-    height: 100px;
+    
   }
 
 .dropdown-content .dropdown-brand {
@@ -90,8 +103,10 @@
   
 .dropdown-content .dropdown-brand:hover {
     background-color: #ddd;
+
 }
   
 .dropdown:hover .dropdown-content {
     display: flex;
+    
 }

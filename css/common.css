@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+}
+
+/* Remove hyperlink color */
+a{
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -24,6 +33,16 @@ h3{
 h4{
     font-size: 1.5vw;
     color: rgba(0, 0, 0, 0.7);
+}
+
+/* Navbar */
+h5{
+    font-size: 20px;
+    color: black;
+}
+
+h6{
+    font-size: 15px;
 }
 
  
