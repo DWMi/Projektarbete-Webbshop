@@ -6,14 +6,13 @@
     try {
 
         include_once("../controllers/productController.php");
+        include_once("../controllers/imageController.php");
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
 
             if($_GET["action"] = "getAll"){
-
-                $controller = new ProductController();
-
-                echo json_encode($controller->getAll());
+                $productController = new ProductController();
+                echo json_encode($productController->getAll());
                 exit;
             }
 
