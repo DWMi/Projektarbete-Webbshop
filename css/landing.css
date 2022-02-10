@@ -44,6 +44,7 @@ section {
     display: flex;
     justify-content: center;
     z-index: 1;
+    filter: blur(7px);
 }
 
 /* NIKE-------------------- */
@@ -70,6 +71,7 @@ section {
     position: absolute;
     justify-content: flex-end;
     width: 1000px;
+    filter: blur(7px);
 }
 
 /* CONVERSE------------ */
@@ -95,6 +97,7 @@ section {
     position: absolute;
     justify-content: flex-end;
     width: 900px;
+    filter: blur(7px);
 }
 /* NEW BALANCE------------------ */
 .snapper4{
@@ -120,6 +123,7 @@ section {
     position: absolute;
     justify-content: flex-end;
     width: 1200px;
+    filter: blur(7px);
 }
 /* SAUCONY---------------------- */
 .snapper5{
@@ -145,4 +149,5 @@ section {
     position: absolute;
     justify-content: flex-end;
     width: 1450px;
+    filter: blur(7px);
 }
