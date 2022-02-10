@@ -12,6 +12,7 @@ abstract class MainController {
 
     abstract function getAll();
 
+    abstract function getById($id);
 
 }
 

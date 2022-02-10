@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 1px;
+    border-radius: 1px;  
     border: rgba(0, 0, 0, 0.55) solid 2px;
     min-width: 40px;
     height: 40px;
@@ -67,7 +67,6 @@
 /* ---------- Product card CONTAINER ----------- */
 .productSwiper-container{
     order: 2;
-   
 }
 
 
@@ -77,6 +76,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 0 4%;
+
 }
 
 .productInfo-container {
@@ -111,19 +111,23 @@
             }
 /* ------------------------------------------------- */
 
+
+/*------This is the css for the productCard layout---------*/
+
 /*------SWIPER---------*/
-/*------This is the css for the productCardPHP layout---------*/
 
 .mySwiper {
     width: 800px;
     height: 600px;
     border-radius: 10%;
+    position: absolute;
+    
   }
 
   .swiper-product-div {
     text-align: center;
     font-size: 18px;
-    background: #f8f8f8;
+    background: #f7f7f7;
 
     /* Center slide text vertically */
     display: -webkit-box;
@@ -138,19 +142,22 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+    
   }
 
   .swiper-product-div img {
     display: block;
     width: 600px;
-    
     object-fit:cover;
+    
+    
   }
 
   .mySwiper {
     margin-left: auto;
     margin-right: auto;
   }
+
 
   /* -----------------swiper Category ------------------ */
 
@@ -162,7 +169,7 @@
       .swiper-footer-div {
         text-align: center;
         font-size: 18px;
-        background: #fff;
+        background: #f7f7f7;
 
         /* Center slide text vertically */
         display: -webkit-box;
