@@ -55,8 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 1px;
-    
+    border-radius: 1px;  
     border: rgba(0, 0, 0, 0.55) solid 2px;
     min-width: 40px;
     height: 40px;
@@ -68,7 +67,6 @@
 /* ---------- Product card CONTAINER ----------- */
 .productSwiper-container{
     order: 2;
-   
 }
 
 
@@ -77,8 +75,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin: 4% 4%;
-    
+    margin: 0 4%;
+
 }
 
 .productInfo-container {
@@ -119,8 +117,8 @@
 /*------SWIPER---------*/
 
 .mySwiper {
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 600px;
     border-radius: 10%;
     position: absolute;
     
@@ -149,7 +147,7 @@
 
   .swiper-product-div img {
     display: block;
-    width: 800px;
+    width: 600px;
     object-fit:cover;
     
     

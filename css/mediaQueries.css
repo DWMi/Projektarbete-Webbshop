@@ -3,10 +3,71 @@
 
 /* ----------------Media Querris------------------------ */
 
+@media only screen and (max-width: 1630px) {
+   
+    .productCard-container  {
+      justify-content: space-evenly;
+    }
+   
+    .productSwiper-container{
+        height: 100%;
+        order: 2;
+        top: 20%;
+    }
+    
+    .mySwiper {
+        width: 550px;
+        height: 450px;
+      }
+
+    .swiper-product-div img {
+        display: block;
+        width: 500px;
+        
+        object-fit:cover;
+    }
+
+    .productInfo-container {
+        flex-direction: column;
+       
+        order: 1;
+       
+    }
+    
+    .productSize-container {
+        flex-direction: column;    
+        order: 3;
+    }
+    
+    
+    /* Title */
+    h1 {
+
+    }
+
+    /* Category */
+    h2 {
+        font-size: 1.5vw;
+    }
+
+    /* Product title */
+    h3{
+        font-size: 2.5vw;
+    }
+
+    /* product description */
+    h4{
+        font-size: 1.5vw;
+        color: rgba(0, 0, 0, 0.7);
+    }
 
 
 
-@media only screen and (max-width: 1521px) and (min-width: 979px){
+}
+
+
+
+@media only screen and (max-width: 1439px) {
    
     .productCard-container  {
       justify-content: space-evenly;
@@ -50,17 +111,17 @@
 
     /* Category */
     h2 {
-        font-size: 2vw;
+        font-size: 1.5vw;
     }
 
     /* Product title */
     h3{
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 
     /* product description */
     h4{
-        font-size: 2vw;
+        font-size: 1.5vw;
         color: rgba(0, 0, 0, 0.7);
     }
 
