@@ -76,7 +76,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin: 4% 4%;
+    margin: 0 4%;
 }
 
 .productInfo-container {
@@ -115,8 +115,8 @@
 /*------This is the css for the productCardPHP layout---------*/
 
 .mySwiper {
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 600px;
     border-radius: 10%;
   }
 
@@ -142,7 +142,7 @@
 
   .swiper-product-div img {
     display: block;
-    width: 800px;
+    width: 600px;
     
     object-fit:cover;
   }

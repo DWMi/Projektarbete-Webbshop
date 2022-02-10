@@ -1,6 +1,7 @@
 
+// ---------------------------PRODUCT PAGE  --------------------------------------------------
 
-function myFunction(x) {
+function ProductCard(x) {
     if (x.matches) { // If media query matches
         document.getElementById("productCard").innerHTML = `
        
@@ -110,7 +111,11 @@ function myFunction(x) {
         `
     }
   }
-  var y = window.matchMedia("(min-width: 983px)")
-  var x = window.matchMedia("(max-width: 1521px)")
-  myFunction(x,y) // Call listener function at run time
-  x.addListener(myFunction) // Attach listener function on state changes
+  
+  var x = window.matchMedia("(max-width: 1439px)")
+  ProductCard(x) // Call listener function at run time
+  x.addListener(ProductCard) // Attach listener function on state changes
+
+
+
+

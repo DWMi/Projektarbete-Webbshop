@@ -18,6 +18,9 @@
     width: 33%;
     padding: 0 4%;
 }
+.naveIconSize {
+  font-size: 20px;
+}
 
 .navBar-logo span{
   color: red;
