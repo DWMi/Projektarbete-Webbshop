@@ -2,19 +2,28 @@
 
 include_once("../classes/createInstanceFunctions.php");
 include_once("../controllers/mainController.php");
-include_once("../controllers/sizeController.php");
 include_once("../controllers/imageController.php");
+include_once("../controllers/sizeController.php");
 
-class ProductController extends MainController {
+class CategoryController extends MainController {
 
-    private $createFunction = "createProduct";
+    private $createFunction = "createCategory";
 
     function __construct() {
-        parent::__construct("product", "product");
+        parent::__construct("category", "category");
     }
 
-    public function getAll(){
-        $products = $this->database->fetchAll($this->createFunction);
+    public function getAll() {
+        return $this->database->fetchAll($this->createFunction);
+    }
+
+    public function getById($id) {
+        return $this->database->fetchById($id, $this->createFunction);
+    }
+
+    public function getAllProductsByCategory($id) {
+        $query = "SELECT product.ID, product.ProductName, product.ProductDescription, product.ProductPrice FROM productincategory INNER JOIN product ON ProductID = product.ID WHERE CategoryID = " . $id . ";";
+        $products = $this->database->freeQuery($query, "createProduct");
 
         $imageController = new ImageController();
         $images = $imageController->getAll();
@@ -46,15 +55,7 @@ class ProductController extends MainController {
 
     }
 
-    public function getById($id){
-
-        return $this->database->fetchById($id, $this->createFunction);
-
-    }
-
-
 }
-
 
 
 ?>
