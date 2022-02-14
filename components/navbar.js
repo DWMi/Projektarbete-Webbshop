@@ -3,7 +3,7 @@ document.getElementById("navbar").innerHTML = `
 
 <div class="navBar-container">
 
-    <div class="navBar-logo"><a href="./login.html"><h1>SNEAKERS<span>.</span></h1></a></div>
+    <div class="navBar-logo"><a href="#"><h1>SNEAKERS<span>.</span></h1></a></div>
 
     <div class="navBar-category ">
         <div class="navbtn dropdown">
