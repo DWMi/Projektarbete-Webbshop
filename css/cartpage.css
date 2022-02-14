@@ -4,7 +4,158 @@
     font-family: 'Londrina Solid', cursive;
   
   }
+  
+/* TEXT FOR ITEMS IN CART */
+.cartItem p {
+  font-size: 1.5vw;
+}
+.cart-title h3{
+  letter-spacing: 5px;
+}
+.cart-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .cartProductCard-container {
-    
+    display: flex;
+    padding: 0 10%;
 }
+
+.cartProductCard-container {
+display: flex;
+}
+
+.cartProductCard-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.cartItem{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #f7f7f7;
+  height: 210px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  margin: 0 0 10px 4%;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.cartItem-info > div {
+  padding: 5px;
+}
+.cartItem-img img{
+    width: 200px;
+    height: 200px;
+}
+
+.cartItem-name{
+
+}
+
+.cartItem-price{
+
+}
+
+.cartItem-qty{
+
+}
+
+.cartItme-qty-plus{
+
+}
+
+.cartItem-qty-minus{
+
+}
+
+.cartItem-remove{
+
+}
+
+
+
+.checkout-container{
+  width: 600px;
+  padding: 10px;
+  margin: 2%;
+}
+.checkout-wrapper{
+  
+}
+
+.checkout-info{
+  background-color: rgba(0, 0, 0, 0.068);
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  
+}
+
+.checkout-info h3 {
+  letter-spacing: 4px;
+}
+
+.checkout-subtotal-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-subtotal{
+
+}
+
+.checkout-discount-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-discount{
+
+}
+
+.checkout-total-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: rgba(255, 255, 255, 0.493) solid 4px ;
+  border-bottom: rgba(255, 255, 255, 0.493) solid 4px ;
+  
+}
+
+
+
+.checkout-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 4%;
+}
+.checkout-btn{
+  width: 250px;
+  height: 50px;
+  background-color: rgba(14, 14, 14, 0.712);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  
+}
+.checkout-payment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  
+}
+.checkout-payment img{
+  width: 200px;
+  height: 40px;
+}
+    

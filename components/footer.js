@@ -10,9 +10,8 @@ document.getElementById("footer").innerHTML = `
         <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/Nike Sportswear Air Max 97 SE 1.jpeg" alt="" srcset=""></div>
         <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/Nike Sportswear Air Max Terrascape Plus 1.jpeg" alt="" srcset=""></div>
         <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/Nike Sportswear Air Tuned Max 1.jpeg" alt="" srcset=""></div>
-       /*  <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/" alt="" srcset=""></div>
-        <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/" alt="" srcset=""></div>
-        <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/" alt="" srcset=""></div> */
+        <div class="swiper-slide swiper-footer-div"> <img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 1.jpeg" alt="" srcset=""></div>
+        
         
       </div>
       <div class="swiper-button-next swiper-button-next-two"></div>

@@ -1,7 +1,9 @@
 
 // ---------------------------PRODUCT PAGE  --------------------------------------------------
 
-function ProductCard(x) {
+export async function productCard(x) {
+    
+   
     if (x.matches) { // If media query matches
         document.getElementById("productCard").innerHTML = `
        
@@ -46,9 +48,9 @@ function ProductCard(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 1.jpeg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 2.jpeg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 3.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 1.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 2.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 3.jpeg" alt=""></div>
                         
                     </div>
                     <div class="swiper-button-next swiper-button-next-one"></div>
@@ -60,6 +62,20 @@ function ProductCard(x) {
           
         </div>
         `
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next-one",
+              prevEl: ".swiper-button-prev-one",
+            },
+          });
+          
     } else {
         document.getElementById("productCard").innerHTML = `
         <!-- Product Card  -->
@@ -78,9 +94,9 @@ function ProductCard(x) {
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- products --->
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 1.jpeg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 2.jpeg" alt=""></div>
-                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/NIKE/Nike Sportswear Air Force 1 GTX 3.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 1.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 2.jpeg" alt=""></div>
+                        <div class="swiper-slide swiper-product-div"><img src="./ASSETS/CONVERSE/Converse Chuck 70 Mid x Undefeated 3.jpeg" alt=""></div>
                     </div>
                     <div class="swiper-button-next swiper-button-next-one"></div>
                     <div class="swiper-button-prev swiper-button-prev-one"></div>
@@ -109,13 +125,23 @@ function ProductCard(x) {
                 </div>
         </div>
         `
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next-one",
+              prevEl: ".swiper-button-prev-one",
+            },
+          });
     }
-  }
+    
+}
   
-  var x = window.matchMedia("(max-width: 1439px)")
-  ProductCard(x) // Call listener function at run time
-  x.addListener(ProductCard) // Attach listener function on state changes
-
 
 
 
