@@ -1,6 +1,10 @@
 
+import { productCard } from '../components/productCard.js';
 
 async function initSite(){
+    
+    
+    getAllProducts();
 
     getAllProductsByCategory("1");
 
@@ -17,6 +21,9 @@ async function makeRequest(url, method, body) {
     }
 
 }
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
 
 // Function for fetching all products from the database.
 async function getAllProducts(){
@@ -24,8 +31,17 @@ async function getAllProducts(){
     const action = "getAll";
 
     let allProducts = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "GET");
-    console.log(allProducts);
-
+    console.log(allProducts[0].ProductName)
+   
+    
+    delay(2000).then(() => console.log('ran after 1 second1 passed'));
+    
+    
+    
+    
+    let x = window.matchMedia("(max-width: 1439px)")
+    x.addListener(productCard)
+    productCard(x)
 }
 
 // Function for fetching all products by categoryId.
