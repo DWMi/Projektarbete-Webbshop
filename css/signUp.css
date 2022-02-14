@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  
   align-items: center ;
   transform-style: preserve-3d;
   min-height: 80vh;
@@ -38,7 +38,7 @@ body {
 }
 
 .titleContainer {
-  min-height: 35vh;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,26 +46,53 @@ body {
 }
 
 
-#username{
-  border-radius: 5px;
+#firstName, #lastName, #country, #city, #address, #zipCode{
+  border-radius: 2px;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   box-sizing: border-box;
-  border: gray;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: rgb(227, 227, 227) 1px solid;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
   padding: 12px 20px;
 }
 
 
-#password{
-  border-radius: 5px;
+#password, #username{
+  border-radius: 2px;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 6px;
   box-sizing: border-box;
-  border: gray;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: rgb(227, 227, 227) 1px solid;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2);
   padding: 12px 20px;
+}
 
+
+#showPassword{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  right: 20px;
+  margin-top: 7px;
+  width: 100%;
+  
+}
+
+.fa{
+  padding: 16px;
+  color: #000000;
+  font-weight: bold;
+}
+
+#checkboxContainer{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.checkbox{
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #signInBtn{
@@ -78,7 +105,7 @@ body {
   background-color: black; color: white;
   border-color: transparent;
   transition-duration: 300ms;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
   border-radius: 5px;
 }
 
