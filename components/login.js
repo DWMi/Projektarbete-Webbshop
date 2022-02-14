@@ -8,10 +8,10 @@ document.getElementById("login").innerHTML = `
     <h1>SNEAKERS<span>.</span></h1>        
     <h1>LOGIN<span>.</span></h1>
     </div>
-    <input type="text" name="Username" placeholder="Ex: hello@howareyou.com" id="username">
+    <input type="text" name="Username" placeholder="Email" id="username">
     <input type="password" name="Password" placeholder="Password" id="password">
     <button type="button" id="loginBtn">Login</button>
-    <span id="notAmember">Not a member? You can Sign In <a href="signIn.html">here</a></span>
+    <span id="notAmember">Not a member? You can Sign Up <a href="signUp.html">here</a></span>
   </div>
 
 

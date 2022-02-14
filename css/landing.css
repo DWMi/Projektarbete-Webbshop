@@ -1,0 +1,153 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.container{
+    top:80px;
+    height: 91vh;
+    scroll-snap-type:y mandatory;
+    overflow-y: scroll;
+}
+section {
+    height:91vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    color:white;
+    
+    
+}
+/* ADIDAS-------------- */
+.snapper1{
+    background-color: rgb(30, 105, 172);
+    position: relative;
+    
+}
+.snapper1 h1 {
+    text-align: center;
+    z-index:2;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    border:5px solid white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.imgSnap1{
+    display: flex;
+    width: 1450px;
+    opacity: 50%;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    filter: blur(7px);
+}
+
+/* NIKE-------------------- */
+.snapper2{
+    background-color: rgb(138, 30, 124);
+    position: relative;
+}
+.snapper2 h1 {
+    text-align: center;
+    z-index:2;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    border:5px solid white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.imgSnap2{
+    display: flex;
+    opacity: 50%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    width: 1000px;
+    filter: blur(7px);
+}
+
+/* CONVERSE------------ */
+.snapper3{
+    background-color: rgb(0, 255, 213);
+    position: relative;
+}
+.snapper3 h1 {
+    text-align: center;
+    z-index:2;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    border:5px solid white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.imgSnap3{
+    display: flex;
+    opacity: 50%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    width: 900px;
+    filter: blur(7px);
+}
+/* NEW BALANCE------------------ */
+.snapper4{
+    background-color: rgb(245, 6, 65);
+    position: relative;
+    
+}
+.snapper4 h1 {
+    text-align: center;
+    z-index:2;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    border:5px solid white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.imgSnap4{
+    display: flex;
+    opacity: 50%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    width: 1200px;
+    filter: blur(7px);
+}
+/* SAUCONY---------------------- */
+.snapper5{
+    background-color: rgb(192, 241, 12);
+    position: relative;
+    
+}
+.snapper5 h1 {
+    text-align: center;
+    z-index:2;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    font-size: 40px;
+    border:5px solid white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.imgSnap5{
+    display: flex;
+    opacity: 50%;
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    width: 1450px;
+    filter: blur(7px);
+}
