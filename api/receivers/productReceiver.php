@@ -18,10 +18,10 @@
 
             $body = json_decode($_POST["product"], true);
             
-            $productInformation = $body[0];
-            $sizeInformation = $body[1];
-            $images = $body[2];
             
+            $productController = new ProductController();
+            echo json_encode($productController->newProduct($body));
+
             // new product
             // insert product och få tillbaka id´t
 
@@ -32,11 +32,6 @@
             // new size och insert med loop?
             // insert sizes.
             // kolla om det går bra annars ta bort bilder och produkten??
-
-
-            echo json_encode($productInformation);
-            // $productController = new ProductController();
-            // echo json_encode($productController->newProduct($product));
 
         }
 
