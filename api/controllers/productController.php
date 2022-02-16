@@ -53,6 +53,15 @@ class ProductController extends MainController {
     }
 
 
+    public function newProduct($product){
+
+        return $product;
+
+
+
+    }
+
+
 }
 
 
