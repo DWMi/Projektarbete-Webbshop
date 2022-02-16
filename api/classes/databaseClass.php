@@ -41,6 +41,8 @@ class Database {
         return $result;
     }
 
+    // freeQuery som bara ger tillbaka en assosiativ lista
+
 }
 
 ?>
