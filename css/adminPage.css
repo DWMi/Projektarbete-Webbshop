@@ -99,3 +99,8 @@ input {
     text-align: right;
     text-decoration: none;
 }
+
+#newsBody{
+    height: 100px;
+    font-size: 15pt;
+}
