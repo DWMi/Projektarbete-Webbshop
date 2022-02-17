@@ -1,13 +1,12 @@
-import { productCard } from '../components/productCard.js';
+
 
 let userName = document.getElementById("name");
 let logOutBtn = document.getElementById("logOutBtn");
 
-logOutBtn.addEventListener("click", logOutUser);
+//logOutBtn.addEventListener("click", logOutUser);
 
 async function initSite(){
 
-    getAllProductsByCategory("1");
     checkUserIsAdmin()
     checkIsNormalUser()
 
@@ -27,12 +26,6 @@ export async function makeRequest(url, method, body) {
     }
 
 }
-
-
-
-
-
-
 
 async function logOutUser(){
     let url = "../api/controllers/logOutUser.php"
@@ -114,7 +107,7 @@ export  async function getAllCategories(){
 }
 
 // Function for fetching one category by Id from the database.
-async function getCategoryById(id){
+export async function getCategoryById(id){
 
     const action = "getById";
 
