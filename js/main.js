@@ -1,4 +1,4 @@
-
+import { productCard } from '../components/productCard.js';
 
 let userName = document.getElementById("name");
 let logOutBtn = document.getElementById("logOutBtn");
@@ -14,17 +14,6 @@ async function initSite(){
 }
 
 
-import { productCard } from '../components/productCard.js';
-
-async function initSite(){
-    
-    
-    getAllCategories();
-
-}
-
-
-
 export async function makeRequest(url, method, body) {
     try {
         let response = await fetch(url, {
@@ -38,9 +27,8 @@ export async function makeRequest(url, method, body) {
     }
 
 }
-function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
+
+
 
 
 
@@ -97,35 +85,32 @@ async function getAllProducts(){
     const action = "getAll";
 
     let allProducts = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "GET");
-    console.log(allProducts[0].ProductName)
+    
    
-    
-    delay(2000).then(() => console.log('ran after 1 second1 passed'));
-    
-    
-    
-    
-    let x = window.matchMedia("(max-width: 1439px)")
-    x.addListener(productCard)
-    productCard(x)
+  
 }
 
 // Function for fetching all products by categoryId.
-async function getAllProductsByCategory(id){
+export async function getAllProductsByCategory(id){
     const action = "getAllById";
 
-    let allProducts = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
     
+    let allProductsFromCategory = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
+    
+    return allProductsFromCategory
+
 }
 
 // Function for fetching all categories from the database.
-async function getAllCategories(){
+export  async function getAllCategories(){
 
     const action = "getAll";
 
     let allCategories = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "GET");
-    console.log(allCategories);
-
+   
+    return allCategories;
+    
+    
 }
 
 // Function for fetching one category by Id from the database.
@@ -134,8 +119,8 @@ async function getCategoryById(id){
     const action = "getById";
 
     let category = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
-    console.log(category);
-
+    
+    return category;
 }
 
 
