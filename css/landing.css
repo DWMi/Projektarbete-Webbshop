@@ -2,12 +2,14 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Londrina Solid', cursive;
 }
 
-.container{
+#container{
     top:80px;
     height: 91vh;
     scroll-snap-type:y mandatory;
+    scroll-behavior: smooth;
     overflow-y: scroll;
 }
 section {
@@ -39,7 +41,7 @@ section {
 }
 .imgSnap1{
     display: flex;
-    width: 1450px;
+    width: 1400px;
     opacity: 50%;
     display: flex;
     justify-content: center;
