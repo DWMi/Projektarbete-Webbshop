@@ -25,8 +25,18 @@ function createSize($id, $productId, $sizesInStock, $size) {
 include_once("../classes/categoryClass.php");
 
 function createCategory($id, $categoryName, $categoryDescription, $categoryImg) {
-    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
+    return new Category((int)$id, (int)$ProductId, $categoryName, $categoryDescription, $categoryImg);
 }
+
+// CREATES A NEW USER FROM THE UserClass
+include_once("../classes/userClass.php");
+
+function createUser($UserID, $UserEmail, $UserPassword, $UserRegisterDate, $UserFirstName, $UserLastName,
+$Newsletter, $TermsConditions, $UserIsAdmin,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
+    
+    return new User((int)$UserID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
+    (int)$Newsletter, (int)$TermsConditions, (int)$UserIsAdmin,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
+} 
 
 
 ?>

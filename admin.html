@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./css/adminPage.css">
+
+    <script type="module" src="./js/uploadProduct.js"></script>
+</head>
+<body>
+
+    <div class="wrapper justifyCenter">
+
+
+        <div class="container flex flexColumn">
+            <h1 class="containerHeader">Add product:</h1>
+
+            <div class="component flex flexColumn">
+                <h2 class="containerHeaderTwo">Product information:</h2>
+                <input id="productName" class="productInput" type="text" placeholder="Product name">
+                <input id="productDescription" class="productInput" type="text" placeholder="Product description">
+                <input id="productPrice" class="productInput" type="number" placeholder="Product price">
+                <p id="productInformationReturn"></p>
+            </div>
+
+            <div class="component">
+                <h2 class="containerHeaderTwo">Insert current stock per size:</h2>
+                <div class="flex flexWrap">
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">40</p>
+                        <input id="40" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">41</p>
+                        <input id="41" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">42</p>
+                        <input id="42" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">43</p>
+                        <input id="43" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">44</p>
+                        <input id="44" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">45</p>
+                        <input id="45" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    <div class="flex sizeContainer">
+                        <p class="sizeText">46</p>
+                        <input id="46" class="sizeInput" type="number" placeholder="0">
+                    </div>
+                    </br>
+                </div>
+                <p id="sizeInformationReturn"></p>
+            </div>
+            
+            <div class="component">
+                <p>What categories?</p>
+                <div id="categoriesContainer">render categories here</div>
+            </div>
+
+            <div class="component">
+                <h2 class="containerHeaderTwo">Add three product images in the order you want them to be shown on the product page.</h2>
+                <input id="imageOne" type="file">
+                <input id="imageTwo" type="file">
+                <input id="imageThree" type="file">
+                <p id="imageInformationReturn"></p>
+            </div>
+            
+
+            <div class="component">
+                <div id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</div>
+                <p id="productResponse">product saved</p>
+            </div>
+
+
+        </div>
+
+        <br>
+
+        <div class="container flex flexColumn">
+            <h1 class="containerHeader">Add Newsletter:</h1>
+
+            <div class="component flex flexColumn">
+                <h2 class="containerHeaderTwo">Newsletter title:</h2>
+                <input id="newsTitle" type="title">
+               
+            </div>
+
+            <div class="component flex flexColumn">
+                <h2 class="containerHeaderTwo">Newsletter body:</h2>
+                <textarea name="Text" cols="40" rows="5"></textarea>
+               
+            </div>
+
+            <div class="component">
+                <div id="saveProduct" class="button flex justifyCenter alignCenter">Save Newsletter</div>
+                <p id="productResponse">Newsletter saved!</p>
+            </div>
+
+
+            
+
+
+        </div>
+        
+    </div>
+        
+    </div>
+
+</body>
+</html>

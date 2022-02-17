@@ -16,5 +16,21 @@ class Product {
     }
 }
 
+class ProductToBeAdded {
+    public $ID;
+    public $ProductName;
+    public $ProductDescription;
+    public $ProductPrice;
+
+    function __construct($id, $name, $description, $price) {
+        $this->ID = $id;
+        $this->ProductName = $name;
+        $this->ProductDescription = $description;
+        $this->ProductPrice = $price;
+    }
+
+
+}
+
 
 ?>

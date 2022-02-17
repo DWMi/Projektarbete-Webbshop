@@ -21,6 +21,10 @@
             return $this->database->fetchById($id, $this->createFunction);
         }
 
+        public function newProduct($size) {
+            return $this->database->insertWithForeignKey($size);
+        }
+
     }
 
 

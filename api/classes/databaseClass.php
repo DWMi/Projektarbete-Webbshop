@@ -34,12 +34,110 @@ class Database {
         return $result[0];
     }
 
+    public function insert($entity) {
+
+        $columns = "";
+        $values = [];
+
+        foreach((array)$entity as $key => $value) {
+            if($key != "ID"){
+                $columns .= $key . ",";
+                array_push($values, $value);
+            }
+
+        } 
+
+        $columns = substr($columns, 0, -1);
+        
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES (?,?,?)");
+        $query->execute($values);
+
+        // Returns the last inserted ID for further inserting to other tables.
+        return $this->db->lastInsertId();
+
+    }
+
+    public function insertWithForeignKey($entity){
+
+
+        $columns = "";
+        $values = [];
+
+        foreach((array)$entity as $key => $value) {
+            if($key != "ID"){
+                $columns .= $key . ",";
+                array_push($values, $value);
+            }
+
+        } 
+
+        $columns = substr($columns, 0, -1);
+
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES (?,?,?)");
+        $query->execute($values);
+
+    }
+
+
     public function freeQuery($freeQuery, $createInstanceFunction) {
         $query = $this->db->prepare($freeQuery);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_FUNC, $createInstanceFunction);
         return $result;
     }
+
+
+    // USER AND LOGIN QUERIES
+
+    public function fetchUser($email, $createInstanceFunction) {
+
+        $query = $this->db->prepare("SELECT * FROM " . $this->selectedTable . " WHERE UserEmail=" .  $email .  ";"  );
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_FUNC, $createInstanceFunction);
+
+        error_log(json_encode($result));
+
+        return $result; 
+        
+    }
+
+
+
+    public function getUserEmail($email){
+        $query = $this->db->prepare("SELECT * FROM " . $this->selectedTable . " WHERE UserEmail=" . $email . ";");
+        $query->execute();
+        return $query;
+     
+    }
+
+
+    public function insertNewUser($user) {
+        $columns = "";
+        $values = [];
+
+        foreach((array)$user as $key => $value) {
+            if($key != "UserID" && $key != "UserRegisterDate" ) {
+                $columns .= $key . ",";
+                array_push($values, $value);
+            }
+        }
+
+
+
+        $columns = substr($columns, 0, -1);
+
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $query->execute($values);
+
+      
+        return "New " . $this->selectedClass . " saved!";
+
+        
+        
+    }
+
+    // freeQuery som bara ger tillbaka en assosiativ lista
+
 
 }
 

@@ -1,25 +1,80 @@
+import { productCard } from '../components/productCard.js';
 
+let userName = document.getElementById("name");
+let logOutBtn = document.getElementById("logOutBtn");
 
+logOutBtn.addEventListener("click", logOutUser);
 
 async function initSite(){
-    
-  
-    getAllProducts();
 
     getAllProductsByCategory("1");
+    checkUserIsAdmin()
+    checkIsNormalUser()
 
 }
 
 
 export async function makeRequest(url, method, body) {
     try {
-        let response = await fetch(url, {method, body});
+        let response = await fetch(url, {
+        method,
+        body: body
+    })
         let result = await response.json();
         return result;
     } catch(err){
         console.error(err);
     }
 
+}
+
+
+
+
+
+
+
+async function logOutUser(){
+    let url = "../api/controllers/logOutUser.php"
+    let method = 'DELETE'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == true){
+        window.location.href = "product.html"
+    } 
+}
+
+
+// CHECK WHAT KIND OF USER IS LOGGED IN
+async function checkUserIsAdmin() {
+    let url = "../api/controllers/authAdmin.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == false){
+        console.log(false);
+    } else {
+        userName.innerText = result[0].UserFirstName +" " + result[0].UserLastName + " " + "(ADMIN)";
+    }
+
+
+}
+
+async function checkIsNormalUser() {
+    let url = "../api/controllers/authUser.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == false){
+        console.log(false);
+    } else {
+        userName.innerText = result[0].UserFirstName + " " + result[0].UserLastName + " " + "(Normal User)"
+    }
+
+    
 }
 
 
@@ -38,10 +93,12 @@ async function getAllProducts(){
 // Function for fetching all products by categoryId.
 export async function getAllProductsByCategory(id){
     const action = "getAllById";
+
     
     let allProductsFromCategory = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
     
     return allProductsFromCategory
+
 }
 
 // Function for fetching all categories from the database.
@@ -63,10 +120,11 @@ async function getCategoryById(id){
 
     let category = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
     
-
+    return category;
 }
 
 
 
 
-window.addEventListener("load", initSite);
+
+window.addEventListener("load", initSite)
