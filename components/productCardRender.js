@@ -102,6 +102,11 @@ async function renderProductCard(product){
  
                              sizeBtn.append(sizeBtnText)
                          })
+
+                     let productCardPrice = document.createElement("h2")
+                     productCardPrice.innerText = product.ProductPrice + "$"
+                     productCardSizeWrapper.append(productCardPrice)
+
                      //Add to cart btn wrapper
                      let productAddToCartBtnWrapper = document.createElement("div")
                      productAddToCartBtnWrapper.classList.add("productAddToCart-btn-wrapper")
@@ -293,6 +298,10 @@ async function renderProductCard(product){
     
                                 sizeBtn.append(sizeBtnText)
                             })
+                        // price
+                        let productCardPrice = document.createElement("h2")
+                        productCardPrice.innerText = product.ProductPrice + "$"
+                        productCardSizeWrapper.append(productCardPrice)
                         //Add to cart btn wrapper
                         let productAddToCartBtnWrapper = document.createElement("div")
                         productAddToCartBtnWrapper.classList.add("productAddToCart-btn-wrapper")
@@ -364,10 +373,10 @@ async function renderProductInCategory(id){
         cateogryCard.addEventListener('click', function() {
             console.log(product)
             renderProductCard(product) 
-           /*  const nextTitle = product.ProductName
+            const nextTitle = product.ProductName
             const nextState = {additionalInformation:"eeeh"}
             const nextURL = "./product.html?category=" + id + "?product=" + product.ProductId
-            window.history.pushState(nextState, nextTitle, nextURL) */
+            window.history.pushState(nextState, nextTitle, nextURL)
         })
 
     })

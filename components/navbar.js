@@ -10,34 +10,24 @@ export let navbar = document.getElementById("navbar").innerHTML = `
     <div class="navBar-category ">
         <div class="navbtn dropdown">
             <div id="btnContainer" ><button class="dropbtn"><h5>BRANDS</h5>
-            <i class="fa fa-caret-down"></i> 
+                <i class="fa fa-caret-down"></i> 
             </button></div>
-            
-
+   
             <div class="dropdown-content">
-     
-
-                <div class="dropdown-content" id="category-dropdown">
-                
-
-
-                </div>
+                <div class="dropdown-content" id="category-dropdown"></div>
             </div> 
-        <div class="navbtn"><h5>ABOUT</h5></div>
-        <div class="navbtn"><h5>CONTACTS</h5></div>
-    </div> 
-
+            <div class="navbtn"><h5>ABOUT</h5></div>
+            <div class="navbtn"><h5>CONTACTS</h5></div>
+        </div> 
     </div> 
 
     
     <div class="navBar-user">
-
-    <div class="navBar-user">
-    <div class="userbtn"><h6 id="name"></h6></div>
-        <div class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
-        <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
-        <button id="logOutBtn">Log Out</button>
-    </div>
+        <div class="userbtn"><h6 id="name"></h6></div>
+            <div class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
+            <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
+            <button id="logOutBtn">Log Out</button>
+        </div>
     </div>
 </div>
 
