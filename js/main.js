@@ -3,13 +3,12 @@
 let userName = document.getElementById("name");
 let logOutBtn = document.getElementById("logOutBtn");
 
-// logOutBtn.addEventListener("click", logOutUser);
+//logOutBtn.addEventListener("click", logOutUser);
 
 async function initSite(){
 
-    //getAllProductsByCategory("1");
-    // checkUserIsAdmin()
-    // checkIsNormalUser()
+    checkUserIsAdmin()
+    checkIsNormalUser()
 
 }
 

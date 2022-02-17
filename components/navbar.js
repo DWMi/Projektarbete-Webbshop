@@ -1,6 +1,6 @@
 //the navbar.js file needs render.js to work aswell
 import { getAllCategories } from '../js/main.js';
-document.getElementById("navbar").innerHTML = `
+export let navbar = document.getElementById("navbar").innerHTML = `
 
 
 <div class="navBar-container">
@@ -15,21 +15,22 @@ document.getElementById("navbar").innerHTML = `
             
 
             <div class="dropdown-content">
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/ADIDAS.png" alt=""></div>
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/CONVERSE.png" alt=""></div>
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NEW BALANCE.png" alt=""></div>
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NIKE.png" alt=""></div>
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/SAUCONY.png" alt=""></div>
+     
 
-            <div class="dropdown-content" id="category-dropdown">
-               
+                <div class="dropdown-content" id="category-dropdown">
+                
 
 
-            </div>
-        </div> 
+                </div>
+            </div> 
         <div class="navbtn"><h5>ABOUT</h5></div>
         <div class="navbtn"><h5>CONTACTS</h5></div>
     </div> 
+
+    </div> 
+
+    
+    <div class="navBar-user">
 
     <div class="navBar-user">
     <div class="userbtn"><h6 id="name"></h6></div>
@@ -37,11 +38,12 @@ document.getElementById("navbar").innerHTML = `
         <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
         <button id="logOutBtn">Log Out</button>
     </div>
+    </div>
 </div>
 
 
 `
-async function renderCategory(){
+export async function renderCategory(){
     let allCategories = await getAllCategories() 
     let categoryContainer = document.getElementsByClassName("dropdown-content")[0];
 
@@ -59,8 +61,9 @@ async function renderCategory(){
         categoryDiv.append(categoryImg)
 
      
-        categoryDiv.addEventListener('click', function() {
+        categoryImg.addEventListener('click', function() {
             let id = category.CategoryId
+            console.log("Click");
             window.location.href = "./product.html?category=" + id
 
         

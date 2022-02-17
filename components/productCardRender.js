@@ -26,7 +26,7 @@ async function initSite(){
 let productCard = document.getElementById("productCard")
 
 async function renderProductCard(product){
-    
+    console.log("Product", product)
     productCard.innerHTML = ""
    
     
@@ -83,6 +83,7 @@ async function renderProductCard(product){
                      productCardSizeWrapper.append(productCardSizeBtnWrapper)
                           //LOOOOOOOOOOOOOOOOOOOOOOOOOOOOP SIZE
  
+                          console.log("SIZES: ", product.Sizes)
                          product.Sizes.forEach(size => {
  
                              //product card size btn wrapper 
@@ -95,7 +96,7 @@ async function renderProductCard(product){
                              if(size.SizesInStock < 1 ){
                                  sizeBtn = ""
                              }else{
-                                 sizeBtnText.innerHTML = size.Size
+                                 sizeBtnText.innerHTML = size.size
  
                              }
  
@@ -332,7 +333,7 @@ let footerContainer = document.getElementById("footer");
 async function renderProductInCategory(id){
     footerContainer.innerHTML = ""
     let allProductsFromCategory  = await getAllProductsByCategory(id) 
-   console.log()
+
     renderProductCard(allProductsFromCategory[0])
     let categoryContainer = document.createElement("div")
     categoryContainer.classList.add("category-container")

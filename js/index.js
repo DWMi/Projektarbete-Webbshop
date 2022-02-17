@@ -1,10 +1,14 @@
 import  {getAllCategories} from './main.js'
+import {navbar} from '../components/navbar.js'
 
-let myArr;
+let catImgArr;
 
 function initSite(){
     categoriesFetch()
         .then(() => sectionRenderer());
+    
+
+    navbar;
 }
 
 

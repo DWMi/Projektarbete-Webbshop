@@ -35,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33%;
+  width: 100%;
 }
 .navBar-user {
   display: flex;
@@ -50,6 +50,7 @@
   justify-content: center;
   margin: 0 4%;
   height: 70px;
+  width: 100%;
 }
 .navbtn {
   display: flex;
@@ -117,12 +118,10 @@
   text-align: left;
 }
 
-.dropdown-content .dropdown-brand:hover {
-  background-color: orange;
-  transition: all 250ms ease-in-out;
-}
+
 
 .dropdown:hover .dropdown-content {
   display: flex;
   transition: all 250ms ease-in-out;
 }
+
