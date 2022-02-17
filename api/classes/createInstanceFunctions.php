@@ -25,7 +25,7 @@ function createSize($id, $productId, $sizesInStock, $size) {
 include_once("../classes/categoryClass.php");
 
 function createCategory($id, $categoryName, $categoryDescription, $categoryImg) {
-    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
+    return new Category((int)$id, (int)$ProductId, $categoryName, $categoryDescription, $categoryImg);
 }
 
 // CREATES A NEW USER FROM THE UserClass
