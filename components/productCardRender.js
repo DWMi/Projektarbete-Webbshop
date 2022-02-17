@@ -96,7 +96,7 @@ async function renderProductCard(product){
                              if(size.SizesInStock < 1 ){
                                  sizeBtn = ""
                              }else{
-                                 sizeBtnText.innerHTML = size.size
+                                 sizeBtnText.innerHTML = size.Size
  
                              }
  
