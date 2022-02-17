@@ -2,16 +2,16 @@
 
 class Size {
 
-    public $SizeId;
+    public $ID;
     public $ProductId;
-    public $SizesInStock; 
-    public $Size; 
+    public $sizesInStock; 
+    public $size; 
 
     function __construct($id, $productId, $sizesInStock, $size) {
-        $this->SizeId = $id;
+        $this->ID = $id;
         $this->ProductId = $productId;
-        $this->SizesInStock = $sizesInStock;
-        $this->Size = $size;
+        $this->sizesInStock = $sizesInStock;
+        $this->size = $size;
     }
 
 }
