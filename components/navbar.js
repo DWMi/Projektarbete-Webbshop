@@ -24,9 +24,10 @@ document.getElementById("navbar").innerHTML = `
     </div> 
 
     <div class="navBar-user">
-    <div class="userbtn"><h6>fName Lname</h6></div>
+    <div class="userbtn"><h6 id="name"></h6></div>
         <div class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
         <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
+        <button id="logOutBtn">Log Out</button>
     </div>
 </div>
 

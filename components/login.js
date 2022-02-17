@@ -8,9 +8,12 @@ document.getElementById("login").innerHTML = `
     <h1>SNEAKERS<span>.</span></h1>        
     <h1>LOGIN<span>.</span></h1>
     </div>
-    <input type="text" name="Username" placeholder="Email" id="username">
-    <input type="password" name="Password" placeholder="Password" id="password">
-    <button type="button" id="loginBtn">Login</button>
+    <form id="logInForm">
+    <input type="email" name="UserEmail" placeholder="Email" id="username" required>
+    <input type="password" name="UserPassword" placeholder="Password" id="password" required >
+    <button type="submit" id="loginBtn">Login</button>
+    </form>
+    <span id="errorMsg"></span>
     <span id="notAmember">Not a member? You can Sign Up <a href="signUp.html">here</a></span>
   </div>
 

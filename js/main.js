@@ -1,15 +1,23 @@
 
+let userName = document.getElementById("name");
+let logOutBtn = document.getElementById("logOutBtn");
+
+logOutBtn.addEventListener("click", logOutUser);
 
 async function initSite(){
 
     getAllProductsByCategory("1");
+    checkUserIsAdmin()
+    checkIsNormalUser()
 
 }
 
-
-async function makeRequest(url, method, body) {
+export async function makeRequest(url, method, body) {
     try {
-        let response = await fetch(url, {method, body});
+        let response = await fetch(url, {
+        method,
+        body: body
+    })
         let result = await response.json();
         return result;
     } catch(err){
@@ -17,6 +25,55 @@ async function makeRequest(url, method, body) {
     }
 
 }
+
+
+
+
+
+async function logOutUser(){
+    let url = "../api/controllers/logOutUser.php"
+    let method = 'DELETE'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == true){
+        window.location.href = "product.html"
+    } 
+}
+
+
+// CHECK WHAT KIND OF USER IS LOGGED IN
+async function checkUserIsAdmin() {
+    let url = "../api/controllers/authAdmin.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == false){
+        console.log(false);
+    } else {
+        userName.innerText = result[0].UserFirstName +" " + result[0].UserLastName + " " + "(ADMIN)";
+    }
+
+
+}
+
+async function checkIsNormalUser() {
+    let url = "../api/controllers/authUser.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == false){
+        console.log(false);
+    } else {
+        userName.innerText = result[0].UserFirstName + " " + result[0].UserLastName + " " + "(Normal User)"
+    }
+
+    
+}
+
+
 
 // Function for fetching all products from the database.
 async function getAllProducts(){
@@ -33,7 +90,7 @@ async function getAllProductsByCategory(id){
     const action = "getAllById";
 
     let allProducts = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
-    console.log(allProducts);
+    
 }
 
 // Function for fetching all categories from the database.
@@ -59,4 +116,5 @@ async function getCategoryById(id){
 
 
 
-window.addEventListener("load", initSite);
+
+window.addEventListener("load", initSite)
