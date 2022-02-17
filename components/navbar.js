@@ -1,9 +1,11 @@
+//the navbar.js file needs render.js to work aswell
+import { getAllCategories } from '../js/main.js';
 document.getElementById("navbar").innerHTML = `
 
 
 <div class="navBar-container">
 
-    <div class="navBar-logo"><a href="#"><h1>SNEAKERS<span>.</span></h1></a></div>
+    <div class="navBar-logo"><a href="./index.html"><h1>SNEAKERS<span>.</span></h1></a></div>
 
     <div class="navBar-category ">
         <div class="navbtn dropdown">
@@ -11,12 +13,18 @@ document.getElementById("navbar").innerHTML = `
             <i class="fa fa-caret-down"></i> 
             </button></div>
             
+
             <div class="dropdown-content">
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/ADIDAS.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/CONVERSE.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NEW BALANCE.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NIKE.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/SAUCONY.png" alt=""></div>
+
+            <div class="dropdown-content" id="category-dropdown">
+               
+
+
             </div>
         </div> 
         <div class="navbtn"><h5>ABOUT</h5></div>
@@ -33,3 +41,34 @@ document.getElementById("navbar").innerHTML = `
 
 
 `
+async function renderCategory(){
+    let allCategories = await getAllCategories() 
+    let categoryContainer = document.getElementsByClassName("dropdown-content")[0];
+
+    allCategories.forEach(category => {
+        
+      
+
+        // Creating div
+        let categoryDiv  = document.createElement('div')
+        categoryDiv.classList.add('dropdown-brand')
+        categoryContainer.append(categoryDiv)
+
+        let categoryImg = document.createElement('img')
+        categoryImg.src = "./ASSETS/1.LOGOS/" + category.CategoryImg
+        categoryDiv.append(categoryImg)
+
+     
+        categoryDiv.addEventListener('click', function() {
+            let id = category.CategoryId
+            window.location.href = "./product.html?category=" + id
+
+        
+        })
+       
+
+        })
+    
+}
+
+renderCategory()
