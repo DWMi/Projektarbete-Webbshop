@@ -12,7 +12,7 @@ document.getElementById("navbar").innerHTML = `
             </button></div>
             
             <div class="dropdown-content">
-                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/adidasOG.png" alt=""></div>
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/ADIDAS.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/CONVERSE.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NEW BALANCE.png" alt=""></div>
                 <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NIKE.png" alt=""></div>
