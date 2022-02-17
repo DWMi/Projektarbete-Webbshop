@@ -13,8 +13,17 @@ document.getElementById("navbar").innerHTML = `
             <i class="fa fa-caret-down"></i> 
             </button></div>
             
+
+            <div class="dropdown-content">
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/ADIDAS.png" alt=""></div>
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/CONVERSE.png" alt=""></div>
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NEW BALANCE.png" alt=""></div>
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/NIKE.png" alt=""></div>
+                <div class="dropdown-brand"><img src="./ASSETS/1.LOGOS/SAUCONY.png" alt=""></div>
+
             <div class="dropdown-content" id="category-dropdown">
                
+
 
             </div>
         </div> 
