@@ -8,10 +8,11 @@ document.getElementById("signUp").innerHTML = `
         <h1>SNEAKERS<span>.</span></h1> 
         <h1>SIGN UP<span>.</span></h1>
     </div>
-    <input type="text" name="First Name" placeholder="First Name" id="firstName">
-    <input type="text" name="Last Name" placeholder="Last Name" id="lastName">
-    <select id="country" name="country" id="country">
-    <option>Select Country</option>
+    <form id="signUpForm">
+    <input type="text" name="UserFirstName" placeholder="First Name" id="firstName" required>
+    <input type="text" name="UserLastName" placeholder="Last Name" id="lastName" required>
+    <select id="country" name="UserCountry" id="country" placeholder="Select country" required>
+    <option value="">Select Country</option>
     <option value="AF">Afghanistan</option>
     <option value="AX">Aland Islands</option>
     <option value="AL">Albania</option>
@@ -265,26 +266,29 @@ document.getElementById("signUp").innerHTML = `
     <option value="ZM">Zambia</option>
     <option value="ZW">Zimbabwe</option>
 </select>
-    <input type="city" name="City" placeholder="City" id="city">
-    <input type="address" name="Address" placeholder="Address" id="address">
-    <input type="zip" name="Zipcode" placeholder="ZIP Code" id="zipCode">
-    <input type="text" name="Email" placeholder="Email" id="username">
+    <input type="city" name="UserCity" placeholder="City" id="city" required>
+    <input type="address" name="UserStreet" placeholder="Address" id="address" required>
+    <input type="zip" name="UserZipCode" placeholder="ZIP Code" id="zipCode" required>
+    <input type="email" name="UserEmail" placeholder="Email" id="username" required>
     <div id="showPassword">
-    <input type="password" name="Password" placeholder="Choose Password" id="password">
+    <input type="password" name="UserPassword" placeholder="Choose Password" id="password" required>
     <i class="fa fa-eye-slash" id="btn" onclick="showPassword()"></i>
     </div>
 <div id="checkboxContainer">
     <label class="checkbox">
-      <input type="checkbox">
+      <input type="checkbox" name="Newsletter" value="1">
       <span class="checkmark">Newsletter</span>
     </label>
 
     <label class="checkbox">
-      <input type="checkbox">
+      <input type="checkbox" name="TermsConditions" value="1" required>
       <span class="checkmark">Terms & Conditions</span>
     </label>
     </div>
-    <button type="button" id="signInBtn">Sign Up</button>
+    <button type="submit" id="signInBtn">Sign Up</button>
+    </form>
+    <span id="errorMsg"></span>
+    <div></div>
     <span id="alreadyAmember">Already a member? You can Login <a href="login.html">here</a></span>
   </div>
 
