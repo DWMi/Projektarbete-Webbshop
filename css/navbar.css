@@ -118,7 +118,7 @@
 }
 
 .dropdown-content .dropdown-brand:hover {
-  background-color: transparent;
+  background-color: orange;
   transition: all 250ms ease-in-out;
 }
 
