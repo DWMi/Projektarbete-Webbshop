@@ -12,6 +12,11 @@
                 exit;
             }
 
+            if($_GET["action"] == "getById") {
+                $productController = new ProductController();
+                echo json_encode($productController->getById((int)$_GET["id"]));
+            }
+
         }
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
