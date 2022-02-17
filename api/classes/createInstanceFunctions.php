@@ -10,8 +10,8 @@ function createProduct($id, $name, $description, $price) {
 
 include_once("../classes/imageClass.php");
 
-function createImage($id, $imageType, $imageSrc) {
-    return new Image((int)$id, $imageType, $imageSrc);
+function createImage($id, $productId, $imageType, $imageSrc) {
+    return new Image((int)$id, $productId, $imageType, $imageSrc);
 }
 
 
@@ -25,7 +25,7 @@ function createSize($id, $productId, $sizesInStock, $size) {
 include_once("../classes/categoryClass.php");
 
 function createCategory($id, $categoryName, $categoryDescription, $categoryImg) {
-    return new Category((int)$id, (int)$ProductId, $categoryName, $categoryDescription, $categoryImg);
+    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
 }
 
 // CREATES A NEW USER FROM THE UserClass
