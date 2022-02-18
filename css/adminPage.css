@@ -104,3 +104,11 @@ input {
     height: 100px;
     font-size: 15pt;
 }
+
+#newsResponse{
+display: none;
+}
+
+#productResponse{
+    display: none;
+}

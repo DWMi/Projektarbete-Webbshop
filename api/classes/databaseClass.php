@@ -38,18 +38,21 @@ class Database {
 
         $columns = "";
         $values = [];
+        $questionmark = "";
 
         foreach((array)$entity as $key => $value) {
             if($key != "ID"){
                 $columns .= $key . ",";
+                $questionmark .=  "?,";
                 array_push($values, $value);
             }
 
         } 
 
         $columns = substr($columns, 0, -1);
-        
-        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES (?,?,?)");
+        $questionmark = substr($questionmark, 0, -1);
+
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES ($questionmark)");
         $query->execute($values);
 
         // Returns the last inserted ID for further inserting to other tables.

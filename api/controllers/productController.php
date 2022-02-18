@@ -132,7 +132,7 @@ class ProductController extends MainController {
 
         }
 
-        return "success";
+        return $productId;
 
     }
 
