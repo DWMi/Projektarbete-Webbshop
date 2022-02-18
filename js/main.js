@@ -101,6 +101,16 @@ async function getAllProducts(){
   
 }
 
+export async function getProductById(id) {
+
+    const action = "getById";
+
+    let product = await makeRequest(`../api/receivers/productReceiver.php?action=${action}&id=${id}`, "GET");
+
+    return product;
+
+}
+
 // Function for fetching all products by categoryId.
 export async function getAllProductsByCategory(id){
     const action = "getAllById";
