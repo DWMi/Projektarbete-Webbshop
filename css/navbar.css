@@ -41,7 +41,9 @@
   display: flex;
   width: 33%;
   justify-content: end;
+  align-items: center;
   padding: 0 4%;
+  height: 100%;
 }
 
 .userbtn {
@@ -51,6 +53,8 @@
   margin: 0 4%;
   height: 70px;
   width: 100%;
+  height: 100%;
+  padding: 20px;
 }
 .navbtn {
   display: flex;
@@ -58,7 +62,6 @@
   justify-content: center;
   margin: 0 4%;
   height: 80px;
-  width: 280px;
 }
 
 /*--------TEST DROPDOWN ---------*/
@@ -125,4 +128,71 @@
   display: flex;
   transition: all 250ms ease-in-out;
 }
+
+
+/* LOGIN STYLE */
+
+.user-dropdown{
+  height: 100%;
+ 
+}
+.user-dropdown-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 130px;
+  width: 200px;
+  height: 200px;
+  top: 80px;
+  max-width: 80%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  
+}
+
+.user-dropdown:hover .user-dropdown-content{
+  display: flex;
+}
+
+.userbtn:hover {
+  opacity: 50%;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+#logOutBtn{
+  display: none;
+  width: 80%;
+  cursor: pointer;
+  height: 30px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: black; color: white;
+  border-color: transparent;
+  transition-duration: 300ms;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 5px;
+}
+
+#logInBtn{
+  display: flex;
+  cursor: pointer;
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: black; color: white;
+  border-color: transparent;
+  transition-duration: 300ms;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 5px;
+}
+
+
+
 

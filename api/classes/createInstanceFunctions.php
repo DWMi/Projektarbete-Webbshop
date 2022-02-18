@@ -31,11 +31,11 @@ function createCategory($id, $categoryName, $categoryDescription, $categoryImg) 
 // CREATES A NEW USER FROM THE UserClass
 include_once("../classes/userClass.php");
 
-function createUser($UserID, $UserEmail, $UserPassword, $UserRegisterDate, $UserFirstName, $UserLastName,
-$Newsletter, $TermsConditions, $UserIsAdmin,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
+function createUser($ID, $UserEmail, $UserPassword, $UserRegisterDate, $UserFirstName, $UserLastName,
+$Newsletter, $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
     
-    return new User((int)$UserID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
-    (int)$Newsletter, (int)$TermsConditions, (int)$UserIsAdmin,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
+    return new User((int)$ID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
+    (int)$Newsletter, (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
 } 
 
 

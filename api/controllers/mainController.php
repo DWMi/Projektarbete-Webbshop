@@ -10,9 +10,6 @@ abstract class MainController {
         $this->database = new Database($table, $class);
     }
 
-    abstract function getAll();
-
-    abstract function getById($id);
 
 }
 

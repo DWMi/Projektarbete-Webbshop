@@ -116,7 +116,7 @@ class Database {
         $values = [];
 
         foreach((array)$user as $key => $value) {
-            if($key != "UserID" && $key != "UserRegisterDate" ) {
+            if($key != "ID" && $key != "UserRegisterDate" ) {
                 $columns .= $key . ",";
                 array_push($values, $value);
             }
@@ -126,7 +126,7 @@ class Database {
 
         $columns = substr($columns, 0, -1);
 
-        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         $query->execute($values);
 
       
