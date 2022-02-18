@@ -53,7 +53,7 @@ export async function renderCategory(){
      
         categoryImg.addEventListener('click', function() {
             let id = category.CategoryId
-            console.log("Click");
+            console.log(category);
             window.location.href = "./product.html?category=" + id
 
         
