@@ -21,22 +21,35 @@
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $body = json_decode($_POST["product"], true);
-            
-            
-            $productController = new ProductController();
-            echo json_encode($productController->newProduct($body));
+            include_once("../controllers/fileController.php");
 
-            // new product
-            // insert product och få tillbaka id´t
+            if($_GET["action"] == "newProduct") {
 
-            // new image och insert med loop från productController? 
-            // insert bildernas src.
-            // kolla om det går bra annars ta bort produkten igen.
+                $body = json_decode($_POST["product"], true);
+                
+                
+                $productController = new ProductController();
+                echo json_encode($productController->newProduct($body));
 
-            // new size och insert med loop?
-            // insert sizes.
-            // kolla om det går bra annars ta bort bilder och produkten??
+                // new product
+                // insert product och få tillbaka id´t
+    
+                // new image och insert med loop från productController? 
+                // insert bildernas src.
+                // kolla om det går bra annars ta bort produkten igen.
+
+                // new size och insert med loop?
+                // insert sizes.
+                // kolla om det går bra annars ta bort bilder och produkten??
+
+            }
+
+            if($_GET["action"] == "checkImage") {
+
+                $image = checkImage($_FILES["image"]);
+                echo json_encode($image);
+
+            }
 
         }
 
