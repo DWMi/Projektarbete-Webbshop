@@ -1,6 +1,7 @@
 
 
 import { getAllProductsByCategory } from '../js/main.js';
+import { getProductById } from '../js/main.js';
 import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 
 
@@ -14,8 +15,9 @@ async function initSite(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const category = urlParams.get('category')
-    const product = urlParams.get('product')
-
+    
+    const productURL = urlParams.get('product')
+    console.log(productURL)
     MQ.addListener(renderProductCard) // Attach listener function on state changes
     
     renderProductInCategory(category)
@@ -23,12 +25,29 @@ async function initSite(){
     /* renderProductCard(product) */
 }
 
+
+function saveToCart(SizeId,productID){
+    
+}
+
 let productCard = document.getElementById("productCard")
 
-async function renderProductCard(product){
-    console.log("Product", product)
+async function renderProductCard(id){
+    console.log(id, "Inside renderProductCard")
+    
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const productURL = urlParams.get('product')
+    const category = urlParams.get('category')
+    console.log(productURL, "productURL")
     productCard.innerHTML = ""
-   
+    if(productURL){
+        var product = await getProductById(productURL) 
+    }else{
+
+        var product = await getProductById(id) 
+    }
     
     if (MQ.matches){
        
@@ -83,21 +102,39 @@ async function renderProductCard(product){
                      productCardSizeWrapper.append(productCardSizeBtnWrapper)
                           //LOOOOOOOOOOOOOOOOOOOOOOOOOOOOP SIZE
  
-                          console.log("SIZES: ", product.Sizes)
+                         
                          product.Sizes.forEach(size => {
- 
+
                              //product card size btn wrapper 
-                             let sizeBtn = document.createElement("div")
+                             let sizeBtn = document.createElement("button")
                              sizeBtn.classList.add("size-btn")
                              productCardSizeBtnWrapper.append(sizeBtn)
      
                              let sizeBtnText = document.createElement("p")
                              
                              if(size.SizesInStock < 1 ){
-                                 sizeBtn = ""
+                                sizeBtn = ""
+                                sizeBtn.style = "background-color: none;"
                              }else{
-                                 sizeBtnText.innerHTML = size.Size
- 
+                                sizeBtn.addEventListener('click', function() {
+                                    
+                                   
+                                       
+                                    if (sizeBtn.style.backgroundColor === 'none'){
+
+                                        sizeBtn.style.backgroundColor ="rgba(85, 151, 76, 0.479)"
+                                    }else{
+                                        
+                                        console.log(size)
+                                    }
+                                    
+    
+                                    
+                                    
+                                })
+                              
+                                sizeBtnText.innerHTML = size.Size
+
                              }
  
                              sizeBtn.append(sizeBtnText)
@@ -117,7 +154,11 @@ async function renderProductCard(product){
                          productAddToCartBtn.innerText = "Add to Cart"
                          productAddToCartBtnWrapper.append(productAddToCartBtn)
  
-            
+                         productAddToCartBtn.addEventListener('click', function() {
+                                    
+                                    
+                                    
+                         })
             
                     // product swiper container
             let productSwiperContainer = document.createElement("div")
@@ -183,7 +224,7 @@ async function renderProductCard(product){
                                 },
                               });
     
-                            console.log(swiper)
+                            
     }else {
        
         let productCardContainer = document.createElement("div")
@@ -327,7 +368,7 @@ async function renderProductCard(product){
                                 },
                               });
     
-                            console.log(swiper)
+                            
     }
 
             
@@ -342,8 +383,12 @@ let footerContainer = document.getElementById("footer");
 async function renderProductInCategory(id){
     footerContainer.innerHTML = ""
     let allProductsFromCategory  = await getAllProductsByCategory(id) 
+    
+    
+    
+    renderProductCard(allProductsFromCategory[0].ProductId)
 
-    renderProductCard(allProductsFromCategory[0])
+
     let categoryContainer = document.createElement("div")
     categoryContainer.classList.add("category-container")
     footerContainer.append(categoryContainer)
@@ -371,12 +416,16 @@ async function renderProductInCategory(id){
         cateogryCard.append(categoryCardImg)
 
         cateogryCard.addEventListener('click', function() {
-            console.log(product)
-            renderProductCard(product) 
+            
+            
             const nextTitle = product.ProductName
-            const nextState = {additionalInformation:"eeeh"}
-            const nextURL = "./product.html?category=" + id + "?product=" + product.ProductId
-            window.history.pushState(nextState, nextTitle, nextURL)
+            const nextState = {additionalInformation: product.ProductName}
+           
+            const nextURL = "./product.html?category=" + id + "&product=" + product.ProductId
+            /* window.location.href = nextURL */
+            
+            window.history.pushState(nextState,nextTitle,nextURL)
+            renderProductCard(id)
         })
 
     })
@@ -405,7 +454,7 @@ async function renderProductInCategory(id){
           prevEl: ".swiper-button-prev-two",
         },
       });
-      console.log(swiper2)
+      
 }  
 
 
