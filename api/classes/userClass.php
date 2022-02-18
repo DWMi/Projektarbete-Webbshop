@@ -1,7 +1,7 @@
 <?php 
 
 class User {
-    public $UserID;
+    public $ID;
     public $UserEmail;
     public $UserPassword;
     public $UserRegisterDate;
@@ -10,17 +10,18 @@ class User {
     public $Newsletter;
     public $TermsConditions;
     public $UserIsAdmin;
+    public $AdminRequest;
     public $UserCountry;
     public $UserCity;
     public $UserStreet;
     public $UserZipCode;
     
 
-    function __construct($UserID, $UserEmail, $UserPassword, $UserRegisterDate,
-         $UserFirstName,  $UserLastName, $Newsletter, $TermsConditions, $UserIsAdmin,
+    function __construct($ID, $UserEmail, $UserPassword, $UserRegisterDate,
+         $UserFirstName,  $UserLastName, $Newsletter, $TermsConditions, $UserIsAdmin, $AdminRequest,
          $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
         
-        $this->UserID = $UserID;
+        $this->ID = $ID;
         $this->UserEmail = $UserEmail;
         $this->UserPassword = $UserPassword;
         $this->UserRegisterDate = $UserRegisterDate;
@@ -29,6 +30,7 @@ class User {
         $this->Newsletter = $Newsletter;
         $this->TermsConditions = $TermsConditions;
         $this->UserIsAdmin = $UserIsAdmin;
+        $this->AdminRequest = $AdminRequest;
         $this->UserCountry = $UserCountry;
         $this->UserCity = $UserCity;
         $this->UserStreet = $UserStreet;

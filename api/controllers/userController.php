@@ -21,7 +21,7 @@ class UserController extends MainController {
 
             
             $userToAdd = createUser(null, $user->UserEmail, $hashedPwd, null, $user->UserFirstName, $user->UserLastName,
-            $user->Newsletter, $user->TermsConditions, null,  $user->UserCountry, $user->UserCity, $user->UserStreet, $user->UserZipCode);
+            $user->Newsletter, $user->TermsConditions, null, null,  $user->UserCountry, $user->UserCity, $user->UserStreet, $user->UserZipCode);
             error_log(json_encode($userToAdd));
             return $this->database->insertNewUser($userToAdd);
           

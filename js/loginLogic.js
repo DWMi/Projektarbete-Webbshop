@@ -37,9 +37,10 @@ async function logInUser(){
     let result = await makeRequest(url, method, body)
 
     if(result == true){
-        window.location.href = "product.html"
+        window.location.href = "index.html"
     } else {
         errorMsg.innerText = "Invalid Email or Password!"
+        errorMsg.style.color = "red";
     }
     
 
