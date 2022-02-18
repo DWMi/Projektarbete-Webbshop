@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/adminPage.css">
 
     <script type="module" src="./js/uploadProduct.js"></script>
+    <script type="module" src="./js/adminpage.js"></script>
 </head>
 <body>
 
@@ -61,23 +62,23 @@
                 <p id="sizeInformationReturn"></p>
             </div>
             
-            <div class="component">
+       <!--      <div class="component">
                 <p>What categories?</p>
                 <div id="categoriesContainer">render categories here</div>
-            </div>
+            </div> -->
 
             <div class="component">
                 <h2 class="containerHeaderTwo">Add three product images in the order you want them to be shown on the product page.</h2>
-                <input id="imageOne" type="file">
-                <input id="imageTwo" type="file">
-                <input id="imageThree" type="file">
+                <input id="imageOne" name="image"type="file">
+                <input id="imageTwo" name="image" type="file">
+                <input id="imageThree" name="image" type="file">
                 <p id="imageInformationReturn"></p>
             </div>
             
 
             <div class="component">
                 <div id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</div>
-                <p id="productResponse">product saved</p>
+                <p id="productResponse">Product saved!</p>
             </div>
 
 
@@ -96,14 +97,16 @@
 
             <div class="component flex flexColumn">
                 <h2 class="containerHeaderTwo">Newsletter body:</h2>
-                <textarea name="Text" cols="40" rows="5"></textarea>
+                <textarea id="newsBody" name="Text" cols="40" rows="5"></textarea>
+                <p id="newsletterInformationReturn"></p>
                
             </div>
 
             <div class="component">
-                <div id="saveProduct" class="button flex justifyCenter alignCenter">Save Newsletter</div>
-                <p id="productResponse">Newsletter saved!</p>
+                <div id="saveNews" class="button flex justifyCenter alignCenter">Save Newsletter</div>
+                <p id="newsResponse">Newsletter saved!</p>
             </div>
+
 
 
             
