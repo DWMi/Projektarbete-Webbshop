@@ -46,8 +46,18 @@
 
             if($_GET["action"] == "checkImage") {
 
-                $image = checkImage($_FILES["image"]);
-                echo json_encode($image);
+                $uploadStatus = checkImage($_FILES["image"]);
+
+                echo json_encode($uploadStatus);
+
+            }
+
+            if($_GET["action"] == "uploadImage") {
+
+
+                $uploadStatus = uploadImage($_FILES["image"]);
+
+                echo json_encode($uploadStatus);
 
             }
 

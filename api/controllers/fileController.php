@@ -1,8 +1,9 @@
 <?php
 
 function checkImage($image){
-    $target_dir = "./../uploads/";
+    $target_dir = "../../ASSETS/PRODUCTS/";
     $target_file = $target_dir . basename($image["name"]);
+    // php generate random string på namnet
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     $check = getimagesize($image["tmp_name"]);
@@ -15,18 +16,16 @@ function checkImage($image){
     } else if($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg" && $file_type != "gif") {
         return "format";
     } else {
-        return $file_type;
+        return $image;
     }
 
 }
 
 function uploadImage($image) {
 
-    $target_dir = "./../uploads/";
+    $target_dir = "../../ASSETS/PRODUCTS/";
     // HASHA INNAN MAN TAR IN NAMNET?? basename image name är vad som ska hashas. 
     $target_file = $target_dir . basename($image["name"]);
-
-
 
     $uploadStatus = move_uploaded_file($image["tmp_name"], $target_file);
     if($uploadStatus) {
