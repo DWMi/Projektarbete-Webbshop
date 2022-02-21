@@ -28,6 +28,12 @@ function createCategory($id, $categoryName, $categoryDescription, $categoryImg) 
     return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
 }
 
+include_once("../classes/productInCategoryClass.php");
+
+function createProductInCategory($productId, $categoryId) {
+    return new ProductInCategory((int)$productId, (int)$categoryId);
+}
+
 // CREATES A NEW USER FROM THE UserClass
 include_once("../classes/userClass.php");
 

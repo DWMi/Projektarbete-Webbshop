@@ -1,4 +1,13 @@
 import {makeRequest} from "./main.js";
+import {newProduct, renderCategories} from "./uploadProduct.js";
+
+
+async function initSite(){
+    renderCategories();
+    localStorage.clear();
+
+}
+
 
 
 async function newNewsletter(){
@@ -35,3 +44,6 @@ async function newNewsletter(){
 document.getElementById("saveNews").addEventListener("click", function(){
     newNewsletter();
 });
+
+
+window.addEventListener("load", initSite);

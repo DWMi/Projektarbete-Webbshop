@@ -4,6 +4,7 @@ include_once("../classes/createInstanceFunctions.php");
 include_once("../controllers/mainController.php");
 include_once("../controllers/sizeController.php");
 include_once("../controllers/imageController.php");
+include_once("../controllers/productInCategoryController.php");
 
 class ProductController extends MainController {
 
@@ -114,7 +115,7 @@ class ProductController extends MainController {
 
         $images = $newProduct[2];
 
-        foreach((array)$images as $object => $image) {
+        foreach((array)$images as $key => $image) {
 
             foreach((array)$image as $key => $value) {
                 if($key == "imgType"){
@@ -131,6 +132,15 @@ class ProductController extends MainController {
             $return = $imageController->newProduct($image);
 
         }
+
+
+        $productCategory = $newProduct[3];
+
+        $category = new ProductInCategory($productId, $productCategory);
+
+        $productInCategoryController = new ProductInCategoryController();
+        $categoryInsert = $productInCategoryController->insert($category);
+        
 
         return $productId;
 
