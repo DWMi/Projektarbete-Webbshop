@@ -9,7 +9,7 @@ logOutBtn.addEventListener("click", logOutUser);
 
 
 async function initSite(){
-
+    navbar;
     checkUserIsAdmin()
     checkIsNormalUser()
 
