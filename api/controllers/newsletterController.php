@@ -3,6 +3,7 @@
     include_once("../classes/createInstanceFunctions.php");
     include_once("../controllers/mainController.php");
     include_once("../classes/newsletterClass.php");
+    include_once("../classes/subscriberClass.php");
 
     class NewsletterController extends MainController {
 
@@ -22,6 +23,8 @@
             return $this->database->fetchById($id, $this->createFunction);
         }
 
+        
+
         public function newNewsletter($newNewsletter){
     
             $newsLetterInformation = $newNewsletter[0];
@@ -39,7 +42,40 @@
 
     }
 
+    class SubscriberController extends MainController {
 
+        private $createFunction = "createSubscriber";
+
+        function __construct() {
+            parent::__construct("subtonewsletter", "subtonewsletter");
+        }
+
+        public function getAll(){
+            return $this->database->fetchAll($this->createFunction);
+        }
+
+        public function getById($id){}
+
+        public function getByIdNewsletterId($id) {
+            return $this->database->fetchById($id, $this->createFunction);
+        }
+            
+        function newSubscriber($newSubscriber){
+       
+           $subscriberInformation = $newSubscriber[0];
+           $subscriberEmail = $subscriberInformation[email];
+    
+           $subscriber = new Subscriber(null, $subscriberEmail);
+    
+            $subscriberId = $this->database->insert($subscriber);            
+            
+            if (!$subscriberId) {
+                return "You are already subscribed to our newsletter.";
+            }
+           return "You have subscribed to our newsletter!";
+    
+       }
+    }
 
 
 ?>

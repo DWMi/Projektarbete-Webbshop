@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/productCard.css">
-    <link rel="stylesheet" href="./css/mediaQueries.css">
-
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/productCard.css" />
+    <link rel="stylesheet" href="./css/mediaQueries.css" />
 
     <!-- JS common -->
-    <script defer type="module" src="./components/navbar.js"></script>   
-    <script defer type="module" src="./components/productCardRender.js"></script>
-    
-    <!-- JS Main -->
-    <script defer type="module" src="./js/main.js"></script> 
-    
-    <!-- SWIPER -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> 
-    <script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-   
+    <script defer type="module" src="./components/navbar.js"></script>
+    <script
+      defer
+      type="module"
+      src="./components/productCardRender.js"
+    ></script>
 
-</head>
-<body class="background">
+    <!-- JS Main -->
+    <script defer type="module" src="./js/main.js"></script>
+
+    <!-- SWIPER -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script defer src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      defer
+      src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
+    ></script>
+  </head>
+  <body class="background">
     <!-- navbar -->
     <div id="navbar" class="zindexThree"></div>
 
@@ -39,9 +54,10 @@
     <!-- productCard info when use MQ -->
     <div id="productCardInfo"></div>
 
-    <!-- footer -->
+    <!-- list of other products -->
     <div id="footer" class="zindexOne"></div>
 
-</body>
-</html>
 
+    <div id="lastFooter"></div>
+  </body>
+</html>

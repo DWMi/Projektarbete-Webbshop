@@ -53,8 +53,13 @@ class Database {
         $questionmark = substr($questionmark, 0, -1);
 
         $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES ($questionmark)");
-        $query->execute($values);
-
+        $status = $query->execute($values);
+        if (!$status) {
+            return false;
+           
+        }
+        
+        
         // Returns the last inserted ID for further inserting to other tables.
         return $this->db->lastInsertId();
 
