@@ -27,6 +27,27 @@
 
         }
 
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            if($_GET["action"] == "addCategory"){
+                $body = json_decode($_POST["changeOrAddCategory"], true);
+
+                $changeCategoryController = new changeCategoryController();
+                echo json_encode($changeCategoryController->addCategory($body));
+            }
+            if($_GET["action"] == "changeCategory"){
+                $body = json_decode($_POST["changeOrAddCategory"], true);
+
+                $changeCategoryController = new changeCategoryController();
+                echo json_encode($changeCategoryController->changeCategory($body));
+            }
+            if($_GET["action"] == "changeAndAddCategory"){
+                $body = json_decode($_POST["changeOrAddCategory"], true);
+
+                $changeCategoryController = new changeCategoryController();
+                echo json_encode($changeCategoryController->changeAndAddCategory($body));
+            }
+        }
 
 
 
