@@ -144,7 +144,16 @@ export async function getCategoryById(id){
     return category;
 }
 
+// Function to get the cart.
+export async function getCart(){
 
+    const action = "getCart";
+
+    let cart = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "GET");
+
+    return cart;
+
+}
 
 
 
