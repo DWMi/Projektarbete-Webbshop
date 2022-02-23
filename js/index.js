@@ -1,25 +1,12 @@
 import  {getAllCategories} from './main.js'
 import {navbar} from '../components/navbar.js'
 
-let catImgArr;
 
 function initSite(){
-    categoriesFetch()
-        .then(() => sectionRenderer());
-    
 
+    sectionRenderer();
     navbar;
 }
-
-
-// fetching categories
-
-async function categoriesFetch(){ 
-    let categoryList = await getAllCategories();
-    return catImgArr = categoryList;
-
-}
-
 
 
 
@@ -30,7 +17,7 @@ async function categoriesFetch(){
 
 // Renders section to landing page
 
-function sectionRenderer() {
+async function sectionRenderer() {
     //Hard coded classes, text links
     const snapper = ["snapper1", "snapper2", "snapper3", "snapper4", "snapper5"],
         snapIMG = ["imgSnap1", "imgSnap2", "imgSnap3", "imgSnap4", "imgSnap5"],
@@ -44,6 +31,7 @@ function sectionRenderer() {
             "Check out our shoes by Saucony"
         ]
 
+        
 
         // Loops to create elements
         
@@ -52,10 +40,30 @@ function sectionRenderer() {
         sectionTagName[i].appendChild(document.createElement("img")).setAttribute("class", snapIMG[i])
         sectionTagName[i].appendChild(document.createElement("h1")).innerText = `${textLinksList[i]}`
     }
-        // array to attach attributes to newly created image tags
-    catImgArr.map((data, index) => {
+        
+        
+// array to attach attributes to newly created image tags
+    const categoryList = await getAllCategories();
+    categoryList.map((data, index) => {
         document.getElementsByClassName(snapIMG[index])[0].setAttribute("src", `/ASSETS/1.LOGOS/${data.CategoryImg}`)
     })
+
+    addCategoryLinks()
+
+}
+ 
+
+
+async function addCategoryLinks() {
+    const categoryList = await getAllCategories();
+
+    categoryList.forEach(data => {
+        document.getElementsByTagName('h1')[data.CategoryId].addEventListener("click",function(){
+            window.location.href = `./product.html?category=${data.CategoryId}`
+    })
+})
+
+
 }
 
  
