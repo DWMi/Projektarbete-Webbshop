@@ -4,8 +4,8 @@ let userName = document.getElementById("name");
 let logOutBtn = document.getElementById("logOutBtn");
 let logInBtn = document.getElementById("logInBtn")
 
-logInBtn.addEventListener("click", goToLogin)
-logOutBtn.addEventListener("click", logOutUser);
+// logInBtn.addEventListener("click", goToLogin)
+// logOutBtn.addEventListener("click", logOutUser);
 
 
 async function initSite(){
