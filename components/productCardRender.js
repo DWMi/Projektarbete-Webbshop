@@ -178,7 +178,7 @@ async function renderProductCard(id){
             let swiperSlideImg = document.createElement("img")
 
             //swiper slider img
-            swiperSlideImg.src = "./ASSETS/PRODUCTS/" +  productimg.ImageSrc + ".jpeg"
+            swiperSlideImg.src = "./ASSETS/PRODUCTS/" +  productimg.ImageSrc 
             swiperSlide.append(swiperSlideImg)
         })
 
@@ -265,7 +265,7 @@ async function renderProductCard(id){
             
 
             //swiper slider img
-            swiperSlideImg.src = "./ASSETS/PRODUCTS/" +  productimg.ImageSrc + ".jpeg"
+            swiperSlideImg.src = "./ASSETS/PRODUCTS/" +  productimg.ImageSrc 
 
             swiperSlide.append(swiperSlideImg)
         })
@@ -460,7 +460,7 @@ async function renderProductInCategory(id){
         categorySwiperWrapper.append(cateogryCard)
         
         let categoryCardImg = document.createElement("img")
-        categoryCardImg.src = "./ASSETS/PRODUCTS/" + product.Images[0].ImageSrc + ".jpeg"
+        categoryCardImg.src = "./ASSETS/PRODUCTS/" + product.Images[0].ImageSrc 
         cateogryCard.append(categoryCardImg)
 
         cateogryCard.addEventListener('click', function() {

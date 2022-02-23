@@ -1,12 +1,12 @@
 import {makeRequest} from "./main.js";
 import {newProduct, renderCategories} from "./uploadProduct.js";
-
+import {navbar} from '../components/navbar.js'
 
 
 async function initSite(){
+    navbar;
     renderCategories();
     localStorage.clear();
-
 }
 
 
