@@ -110,7 +110,7 @@ section {
     display: flex;
     position: absolute;
     justify-content: flex-end;
-    width: 900px;
+    width: 1000px;
     filter: blur(7px);
 }
 /* NEW BALANCE------------------ */
