@@ -36,6 +36,7 @@ h4{
 
 .productAddToCart-btn-wrapper {
   display: flex;
+  flex-direction: column;
 }
 
 .productAddToCart-btn {
