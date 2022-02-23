@@ -27,6 +27,7 @@ if(isset($_SERVER['REQUEST_METHOD'])) {
                 echo json_encode(true);
             } else {
                  echo(json_encode($controller->addUser(json_decode($_POST["user"]))));
+                 $controller->addNewsLetter(json_decode($_POST["user"]));
             } 
 
             

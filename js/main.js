@@ -1,21 +1,3 @@
-import {navbar} from '../components/navbar.js'
-
-let userName = document.getElementById("name");
-let logOutBtn = document.getElementById("logOutBtn");
-let logInBtn = document.getElementById("logInBtn")
-
-logInBtn.addEventListener("click", goToLogin)
-logOutBtn.addEventListener("click", logOutUser);
-
-
-async function initSite(){
-    navbar;
-    checkUserIsAdmin()
-    checkIsNormalUser()
-
-}
-
-
 
 
 export async function makeRequest(url, method, body) {
@@ -32,61 +14,6 @@ export async function makeRequest(url, method, body) {
 
 }
 
-function goToLogin(){
-    window.location.href = "login.html"
-}
-
-async function logOutUser(){
-    let url = "../api/controllers/logOutUser.php"
-    let method = 'DELETE'
-
-    let result = await makeRequest(url, method, undefined)
-
-    if(result == true){
-        window.location.href = "index.html"
-    } 
-}
-
-
-// CHECK WHAT KIND OF USER IS LOGGED IN
-async function checkUserIsAdmin() {
-    let url = "../api/controllers/authAdmin.php"
-    let method = 'GET'
-
-    let result = await makeRequest(url, method, undefined)
-    let user = result[0];
-
-    if(result == false){
-        console.log(false);
-    } else {
-         userName.innerText = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`
-         logInBtn.style.display = "none";
-         logOutBtn.style.display = "flex";
-         console.log(true);
-        
-    }
-
-
-}
-
-async function checkIsNormalUser() {
-    let url = "../api/controllers/authUser.php"
-    let method = 'GET'
-
-    let result = await makeRequest(url, method, undefined)
-    let user = result[0];
-    
-
-    if(result == false){
-        console.log(false);
-    } else {
-        userName.innerText = `${user.UserFirstName} ${user.UserLastName} (NormalUser)`
-        logInBtn.style.display = "none";
-        logOutBtn.style.display = "flex";
-    }
-
-    
-}
 
 
 
@@ -97,8 +24,6 @@ async function getAllProducts(){
 
     let allProducts = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "GET");
     
-   
-  
 }
 
 export async function getProductById(id) {
@@ -148,4 +73,3 @@ export async function getCategoryById(id){
 
 
 
-window.addEventListener("load", initSite)
