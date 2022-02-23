@@ -1,4 +1,5 @@
-import {navbar} from '../components/navbar.js'
+import {navbar} from '../components/navbar.js';
+import {getCart} from '../js/main.js';
 async function initSite(){
 
   navbar;
@@ -9,95 +10,111 @@ var y = window.matchMedia("(max-width: 1032px)")
 // ---------------------------CART PAGE CART --------------------------------------------------
 let cartProductCards = document.getElementById("cartProductCard");
 
-function renderCartProductCard(){
+async function renderCartProductCard(){
 
+  let cart = await getCart();
 
+  console.log(cart);
   let productCardContainer = document.createElement("div")
   productCardContainer.classList.add("cartProductCard-container")
   cartProductCards.append(productCardContainer)
-    //cart card wrapper
-    let cartCardWrapper = document.createElement("div")
-    cartCardWrapper.classList.add("cartProductCard-wrapper")
-    productCardContainer.append(cartCardWrapper)
-    
-// --------------------------- CART ITEM --------------------------------------------------
-      let cartItem = document.createElement("div")
-      cartItem.classList.add("cartItem")
-      cartCardWrapper.append(cartItem)
-        //cart item div + img
-        let cartItemImgContainer = document.createElement("div")
-        cartItemImgContainer.classList.add("cartItem-img")
-        cartItem.append(cartItemImgContainer)
+  //cart card wrapper
+  let cartCardWrapper = document.createElement("div")
+  cartCardWrapper.classList.add("cartProductCard-wrapper")
+  productCardContainer.append(cartCardWrapper)
 
-        let cartItemImg = document.createElement("img")
-        cartItemImg.src = ""// IMG TAG  ----------------------------------------------<<<<<<<<<
-        cartItemImgContainer.append(cartItemImg)
+  cart.forEach(cartProduct => {
 
-      //cart item info container
-      let cartItemInfoContainer = document.createElement("div")
-      cartItemInfoContainer.classList.add("cartItem-info")
-      cartItem.append(cartItemInfoContainer)
-          //cart item info name div
-          let cartItemNameDiv = document.createElement("div")
-          cartItemNameDiv.classList.add("cartItem-name")
-          cartItemInfoContainer.append(cartItemNameDiv)
-              //cart item info name
-              let cartItemName = document.createElement("p")
-              cartItemName.innerText = "1" // Name TAG  ----------------------------------------------<<<<<<<<<
-              cartItemNameDiv.append(cartItemName)
+  // --------------------------- CART ITEM --------------------------------------------------
+    let cartItem = document.createElement("div")
+    cartItem.classList.add("cartItem")
+    cartCardWrapper.append(cartItem)
+    //cart item div + img
+    let cartItemImgContainer = document.createElement("div")
+    cartItemImgContainer.classList.add("cartItem-img")
+    cartItem.append(cartItemImgContainer)
 
-          //cart item info Price div
-          let cartItemPriceDiv = document.createElement("div")
-          cartItemPriceDiv.classList.add("cartItem-price")
-          cartItemInfoContainer.append(cartItemPriceDiv)
-              //cart item info price
-              let cartItemPrice = document.createElement("p")
-              cartItemPrice.innerText =  "2" // Price TAG  ----------------------------------------------<<<<<<<<<
-              cartItemPriceDiv.append(cartItemPrice)
+    let cartItemImg = document.createElement("img")
+    cartItemImg.src = ""// IMG TAG  ----------------------------------------------<<<<<<<<<
+    cartItemImgContainer.append(cartItemImg)
 
-          //cart item info Size div
-          let cartItemSizeDiv = document.createElement("div")
-          cartItemSizeDiv.classList.add("cartItem-size")
-          cartItemInfoContainer.append(cartItemSizeDiv)
-              //cart item info Size
-              let cartItemSize = document.createElement("p")
-              cartItemSize.innerText = "3" // Size TAG  ----------------------------------------------<<<<<<<<<
-              cartItemSizeDiv.append(cartItemSize)
-          
-          //cart qty +
-          let cartItemQtyPlusDiv = document.createElement("div")
-          cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
-          cartItem.append(cartItemQtyPlusDiv)
+    //cart item info container
+    let cartItemInfoContainer = document.createElement("div")
+    cartItemInfoContainer.classList.add("cartItem-info")
+    cartItem.append(cartItemInfoContainer)
 
-          let cartItemQtyPlus = document.createElement("i")
-          cartItemQtyPlus.classList.add("fa-solid","fa-circle-chevron-left")
-          cartItemQtyPlusDiv.append(cartItemQtyPlus)
+    //cart item info name div
+    let cartItemNameDiv = document.createElement("div")
+    cartItemNameDiv.classList.add("cartItem-name")
+    cartItemInfoContainer.append(cartItemNameDiv)
+    //cart item info name
+    let cartItemName = document.createElement("p")
+    cartItemName.innerText = cartProduct.ProductId // Name TAG  ----------------------------------------------<<<<<<<<<
+    cartItemNameDiv.append(cartItemName)
 
-          //cart qty number
-          let cartItemQtyDiv = document.createElement("div")
-          cartItemQtyDiv.classList.add("cartItem-qty")
-          cartItem.append(cartItemQtyDiv)
+    //cart item info Price div
+    let cartItemPriceDiv = document.createElement("div")
+    cartItemPriceDiv.classList.add("cartItem-price")
+    cartItemInfoContainer.append(cartItemPriceDiv)
+    //cart item info price
+    let cartItemPrice = document.createElement("p")
+    cartItemPrice.innerText =  "2" // Price TAG  ----------------------------------------------<<<<<<<<<
+    cartItemPriceDiv.append(cartItemPrice)
 
-          let cartItemQty = document.createElement("p")
-          cartItemQtyDiv.append(cartItemQty)
-          cartItemQty.innerText = "4"// Size Qty  ----------------------------------------------<<<<<<<<<
-          
-          //cart qty -
-          let cartItemQtyMlusDiv = document.createElement("div")
-          cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
-          cartItem.append(cartItemQtyMlusDiv)
-
-            let cartItemQtyMinus = document.createElement("i")
-            cartItemQtyMinus.classList.add("fa-solid","fa-circle-chevron-left")
-            cartItemQtyMlusDiv.append(cartItemQtyMinus)
+    //cart item info Size div
+    let cartItemSizeDiv = document.createElement("div")
+    cartItemSizeDiv.classList.add("cartItem-size")
+    cartItemInfoContainer.append(cartItemSizeDiv)
+    //cart item info Size
+    let cartItemSize = document.createElement("p")
+    cartItemSize.innerText = "3" // Size TAG  ----------------------------------------------<<<<<<<<<
+    cartItemSizeDiv.append(cartItemSize)
             
-          //cart qty del
-          let cartItemDeleteDiv = document.createElement("div")
-          cartItemDeleteDiv.classList.add("cartItem-remove")
-          cartItem.append(cartItemDeleteDiv)
+    //cart qty +
+    let cartItemQtyPlusDiv = document.createElement("div")
+    //cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
+    cartItemQtyPlusDiv.innerHTML = "+";
+    cartItem.append(cartItemQtyPlusDiv)
 
-          let cartItemQtyDelete = document.createElement("i")
-          cartItemDeleteDiv.append(cartItemQtyDelete)
+    // ICON NOT WORKING..
+    // let cartItemQtyPlus = document.createElement("i")
+    // cartItemQtyPlus.classList.add("fa-solid","fa-circle-chevron-left")
+    // cartItemQtyPlusDiv.append(cartItemQtyPlus)
+
+    //cart qty number
+    let cartItemQtyDiv = document.createElement("div")
+    cartItemQtyDiv.classList.add("cartItem-qty")
+    cartItem.append(cartItemQtyDiv)
+
+    let cartItemQty = document.createElement("p")
+    cartItemQtyDiv.append(cartItemQty)
+    cartItemQty.innerText = "4"// Size Qty  ----------------------------------------------<<<<<<<<<
+    
+    //cart qty -
+    let cartItemQtyMlusDiv = document.createElement("div")
+    //cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
+    cartItemQtyMlusDiv.innerHTML = "-";
+    cartItem.append(cartItemQtyMlusDiv)
+
+    // ICON NOT WORKING..
+    // let cartItemQtyMinus = document.createElement("i")
+    // cartItemQtyMinus.classList.add("fa-solid","fa-circle-chevron-left")
+    // cartItemQtyMlusDiv.append(cartItemQtyMinus)
+      
+    //cart qty del
+    let cartItemDeleteDiv = document.createElement("div")
+    //cartItemDeleteDiv.classList.add("cartItem-remove")
+    cartItemDeleteDiv.innerHTML = "Remove";
+    cartItem.append(cartItemDeleteDiv)
+
+    // ICON NOT WORKING..
+    // let cartItemQtyDelete = document.createElement("i")
+    // cartItemDeleteDiv.append(cartItemQtyDelete)
+
+//End forEach
+})
+
+
 
 // --------------------------- CHECKOUT CONTAINER --------------------------------------------------
       //
@@ -269,4 +286,3 @@ function cartProductCardsdsads(y) {
   }
 
   window.addEventListener("load", initSite)
-  
