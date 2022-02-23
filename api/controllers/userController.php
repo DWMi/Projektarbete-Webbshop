@@ -21,7 +21,7 @@ class UserController extends MainController {
 
             
             $userToAdd = createUser(null, $user->UserEmail, $hashedPwd, null, $user->UserFirstName, $user->UserLastName,
-            $user->Newsletter, $user->TermsConditions, null, null,  $user->UserCountry, $user->UserCity, $user->UserStreet, $user->UserZipCode);
+            $user->TermsConditions, null, null,  $user->UserCountry, $user->UserCity, $user->UserStreet, $user->UserZipCode);
             error_log(json_encode($userToAdd));
             return $this->database->insertNewUser($userToAdd);
           
@@ -31,6 +31,14 @@ class UserController extends MainController {
             throw new Exception("The user is not in correct format...", 500);
         }
     }
+
+
+    public function addNewsLetter($user){
+        if($user->Newsletter == 1){
+            $this->database->insertNewsLetter(json_encode($user->UserEmail));
+        }
+    }
+
 
     public function checkUserExists($user){
 

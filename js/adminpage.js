@@ -2,6 +2,7 @@ import {makeRequest} from "./main.js";
 import {newProduct, renderCategories} from "./uploadProduct.js";
 
 
+
 async function initSite(){
     renderCategories();
     localStorage.clear();

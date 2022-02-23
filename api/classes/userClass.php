@@ -7,7 +7,6 @@ class User {
     public $UserRegisterDate;
     public $UserFirstName;
     public $UserLastName;
-    public $Newsletter;
     public $TermsConditions;
     public $UserIsAdmin;
     public $AdminRequest;
@@ -18,7 +17,7 @@ class User {
     
 
     function __construct($ID, $UserEmail, $UserPassword, $UserRegisterDate,
-         $UserFirstName,  $UserLastName, $Newsletter, $TermsConditions, $UserIsAdmin, $AdminRequest,
+         $UserFirstName,  $UserLastName, $TermsConditions, $UserIsAdmin, $AdminRequest,
          $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
         
         $this->ID = $ID;
@@ -27,7 +26,6 @@ class User {
         $this->UserRegisterDate = $UserRegisterDate;
         $this->UserFirstName = $UserFirstName;
         $this->UserLastName = $UserLastName;
-        $this->Newsletter = $Newsletter;
         $this->TermsConditions = $TermsConditions;
         $this->UserIsAdmin = $UserIsAdmin;
         $this->AdminRequest = $AdminRequest;
@@ -39,6 +37,7 @@ class User {
 
     }
 }
+
 
 
 

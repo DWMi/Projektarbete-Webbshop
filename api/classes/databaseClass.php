@@ -133,7 +133,7 @@ class Database {
 
         $columns = substr($columns, 0, -1);
 
-        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?)");
         $query->execute($values);
 
       
@@ -141,6 +141,11 @@ class Database {
 
         
         
+    }
+
+    public function insertNewsLetter($email){
+        $query = $this->db->prepare("INSERT INTO subtonewsletter(`Email`) VALUES ($email)");
+        $query->execute();
     }
 
     // freeQuery som bara ger tillbaka en assosiativ lista
