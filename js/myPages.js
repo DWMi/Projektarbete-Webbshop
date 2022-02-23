@@ -38,7 +38,7 @@ const divRenderer = () => {
         parentReceivedBtn.setAttribute('class', 'parentReceivedBtn')
         orderStatus.setAttribute('class', 'orderStatusText')
         orderNr.setAttribute('class', 'orderNrText')
-        receivedBtn.setAttribute("class", "receivedBtn")
+        receivedBtn.setAttribute("id", "receivedBtn")
        
         
         receivedBtn.innerText =`Received✔️`
@@ -65,7 +65,14 @@ const divRenderer = () => {
     
     btnAdmin.addEventListener("onclick",sendAdminRequest())
 
-        
+
+    
+    
+    document.getElementById('receivedBtn').addEventListener("onclick",sendReceivedOrder())       
+}
+
+const sendReceivedOrder = () => {
+    
 }
 
 const sendAdminRequest = () => {
@@ -74,8 +81,18 @@ const sendAdminRequest = () => {
 
 }
 
-sendAdminRequest();
-
+async function makeRequest(url, method, body) {
+    try {
+        let response = await fetch(url, {
+            method,
+            body
+        })
+        let result = await response.json();
+        return result
+    }   catch(err) {
+        console.error(err)
+    }
+} 
 
 
 
