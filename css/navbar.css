@@ -66,10 +66,7 @@
 
 /*--------TEST DROPDOWN ---------*/
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
+
 
 .dropdown .dropbtn {
   display: flex;
