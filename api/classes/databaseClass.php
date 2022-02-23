@@ -53,7 +53,11 @@ class Database {
         $questionmark = substr($questionmark, 0, -1);
 
         $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" . $columns . ") VALUES ($questionmark)");
-        $query->execute($values);
+        $status = $query->execute($values);
+
+        if (!$status) {
+            return false;
+        }
 
         // Returns the last inserted ID for further inserting to other tables.
         return $this->db->lastInsertId();
@@ -129,7 +133,7 @@ class Database {
 
         $columns = substr($columns, 0, -1);
 
-        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $query = $this->db->prepare("INSERT INTO ". $this->selectedTable ." (" .$columns. ") VALUES (?,?,?,?,?,?,?,?,?,?,?)");
         $query->execute($values);
 
       
@@ -137,6 +141,11 @@ class Database {
 
         
         
+    }
+
+    public function insertNewsLetter($email){
+        $query = $this->db->prepare("INSERT INTO subtonewsletter(`Email`) VALUES ($email)");
+        $query->execute();
     }
 
     // freeQuery som bara ger tillbaka en assosiativ lista

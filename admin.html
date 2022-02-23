@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/adminPage.css">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script type="module" src="./js/uploadProduct.js"></script>
     <script type="module" src="./js/changeProduct.js"></script>
     <script type="module" src="./js/adminpage.js"></script>
+
 </head>
 <body>
+
+     <!-- navbar -->
+     <div id="navbar" class="zindexThree"></div>
+
 
     <div class="wrapper justifyCenter">
 
@@ -63,10 +71,13 @@
                 <p id="sizeInformationReturn"></p>
             </div>
             
-                <!--<div class="component">
-                <p>What categories?</p>
-                <div id="categoriesContainer">render categories here</div>
-            </div> -->
+            <div class="component">
+                <h2 class="containerHeaderTwo">Choose a category for your product:</h2>
+                <div id="categories" class="flex flexWrap">
+                </div>
+                <p id="categoryInformationReturn"></p>
+            </div>
+
 
             <div class="component">
                 <h2 class="containerHeaderTwo">Add three product images in the order you want them to be shown on the product page.</h2>
@@ -79,7 +90,7 @@
 
             <div class="component">
                 <div id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</div>
-                <p id="productResponse">Product saved!</p>
+                <p id="productResponse"></p>
             </div>
 
 

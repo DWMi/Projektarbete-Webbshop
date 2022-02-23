@@ -100,6 +100,45 @@ input {
     text-decoration: none;
 }
 
+.categoryContainer {
+    width: 170px;
+    height: 220px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+    padding:5px;
+    border-radius: 10px;
+}
+
+.categoryImgContainer {
+    height: 100px;
+}
+
+.categoryImg {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.categoryTitle {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.categoryButton {
+    width: 130px;
+    height: 30px;
+    margin-top: 30px;
+    background-color: grey;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+/* Newsletter block */
+
 #newsBody{
     height: 100px;
     font-size: 15pt;
@@ -107,8 +146,4 @@ input {
 
 #newsResponse{
 display: none;
-}
-
-#productResponse{
-    display: none;
 }

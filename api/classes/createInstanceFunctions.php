@@ -28,14 +28,20 @@ function createCategory($id, $categoryName, $categoryDescription, $categoryImg) 
     return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
 }
 
+include_once("../classes/productInCategoryClass.php");
+
+function createProductInCategory($productId, $categoryId) {
+    return new ProductInCategory((int)$productId, (int)$categoryId);
+}
+
 // CREATES A NEW USER FROM THE UserClass
 include_once("../classes/userClass.php");
 
 function createUser($ID, $UserEmail, $UserPassword, $UserRegisterDate, $UserFirstName, $UserLastName,
-$Newsletter, $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
+$TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
     
     return new User((int)$ID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
-    (int)$Newsletter, (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
+   (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
 } 
 
 

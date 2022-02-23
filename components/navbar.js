@@ -1,5 +1,10 @@
 //the navbar.js file needs render.js to work aswell
 import { getAllCategories } from '../js/main.js';
+import { makeRequest } from '../js/main.js';
+
+
+
+
 export let navbar = document.getElementById("navbar").innerHTML = `
 
 
@@ -37,7 +42,10 @@ export let navbar = document.getElementById("navbar").innerHTML = `
     <div class="user-dropdown">
     <div class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
     <div class="user-dropdown-content">
-        <button class"selectBtn" id="logInBtn">Login</button>
+
+        <a id="logInBtn" href="login.html">
+        Login
+        </a>
         <button class="selectBtn" id="logOutBtn">Log out</button>
 
         <a href="">My account</a>
@@ -82,4 +90,78 @@ export async function renderCategory(){
     
 }
 
+let userName = document.getElementById("name");
+let logOutBtn = document.getElementById("logOutBtn");
+let logInBtn = document.getElementById("logInBtn")
+
+logOutBtn.addEventListener("click", logOutUser);
+
+
+
+
+async function initSite(){
+    navbar;
+    checkUserIsAdmin()
+    checkIsNormalUser()
+
+}
+
+
+async function logOutUser(){
+    let url = "../api/controllers/logOutUser.php"
+    let method = 'DELETE'
+
+    let result = await makeRequest(url, method, undefined)
+
+    if(result == true){
+        window.location.href = "index.html"
+    } 
+}
+
+
+// CHECK WHAT KIND OF USER IS LOGGED IN
+export async function checkUserIsAdmin() {
+    let url = "../api/controllers/authAdmin.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+    let user = result[0];
+
+    if(result == false){
+        console.log(false);
+    } else {
+         userName.innerText = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`
+         logInBtn.style.display = "none";
+         logOutBtn.style.display = "flex";
+         console.log(true);
+        
+    }
+
+
+}
+
+export async function checkIsNormalUser() {
+    let url = "../api/controllers/authUser.php"
+    let method = 'GET'
+
+    let result = await makeRequest(url, method, undefined)
+    let user = result[0];
+    
+
+    if(result == false){
+        console.log(false);
+    } else {
+    
+        userName.innerText = `${user.UserFirstName} ${user.UserLastName} (NormalUser)`
+        logInBtn.style.display = "none";
+        logOutBtn.style.display = "flex";
+        return true;
+    }
+
+    
+}
+
+
 renderCategory()
+window.addEventListener("load", initSite)
+

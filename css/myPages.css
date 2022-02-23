@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Londrina Solid', cursive;
+
+}
+/* -----------Containers--------------- */
+#container {
+    display: flex;
+    
+    align-items: center;
+    flex-direction: column;
+    height:100vh;
+    position: relative;
+}
+.parentReceivedBtn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+.parentProductCard {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    width:900px;
+    height:170px;  
+    margin:10px;
+    background-color: whitesmoke;
+
+}
+.parentProductCardText{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+#pageBtnContainer {
+
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    
+    
+}
+
+.productCardContainer {
+    flex-direction: column;
+    display:flex;
+    padding: 20px;
+    box-shadow: 0 20px 20px rgb(0 0 0 / 20%), 0px 0px 50px rgb(0 0 0 / 20%);
+    margin-top:14px;
+
+
+}
+
+
+/* -------------Buttons ---------------------- */
+.adminBtn{
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bold;
+}
+.btnSubmit{
+    font-size:25px;
+    padding:5px;
+    font-weight: bold;
+}
+#receivedBtn{
+    display: flex;
+    margin-right: 10px;
+    padding:5px;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+
+/* -------Text------------------ */
+
+
+.productCard{
+    height:100%;
+    width: 100%;
+}
+
+.totalSum {
+
+    text-align:end;
+    padding:10px;
+
+}
+.orderStatusText{
+    padding:5px;
+    color:black;
+}
+.orderNrText{
+
+    padding:5px;
+    color:black;
+}
