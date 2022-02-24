@@ -109,6 +109,10 @@ async function renderProductCard(id){
             }else{
                 sizeBtn.addEventListener('click', function() {
 
+                    size.ProductName = product.ProductName;
+                    size.Price = product.ProductPrice;
+                    size.imgSrc = product.Images[1];
+
                     let returnMessage = saveToLocalStorage(size);
 
                     if(returnMessage) {
@@ -319,6 +323,10 @@ async function renderProductCard(id){
                 sizeBtn.style.backgroundColor = "grey";
             }else{
                 sizeBtn.addEventListener('click', function() {
+
+                    size.ProductName = product.ProductName;
+                    size.Price = product.ProductPrice;
+                    size.imgSrc = product.Images[1];
 
                     let returnMessage = saveToLocalStorage(size);
 
