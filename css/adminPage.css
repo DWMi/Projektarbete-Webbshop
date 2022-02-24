@@ -88,6 +88,8 @@ input {
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .sizeText {
@@ -147,3 +149,37 @@ input {
 #newsResponse{
 display: none;
 }
+
+/* Subscribers list */
+
+#emailList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+
+#subEmail{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#subName{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.name, .email{
+    font-size: large;
+    display: flex;
+    margin-top: 10px;
+}
+
+
+#subsContainer{
+    display: flex;
+    flex-direction: column;
+}
+

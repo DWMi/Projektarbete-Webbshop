@@ -5,7 +5,8 @@ export let navbar = document.getElementById("lastFooter").innerHTML = `
 <div id="subContainer">
 <div id="inputContainer">
 <h6 id="subTitle">Subscribe to our newsletter!</h6>
-<input type="email" name="newsletter" id="subscribe" placeholder="Email">
+<input type="name" name="newsletterName" id="subscribeName" placeholder="Name">
+<input type="email" name="newsletterEmail" id="subscribeEmail" placeholder="Email">
 <button id="subBtn">Subscribe!</button>
 <p id="subInfoResponse"></p>
 <p id="subResponse"></p>
@@ -28,11 +29,12 @@ export let navbar = document.getElementById("lastFooter").innerHTML = `
 async function newSubscriber() {
     let list = [];
   
-    let subEmail = {};
-    subEmail.email = document.getElementById("subscribe").value;
+    let subInfo = {};
+    subInfo.name = document.getElementById("subscribeName").value;
+    subInfo.email = document.getElementById("subscribeEmail").value;
     let subResponse = document.getElementById("subResponse");
   
-    list.push(subEmail);
+    list.push(subInfo);
   
     if (list[0].email === "") {
       document.getElementById("subInfoResponse").innerHTML =

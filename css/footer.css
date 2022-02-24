@@ -1,0 +1,86 @@
+#footer {
+    margin-bottom: 80px;
+    margin-top: 20px;
+  }
+  
+  #lastFooter div {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+  }
+  
+  #bottomContainer h6 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px 10px;
+    padding: 5px 5px;
+  }
+  
+  #subscribeName,
+  #subscribeEmail,
+  #subBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: gray;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+  
+  #subBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+    background-color: black;
+    color: whitesmoke;
+    border: gray;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    cursor: pointer;
+  
+  }
+  
+  #subBtn:hover{
+    background-color: whitesmoke;
+    color: black;
+    transition: 200ms ease-in-out;
+  }
+  
+  #subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #subTitle {
+    margin-bottom: 10px;
+  }
+  
+  #subResponse {
+    display: none;
+    margin-top: 10px;
+  }
+  
+  #subInfoResponse {
+    margin-top: 10px;
+  }
+  
+  #inputContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 35%;
+  }

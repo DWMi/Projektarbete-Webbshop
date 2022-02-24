@@ -2,6 +2,7 @@
 
 
 include_once("../classes/productClass.php");
+include_once("../classes/subscriberClass.php");
 
 function createProduct($id, $name, $description, $price) {
     return new Product((int)$id, $name, $description, $price);
@@ -43,6 +44,12 @@ $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserS
     return new User((int)$ID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
    (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
 } 
+
+include_once("../classes/subscriberClass.php");
+
+function createSubscriber($Id, $Email, $Name) {
+    return new Subscriber((int)$ID, $Email, $Name);
+}
 
 
 ?>
