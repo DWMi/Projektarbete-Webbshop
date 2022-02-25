@@ -12,6 +12,10 @@
     scroll-behavior: smooth;
     overflow-y: scroll;
 }
+footer{
+    margin-top:15px;
+    scroll-snap-align: start;
+}
 
 section {
     height:100%;
@@ -22,12 +26,25 @@ section {
     scroll-snap-align: start;
     color:white;
 }
-/* ADIDAS-------------- */
-.snapper1{
-    position: relative;
 
+
+
+.imgSnap{
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
+    display: flex;
+    justify-content: center;
+    background-size: fill;
+    background-position: center;
+    
 }
-.snapper1 h1 {
+
+.snapper{
+    
+    position: relative;
+}
+.snapper h1 {
 
     text-align: center;
     z-index:2;
@@ -42,162 +59,8 @@ section {
     box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
 
 }
-.snapper1 h1:hover {
+.snapper h1:hover {
     cursor: pointer;
     transition: all 200ms ease-in-out;
     background-color: rgb(106, 106, 106);
-}
-
-
-
-.imgSnap1{
-    height: 100%;
-    width: 100%;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
-    background-size: fill;
-    background-position: center;
-    
-}
-
-/* NIKE-------------------- */
-.snapper2{
-    position: relative;
-}
-.snapper2 h1 {
-    text-align: center;
-    z-index:2;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    border-radius: 10px;
-    font-size: 40px;
-    border:5px solid white;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
-
-}
-
-.snapper2 h1:hover {
-    cursor: pointer;
-    background-color: rgb(106, 106, 106);
-    transition: all 200ms ease-in-out;
-    
-}
-
-.imgSnap2{
-    height: 100%;
-    width: 100%;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
-    background-size: fill;
-    background-position: center;
-  
-}
-
-/* CONVERSE------------ */
-.snapper3{
-    position: relative;
-}
-.snapper3 h1 {
-    text-align: center;
-    z-index:2;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    border-radius: 10px;
-    font-size: 40px;
-    border:5px solid white;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
-
-}
-
-.snapper3 h1:hover {
-    cursor: pointer;
-    background-color: rgb(106, 106, 106);
-    transition: all 200ms ease-in-out;
-}
-
-.imgSnap3{
-    height: 100%;
-    width: 100%;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
-    background-size: fill;
-    background-position: center;
-
-}
-/* NEW BALANCE------------------ */
-.snapper4{
-    position: relative;
-    
-}
-.snapper4 h1 {
-    text-align: center;
-    z-index:2;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    border-radius: 10px;
-    font-size: 40px;
-    border:5px solid white;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
-
-}
-.snapper4 h1:hover {
-    cursor: pointer;
-    background-color: rgb(106, 106, 106);
-    transition: all 200ms ease-in-out;
-}
-.imgSnap4{
-    height: 100%;
-    width: 100%;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
-    background-size: fill;
-    background-position: center;
-}
-
-/* SAUCONY---------------------- */
-
-.snapper5{
-    position: relative;
-    
-}
-.snapper5 h1 {
-    text-align: center;
-    z-index:2;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    border-radius: 10px;
-    font-size: 40px;
-    border:5px solid white;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
-}
-.snapper5 h1:hover {
-    cursor: pointer;
-    background-color: rgb(106, 106, 106);
-    transition: all 200ms ease-in-out;
-}
-.imgSnap5{
-    height: 100%;
-    width: 100%;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
-    background-size: fill;
-    background-position: center;
-
 }
