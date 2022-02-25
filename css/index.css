@@ -12,49 +12,57 @@
     scroll-behavior: smooth;
     overflow-y: scroll;
 }
+
 section {
     height:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     scroll-snap-align: start;
     color:white;
-    
-    
 }
 /* ADIDAS-------------- */
 .snapper1{
-    background-color: rgb(0, 153, 255);
     position: relative;
-    
+
 }
 .snapper1 h1 {
+
     text-align: center;
     z-index:2;
     display: flex;
     justify-content: center;
     position: absolute;
     font-size: 40px;
-    border:5px solid white;
+    border: 5px solid white;
+    border-radius: 10px;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 .snapper1 h1:hover {
     cursor: pointer;
+    transition: all 200ms ease-in-out;
+    background-color: rgb(106, 106, 106);
 }
+
+
+
 .imgSnap1{
-    display: flex;
-    width: 1000px;
-    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
     display: flex;
     justify-content: center;
-    z-index: 1;
-    filter: blur(7px);
+    background-size: fill;
+    background-position: center;
+    
 }
 
 /* NIKE-------------------- */
 .snapper2{
-    background-color: rgb(9, 255, 0);
     position: relative;
 }
 .snapper2 h1 {
@@ -63,29 +71,35 @@ section {
     display: flex;
     justify-content: center;
     position: absolute;
+    border-radius: 10px;
     font-size: 40px;
     border:5px solid white;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 
 .snapper2 h1:hover {
     cursor: pointer;
+    background-color: rgb(106, 106, 106);
+    transition: all 200ms ease-in-out;
+    
 }
 
 .imgSnap2{
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
     display: flex;
-    opacity: 50%;
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    width: 1000px;
-    filter: blur(7px);
+    justify-content: center;
+    background-size: fill;
+    background-position: center;
+  
 }
 
 /* CONVERSE------------ */
 .snapper3{
-    background-color: rgb(174, 0, 255);
     position: relative;
 }
 .snapper3 h1 {
@@ -94,28 +108,33 @@ section {
     display: flex;
     justify-content: center;
     position: absolute;
+    border-radius: 10px;
     font-size: 40px;
     border:5px solid white;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 
 .snapper3 h1:hover {
     cursor: pointer;
+    background-color: rgb(106, 106, 106);
+    transition: all 200ms ease-in-out;
 }
 
 .imgSnap3{
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
     display: flex;
-    opacity: 50%;
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    width: 1000px;
-    filter: blur(7px);
+    justify-content: center;
+    background-size: fill;
+    background-position: center;
+
 }
 /* NEW BALANCE------------------ */
 .snapper4{
-    background-color: rgb(245, 6, 65);
     position: relative;
     
 }
@@ -125,26 +144,32 @@ section {
     display: flex;
     justify-content: center;
     position: absolute;
+    border-radius: 10px;
     font-size: 40px;
     border:5px solid white;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 .snapper4 h1:hover {
     cursor: pointer;
+    background-color: rgb(106, 106, 106);
+    transition: all 200ms ease-in-out;
 }
 .imgSnap4{
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
     display: flex;
-    opacity: 50%;
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    width: 1000px;
-    filter: blur(7px);
+    justify-content: center;
+    background-size: fill;
+    background-position: center;
 }
+
 /* SAUCONY---------------------- */
+
 .snapper5{
-    background-color: rgb(195, 255, 0);
     position: relative;
     
 }
@@ -154,20 +179,25 @@ section {
     display: flex;
     justify-content: center;
     position: absolute;
+    border-radius: 10px;
     font-size: 40px;
     border:5px solid white;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .snapper5 h1:hover {
     cursor: pointer;
+    background-color: rgb(106, 106, 106);
+    transition: all 200ms ease-in-out;
 }
 .imgSnap5{
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
     display: flex;
-    opacity: 50%;
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    width: 1000px;
-    filter: blur(7px);
+    justify-content: center;
+    background-size: fill;
+    background-position: center;
+
 }

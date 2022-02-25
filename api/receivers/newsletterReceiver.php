@@ -17,6 +17,16 @@
                 echo json_encode($newsletterController->getById((int)$_GET["id"]));
             }
 
+            if($_GET["action"] == "showEmailSubs") {
+                $newsletterController = new SubscriberController();     
+                echo json_encode($newsletterController->showEmailSubs((int)$_GET["id"]));
+            }
+
+            if($_GET["action"] == "showNameSubs") {
+                $newsletterController = new SubscriberController();     
+                echo json_encode($newsletterController->showNameSubs((int)$_GET["id"]));
+            }
+
         }
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
