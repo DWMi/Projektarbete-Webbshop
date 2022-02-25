@@ -1,6 +1,6 @@
 
 
-import { getAllProductsByCategory, getCart, makeRequest } from '../js/main.js';
+import { getAllProductsByCategory, makeRequest } from '../js/main.js';
 import { getProductById } from '../js/main.js';
 import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 
@@ -102,19 +102,29 @@ async function renderProductCard(id){
             productCardSizeBtnWrapper.append(sizeBtn)
 
             let sizeBtnText = document.createElement("p")
+            sizeBtnText.classList.add("sizeBtnText")
             sizeBtnText.innerHTML = size.Size
             
             if(size.SizesInStock < 1 ){
-                sizeBtn.style.backgroundColor = "grey";
+                sizeBtn.style.backgroundColor = "whitesmoke";
+                sizeBtnText.style.color = "black";
             }else{
                 sizeBtn.addEventListener('click', function() {
+
+                    size.ProductName = product.ProductName;
+                    size.Price = product.ProductPrice;
+                    size.imgSrc = product.Images[1];
 
                     let returnMessage = saveToLocalStorage(size);
 
                     if(returnMessage) {
-                        sizeBtn.style.backgroundColor = "green";
+
+                        sizeBtn.style.backgroundColor = "black";
+                        sizeBtnText.style.color = "whitesmoke";
                     } else {
-                        sizeBtn.style.backgroundColor = "";
+                        sizeBtn.style.backgroundColor = "whitesmoke";
+                        sizeBtnText.style.color = "black";
+
                     }
 
                 })
@@ -124,6 +134,7 @@ async function renderProductCard(id){
         })
 
         let productCardPrice = document.createElement("h2")
+        productCardPrice.classList.add("productPrice")
         productCardPrice.innerText = product.ProductPrice + "$"
         productCardSizeWrapper.append(productCardPrice)
 
@@ -313,19 +324,28 @@ async function renderProductCard(id){
             productCardSizeBtnWrapper.append(sizeBtn)
 
             let sizeBtnText = document.createElement("p")
+            sizeBtnText.classList.add("sizeBtnText")
             sizeBtnText.innerHTML = size.Size
             
             if(size.SizesInStock < 1 ){
-                sizeBtn.style.backgroundColor = "grey";
+                sizeBtn.style.backgroundColor = "whitesmoke";
+                sizeBtnText.style.color = "black";
             }else{
                 sizeBtn.addEventListener('click', function() {
+
+                    size.ProductName = product.ProductName;
+                    size.Price = product.ProductPrice;
+                    size.imgSrc = product.Images[1];
 
                     let returnMessage = saveToLocalStorage(size);
 
                     if(returnMessage) {
-                        sizeBtn.style.backgroundColor = "green";
+
+                        sizeBtn.style.backgroundColor = "black";
+                        sizeBtnText.style.color = "whitesmoke"
                     } else {
-                        sizeBtn.style.backgroundColor = "";
+                        sizeBtn.style.backgroundColor = "whitesmoke";
+                        sizeBtnText.style.color = "black"
                     }
 
                 })
@@ -335,6 +355,7 @@ async function renderProductCard(id){
         })
         // price
         let productCardPrice = document.createElement("h2")
+        productCardPrice.classList.add("productPrice")
         productCardPrice.innerText = product.ProductPrice + "$"
         productCardSizeWrapper.append(productCardPrice)
         //Add to cart btn wrapper

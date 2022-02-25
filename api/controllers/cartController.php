@@ -55,6 +55,48 @@ class CartController extends MainController {
 
     }
 
+    function quantityMinus($cartItem) {
+
+        $cart = $_SESSION["cart"];
+
+        $foundIndex = array_search($cartItem["ID"], array_column($cart, "ID"));
+
+        $cart[$foundIndex]["Quantity"] -= 1;
+
+        $_SESSION["cart"] = $cart;
+        return true;
+
+    }
+
+    function quantityPlus($cartItem) {
+
+        $cart = $_SESSION["cart"];
+
+        $foundIndex = array_search($cartItem["ID"], array_column($cart, "ID"));
+
+        $cart[$foundIndex]["Quantity"] += 1;
+
+        $_SESSION["cart"] = $cart;
+        return true;
+
+    }
+
+    function removeCartItem($cartItem) {
+
+        $cart = $_SESSION["cart"];
+
+        $foundIndex = array_search($cartItem["ID"], array_column($cart, "ID"));
+
+        array_splice($cart, $foundIndex, 1); 
+
+        $_SESSION["cart"] = $cart;
+        return true;
+
+    }
+
+
+
+
 }
 
 

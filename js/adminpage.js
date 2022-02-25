@@ -1,12 +1,15 @@
 import {makeRequest} from "./main.js";
-import {newProduct, renderCategories} from "./uploadProduct.js";
+import {renderCategories} from "./uploadProduct.js";
 import {navbar} from '../components/navbar.js'
 
 
 async function initSite(){
     navbar;
+    getNewsletterSubsName()
+    getNewsletterSubsEmail()
     renderCategories();
     localStorage.clear();
+
 }
 
 
@@ -41,6 +44,57 @@ async function newNewsletter(){
     
 
 }
+
+async function getNewsletterSubsName(){ 
+
+    let subName = document.getElementById("subName")
+    let emailList = document.getElementById("emailList")
+    
+    
+    let action = "showNameSubs";
+
+    let response = await makeRequest(`../api/receivers/newsletterReceiver.php?action=${action}`, "GET");
+    for (let i = 0; i < response.length; i++) {
+        let name = document.createElement("p")
+        name.classList.add("name")
+        name.append(response[i].Name)
+        subName.append(name)
+        emailList.append(subName)
+
+        
+    }
+    console.log(response);
+    
+
+}
+
+
+async function getNewsletterSubsEmail(){ 
+
+    let subEmail = document.getElementById("subEmail")
+    let emailList = document.getElementById("emailList")
+
+
+    
+    
+    let action = "showEmailSubs";
+
+    let response = await makeRequest(`../api/receivers/newsletterReceiver.php?action=${action}`, "GET");
+    for (let i = 0; i < response.length; i++) {
+        let email = document.createElement("p")
+        email.classList.add("email")
+        email.append(response[i].Email)
+        subEmail.append(email)
+        emailList.append(subEmail)
+        
+    }
+    console.log(response);
+    
+
+}
+
+
+
 
 document.getElementById("saveNews").addEventListener("click", function(){
     newNewsletter();

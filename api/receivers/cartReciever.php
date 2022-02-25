@@ -27,8 +27,34 @@
                 echo json_encode($cartController->addCart($body));
 
 
-            }
+            } 
+            
+            if($_GET["action"] == "minus") {
 
+                $body = json_decode($_POST["cartItem"], true);
+
+                $cartController = new CartController();
+                echo json_encode($cartController->quantityMinus($body));
+
+            } 
+            
+            if($_GET["action"] == "plus") {
+
+                $body = json_decode($_POST["cartItem"], true);
+
+                $cartController = new CartController();
+                echo json_encode($cartController->quantityPlus($body));
+
+            } 
+            
+            if($_GET["action"] == "removeItem") {
+
+                $body = json_decode($_POST["cartItem"], true);
+
+                $cartController = new CartController();
+                echo json_encode($cartController->removeCartItem($body));
+
+            }
 
 
         }

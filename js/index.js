@@ -32,24 +32,32 @@ async function sectionRenderer() {
         ]
 
         
+        
+
+        
 
         // Loops to create elements
         
     for (let i = 0; i < snapper.length; i++) {
         divContainer.appendChild(document.createElement("section")).setAttribute("class", snapper[i])
-        sectionTagName[i].appendChild(document.createElement("img")).setAttribute("class", snapIMG[i])
+        sectionTagName[i].appendChild(document.createElement("div")).setAttribute("class", snapIMG[i])
         sectionTagName[i].appendChild(document.createElement("h1")).innerText = `${textLinksList[i]}`
+        
     }
+
         
         
 // array to attach attributes to newly created image tags
     const categoryList = await getAllCategories();
     categoryList.map((data, index) => {
-        document.getElementsByClassName(snapIMG[index])[0].setAttribute("src", `/ASSETS/1.LOGOS/${data.CategoryImg}`)
+        document.getElementsByClassName(snapIMG[index])[0].style.backgroundImage = `url('/ASSETS/Backgrounds/${data.CategoryName}`+ `.jpg')` 
+
+
     })
 
     addCategoryLinks()
 
+    
 }
  
 
