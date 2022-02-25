@@ -1,6 +1,6 @@
 
 
-import { getAllProductsByCategory, getCart, makeRequest } from '../js/main.js';
+import { getAllProductsByCategory, makeRequest } from '../js/main.js';
 import { getProductById } from '../js/main.js';
 import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 
