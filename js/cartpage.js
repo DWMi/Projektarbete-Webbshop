@@ -1,9 +1,8 @@
 import {navbar} from '../components/navbar.js';
-import {getCart} from '../js/main.js';
+import {getCart, makeRequest} from '../js/main.js';
 async function initSite(){
-
   navbar;
-  renderCartProductCard()
+  renderCartProductCard();
 }
 
 var y = window.matchMedia("(max-width: 1032px)")
@@ -11,13 +10,14 @@ var y = window.matchMedia("(max-width: 1032px)")
 let cartProductCards = document.getElementById("cartProductCard");
 
 async function renderCartProductCard(){
+  cartProductCards.innerHTML = "";
 
   let cart = await getCart();
 
-  console.log(cart);
   let productCardContainer = document.createElement("div")
   productCardContainer.classList.add("cartProductCard-container")
   cartProductCards.append(productCardContainer)
+
   //cart card wrapper
   let cartCardWrapper = document.createElement("div")
   cartCardWrapper.classList.add("cartProductCard-wrapper")
@@ -35,7 +35,7 @@ async function renderCartProductCard(){
     cartItem.append(cartItemImgContainer)
 
     let cartItemImg = document.createElement("img")
-    cartItemImg.src = ""// IMG TAG  ----------------------------------------------<<<<<<<<<
+    cartItemImg.src = "../ASSETS/PRODUCTS/" + cartProduct.imgSrc.ImageSrc;// IMG TAG  ----------------------------------------------<<<<<<<<<
     cartItemImgContainer.append(cartItemImg)
 
     //cart item info container
@@ -49,7 +49,7 @@ async function renderCartProductCard(){
     cartItemInfoContainer.append(cartItemNameDiv)
     //cart item info name
     let cartItemName = document.createElement("p")
-    cartItemName.innerText = cartProduct.ProductId // Name TAG  ----------------------------------------------<<<<<<<<<
+    cartItemName.innerText = cartProduct.ProductName; // Name TAG  ----------------------------------------------<<<<<<<<<
     cartItemNameDiv.append(cartItemName)
 
     //cart item info Price div
@@ -58,7 +58,7 @@ async function renderCartProductCard(){
     cartItemInfoContainer.append(cartItemPriceDiv)
     //cart item info price
     let cartItemPrice = document.createElement("p")
-    cartItemPrice.innerText =  "2" // Price TAG  ----------------------------------------------<<<<<<<<<
+    cartItemPrice.innerText =  cartProduct.Price + " $"; // Price TAG  ----------------------------------------------<<<<<<<<<
     cartItemPriceDiv.append(cartItemPrice)
 
     //cart item info Size div
@@ -67,14 +67,29 @@ async function renderCartProductCard(){
     cartItemInfoContainer.append(cartItemSizeDiv)
     //cart item info Size
     let cartItemSize = document.createElement("p")
-    cartItemSize.innerText = "3" // Size TAG  ----------------------------------------------<<<<<<<<<
+    cartItemSize.innerText = "Size " + cartProduct.Size; // Size TAG  ----------------------------------------------<<<<<<<<<
     cartItemSizeDiv.append(cartItemSize)
-            
-    //cart qty +
-    let cartItemQtyPlusDiv = document.createElement("div")
-    //cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
-    cartItemQtyPlusDiv.innerHTML = "+";
-    cartItem.append(cartItemQtyPlusDiv)
+
+    //cart qty -
+    let cartItemQtyMiusDiv = document.createElement("div")
+    //cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
+    cartItemQtyMiusDiv.innerHTML = "-";
+    cartItem.append(cartItemQtyMiusDiv)
+    cartItemQtyMiusDiv.addEventListener("click", async function(){
+      
+      if(cartProduct.Quantity == 1 ) {
+
+        removeCartItem(cartProduct);
+
+      } else {
+
+        quantityMinus(cartProduct);
+
+      }
+
+      renderCartProductCard();
+
+    })
 
     // ICON NOT WORKING..
     // let cartItemQtyPlus = document.createElement("i")
@@ -88,13 +103,19 @@ async function renderCartProductCard(){
 
     let cartItemQty = document.createElement("p")
     cartItemQtyDiv.append(cartItemQty)
-    cartItemQty.innerText = "4"// Size Qty  ----------------------------------------------<<<<<<<<<
+    cartItemQty.innerText = cartProduct.Quantity; // Size Qty  ----------------------------------------------<<<<<<<<<
     
-    //cart qty -
-    let cartItemQtyMlusDiv = document.createElement("div")
-    //cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
-    cartItemQtyMlusDiv.innerHTML = "-";
-    cartItem.append(cartItemQtyMlusDiv)
+    //cart qty +
+    let cartItemQtyPlusDiv = document.createElement("div")
+    //cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
+    cartItemQtyPlusDiv.innerHTML = "+";
+    cartItem.append(cartItemQtyPlusDiv)
+    cartItemQtyPlusDiv.addEventListener("click", async function(){
+
+      quantityPlus(cartProduct);
+      renderCartProductCard();
+
+    })
 
     // ICON NOT WORKING..
     // let cartItemQtyMinus = document.createElement("i")
@@ -106,6 +127,13 @@ async function renderCartProductCard(){
     //cartItemDeleteDiv.classList.add("cartItem-remove")
     cartItemDeleteDiv.innerHTML = "Remove";
     cartItem.append(cartItemDeleteDiv)
+    cartItemDeleteDiv.addEventListener("click", async function(){
+
+      removeCartItem(cartProduct);
+
+      renderCartProductCard();
+
+    })
 
     // ICON NOT WORKING..
     // let cartItemQtyDelete = document.createElement("i")
@@ -116,90 +144,93 @@ async function renderCartProductCard(){
 
 
 
+
 // --------------------------- CHECKOUT CONTAINER --------------------------------------------------
       //
-      let checkoutContainer = document.createElement("div")
-      checkoutContainer.classList.add("checkout-container")
-      productCardContainer.append(checkoutContainer)
+  let checkoutContainer = document.createElement("div")
+  checkoutContainer.classList.add("checkout-container")
+  productCardContainer.append(checkoutContainer)
 
-        //
-        let checkoutWrapper = document.createElement("div")
-        checkoutWrapper.classList.add("checkout-wrapper")
-        checkoutContainer.append(checkoutWrapper)
+  //
+  let checkoutWrapper = document.createElement("div")
+  checkoutWrapper.classList.add("checkout-wrapper")
+  checkoutContainer.append(checkoutWrapper)
 
-                //
-                let checkoutInfoCard = document.createElement("div")
-                checkoutInfoCard.classList.add("checkout-info")
-                checkoutWrapper.append(checkoutInfoCard)
+  //
+  let checkoutInfoCard = document.createElement("div")
+  checkoutInfoCard.classList.add("checkout-info")
+  checkoutWrapper.append(checkoutInfoCard)
 
-                    let orderSummaryText = document.createElement("h3")
-                    orderSummaryText.innerHTML = "ORDER SUMMARY"
-                    checkoutInfoCard.append(orderSummaryText)
-                //
-                let checkoutSubtotalWrapper = document.createElement("div")
-                checkoutSubtotalWrapper.classList.add("checkout-subtotal-wrapper")
-                checkoutInfoCard.append(checkoutSubtotalWrapper)
+  let orderSummaryText = document.createElement("h3")
+  orderSummaryText.innerHTML = "ORDER SUMMARY"
+  checkoutInfoCard.append(orderSummaryText)
+  //
+  let checkoutSubtotalWrapper = document.createElement("div")
+  checkoutSubtotalWrapper.classList.add("checkout-subtotal-wrapper")
+  checkoutInfoCard.append(checkoutSubtotalWrapper)
 
-                    let subtotalText = document.createElement("h4")
-                    subtotalText.innerHTML = "Subtotal"
-                    checkoutSubtotalWrapper.append(subtotalText)
+  let subtotalText = document.createElement("h4")
+  subtotalText.innerHTML = "Subtotal"
+  checkoutSubtotalWrapper.append(subtotalText)
 
-                    let subtotalPrice = document.createElement("h4")
-                    subtotalPrice.innerHTML = "559" + "$"
-                    checkoutSubtotalWrapper.append(subtotalPrice)
+  let subtotalPrice = document.createElement("h4")
+  subtotalPrice.id = "subtotal";
+  checkoutSubtotalWrapper.append(subtotalPrice)
 
-                //checkout-discount-wrapper
-                let checkoutDiscountWrapper = document.createElement("div")
-                checkoutDiscountWrapper.classList.add("checkout-discount-wrapper")
-                checkoutInfoCard.append(checkoutDiscountWrapper)
+  //checkout-discount-wrapper
+  let checkoutDiscountWrapper = document.createElement("div")
+  checkoutDiscountWrapper.classList.add("checkout-discount-wrapper")
+  checkoutInfoCard.append(checkoutDiscountWrapper)
 
-                    let discountText = document.createElement("h4")
-                    discountText.innerHTML = "Discount"
-                    checkoutDiscountWrapper.append(discountText)
+  let discountText = document.createElement("h4")
+  discountText.innerHTML = "Discount"
+  checkoutDiscountWrapper.append(discountText)
 
-                    let discountPrice = document.createElement("h4")
-                    discountPrice.innerHTML = "0" + "$"
-                    checkoutDiscountWrapper.append(discountPrice)
+  let discountPrice = document.createElement("h4")
+  discountPrice.innerHTML = "0 $"
+  checkoutDiscountWrapper.append(discountPrice)
 
-                //checkout-total-wrapper
-                let checkoutTotalWrapper = document.createElement("div")
-                checkoutTotalWrapper.classList.add("checkout-total-wrapper")
-                checkoutInfoCard.append(checkoutTotalWrapper)
+  //checkout-total-wrapper
+  let checkoutTotalWrapper = document.createElement("div")
+  checkoutTotalWrapper.classList.add("checkout-total-wrapper")
+  checkoutInfoCard.append(checkoutTotalWrapper)
 
-                    let estimatedTotalText = document.createElement("h4")
-                    estimatedTotalText.innerHTML = "Estimated Total"
-                    checkoutTotalWrapper.append(estimatedTotalText)
+  let estimatedTotalText = document.createElement("h4")
+  estimatedTotalText.innerHTML = "Estimated Total"
+  checkoutTotalWrapper.append(estimatedTotalText)
 
-                    let estimatedTotal = document.createElement("h4")
-                    estimatedTotal.innerHTML = "599" + "$"
-                    checkoutTotalWrapper.append(estimatedTotal)
+  let estimatedTotal = document.createElement("h4")
+  estimatedTotal.id = "estimatedTotal";
+  checkoutTotalWrapper.append(estimatedTotal)
                 
                 
-                //checkout-btn-wrapper
-                let checkoutBtnWrapper = document.createElement("div")
-                checkoutBtnWrapper.classList.add("checkout-btn-wrapper")
-                checkoutInfoCard.append(checkoutBtnWrapper)
+  //checkout-btn-wrapper
+  let checkoutBtnWrapper = document.createElement("div")
+  checkoutBtnWrapper.classList.add("checkout-btn-wrapper")
+  checkoutInfoCard.append(checkoutBtnWrapper)
 
-                    let checkoutBtn = document.createElement("div")
-                    checkoutBtn.classList.add("checkout-btn")
-                    checkoutBtnWrapper.append(checkoutBtn)
+  let checkoutBtn = document.createElement("div")
+  checkoutBtn.classList.add("checkout-btn")
+  checkoutBtnWrapper.append(checkoutBtn)
 
-                    let checkoutBtnSpan = document.createElement("span")
-                    checkoutBtnSpan.innerHTML = "CHECKOUT NOW"
-                    checkoutBtn.append(checkoutBtnSpan)
-         //checkout-payment       
-        let checkoutPayment = document.createElement("div")
-        checkoutPayment.classList.add("checkout-payment")
-        checkoutWrapper.append(checkoutPayment)
+  let checkoutBtnSpan = document.createElement("span")
+  checkoutBtnSpan.innerHTML = "CHECKOUT NOW"
+  checkoutBtn.append(checkoutBtnSpan)
+  //checkout-payment       
+  let checkoutPayment = document.createElement("div")
+  checkoutPayment.classList.add("checkout-payment")
+  checkoutWrapper.append(checkoutPayment)
 
-            let paymentMethods = document.createElement("span")
-            paymentMethods.innerHTML = "PAYMENTS METHODS"
-            checkoutPayment.append(paymentMethods)
+  let paymentMethods = document.createElement("span")
+  paymentMethods.innerHTML = "PAYMENTS METHODS"
+  checkoutPayment.append(paymentMethods)
 
-            let paymentMethodsImg = document.createElement("img")
-            paymentMethodsImg.src = "./ASSETS/1.LOGOS/payment logo.png"
-            checkoutPayment.append(paymentMethodsImg)
-                    
+  let paymentMethodsImg = document.createElement("img")
+  paymentMethodsImg.src = "./ASSETS/1.LOGOS/payment logo.png"
+  checkoutPayment.append(paymentMethodsImg)
+
+  renderTotalPrice(cart);
+
 }
 
 // ------------------ NOT IN USE ITS >>>TRASH<<<< BUT KEEP IT ------------THANKS!-----------------
@@ -284,5 +315,66 @@ function cartProductCardsdsads(y) {
         `
     }
   }
+
+function renderTotalPrice(cart){
+
+  let totalPrice = 0;
+
+  cart.forEach(item => {
+
+    let price = item.Price * item.Quantity;
+
+    totalPrice += price;
+
+  })
+
+  document.getElementById("subtotal").innerHTML = totalPrice + " $";
+  document.getElementById("estimatedTotal").innerHTML = totalPrice + " $";
+
+}
+
+async function quantityPlus(cartItem) {
+
+  const action = "plus";
+
+  let body = new FormData();
+  body.append("cartItem", JSON.stringify(cartItem));
+
+  let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+
+  return response;
+
+}
+
+async function quantityMinus(cartItem) {
+
+  const action = "minus";
+
+  let body = new FormData();
+  body.append("cartItem", JSON.stringify(cartItem));
+
+  let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+
+  return response;
+
+}
+
+async function removeCartItem(cartItem) {
+
+  const action = "removeItem";
+
+  let body = new FormData();
+  body.append("cartItem", JSON.stringify(cartItem));
+
+  let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+
+  return response;
+
+}
+
+
+
+
+
 
   window.addEventListener("load", initSite)
