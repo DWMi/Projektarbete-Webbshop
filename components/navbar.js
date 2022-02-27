@@ -48,7 +48,8 @@ export let navbar = document.getElementById("navbar").innerHTML = `
         </a>
         <button class="selectBtn" id="logOutBtn">Log out</button>
 
-        <a href="">My account</a>
+        <a class="myAcc" id="myAcc" href="./myPages.html">My account</a>
+        <a class="myAdm" id="myAdm" href="./admin.html">Admin Page 😎</a>
     </div>
 </div>
         <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
@@ -92,7 +93,8 @@ export async function renderCategory(){
 
 let userName = document.getElementById("name");
 let logOutBtn = document.getElementById("logOutBtn");
-let logInBtn = document.getElementById("logInBtn")
+let logInBtn = document.getElementById("logInBtn");
+let adminPageBtn = document.getElementById("myAdm");
 
 logOutBtn.addEventListener("click", logOutUser);
 
@@ -101,8 +103,8 @@ logOutBtn.addEventListener("click", logOutUser);
 
 async function initSite(){
     navbar;
-    checkUserIsAdmin()
     checkIsNormalUser()
+    checkUserIsAdmin()
 
 }
 
@@ -133,6 +135,7 @@ export async function checkUserIsAdmin() {
          userName.innerText = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`
          logInBtn.style.display = "none";
          logOutBtn.style.display = "flex";
+         adminPageBtn.style.display = "flex";
          console.log(true);
         
     }
@@ -149,12 +152,14 @@ export async function checkIsNormalUser() {
     
 
     if(result == false){
+        adminPageBtn.style.display = "none";
         console.log(false);
     } else {
     
         userName.innerText = `${user.UserFirstName} ${user.UserLastName} (NormalUser)`
         logInBtn.style.display = "none";
         logOutBtn.style.display = "flex";
+        adminPageBtn.style.display = "none";
         return true;
     }
 
