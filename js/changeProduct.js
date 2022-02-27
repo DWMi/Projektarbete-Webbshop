@@ -1,8 +1,8 @@
 import { getAllProductsByCategory } from '../js/main.js';
-import { getAllCategories } from '../js/main.js';
-import { makeRequest } from '../js/main.js';
+import { makeRequest,getCategoryById,getAllCategories  } from '../js/main.js';
 
-let form = document.getElementById("changeCategory")
+
+
 let categoryList = document.getElementById("adminCategoryDatalist")
 let addCategoryBtn = document.getElementById("addBtn") 
 let changeCategoryBtn = document.getElementById("changeBtn")
@@ -12,10 +12,24 @@ let removeChange = document.getElementById("removeChange")
 
 category()
 
+// Function to gett all productInCategory.
+async function getAllProductsInCategory(){
+
+    const action = "getAllProductsInCategory";
+
+    let productsIncategory = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "GET");
+   
+
+    return productsIncategory;
+
+}
+
+getAllProductsInCategory()
+
 
 async function category(){
     let renderAllCategories = await getAllCategories()
-
+   
     renderAllCategories.forEach(element => {
         let categoryOption = document.createElement("option")
         categoryOption.innerHTML = element.CategoryName
@@ -49,22 +63,53 @@ async function product(id,event){
 
 
 async function changeCategory(){
-    
-    let renderAllCategories = await getAllCategories()   
+    let test = await getAllProductsInCategory() 
+
+    let renderAllCategories = await getAllCategories()
+
+    /* let intersection = renderAllCategories.filter(x => arr2.includes(x))
+    let allCategories = array(1,2,3);
+    let productCategories = array(1,2);
+ */
+   
     let getDiv = document.getElementById("changeDiv")
     let changeCategoryDatalist = document.getElementById("changeCategoryDatalist")
     let option = document.createElement("option")
     option.disabled = true
     option.selected = true
+    option.value = ""
     option.innerText = "Change a category!"
-
+  
     changeCategoryDatalist.append(option)
-    renderAllCategories.forEach(element => {   
-        let categoryOption = document.createElement("option")
-        categoryOption.classList.add("changeOption")
-        categoryOption.innerHTML = element.CategoryName
-        categoryOption.value = element.CategoryId
-        changeCategoryDatalist.append(categoryOption)     
+  
+    renderAllCategories.forEach(element => {  
+        let list = []
+        console.log(element)
+        test.forEach(x => {
+            
+            if(x.CategoryId == element.CategoryId && x.ProductId == productList.value ){
+                console.log(element.CategoryId ==! renderAllCategories)
+                if(element.CategoryId ==! renderAllCategories){
+                    console.log(element.CategoryId, "HEEEEEEEEJ!")
+                }
+                
+                list.push(element.CategoryId)
+                console.log(list)
+                
+                let categoryOption = document.createElement("option")
+                categoryOption.classList.add("changeOption")
+                categoryOption.innerHTML = element.CategoryName
+                categoryOption.value = element.CategoryId 
+                changeCategoryDatalist.append(categoryOption)     
+            }else{
+                
+            }
+        });
+       
+        
+        
+    
+   
     });
     removeChange.addEventListener("click", function(){
         getDiv.style.display = "none";
@@ -84,6 +129,7 @@ async function addCategory(){
     let option = document.createElement("option")
     option.disabled = true
     option.selected = true
+    option.value = ""
     option.innerText = "Add a category!"
 
     addCategoryDatalist.append(option)
@@ -128,11 +174,22 @@ document.querySelector("#adminCategoryDatalist").addEventListener("change", func
 
 
 document.querySelector("#submitCategoryChange").addEventListener("click", function(){
+    logic()
+    
+});
+
+
+async function logic(){
     let category = document.getElementById("adminCategoryDatalist")
     let product = document.getElementById("adminProductDatalist")
     let change = document.getElementById("changeCategoryDatalist")
     let add = document.getElementById("addCategoryDatalist")
     
+    let listCategory = {"currentCategoryId": category.value}
+    let listProduct = {"productId": product.value}
+    let listChange = {"changeCategoryId": change.value}
+    let listAdd = {"addCategoryId": add.value}
+
     if(category.value === "" || isNaN(category.value)){
         document.getElementById("categoryDatalistReturn").innerText = "Pleas pick a Category"
         document.getElementById("productDatalistReturn").innerText = "Pleas pick a product"
@@ -145,54 +202,60 @@ document.querySelector("#submitCategoryChange").addEventListener("click", functi
         document.getElementById("noBTNReturn").innerText = "Please choose one or two of options"
         console.log("1 Else IF")
 
-    }else if (change.value === "" && add.value === "" ){
+    }else if (change.value === "" && add.value === "" || isNaN(change.value) && isNaN(add.value)){
         console.log("2 Else IF")
         document.getElementById("productDatalistReturn").innerText = ""
         document.getElementById("noBTNReturn").innerText = "Please choose one or two of options"
 
-    }else if (product.value && change.value && add.value){
+    }else if (category.value && product.value && change.value && add.value){
         document.getElementById("productDatalistReturn").innerText = ""
         document.getElementById("noBTNReturn").innerText = ""
-        console.log(" ProductId", product.value, "Old CategoryID", category.value, " ChangeId", change.value, " addId", add.value)
+
+        if(category.value === change.value || add.value && change.value === add.value){
+            console.log("category.value === change.value || add.value || change.value === add.value")
+        }else{
+            let list = []
+            list.push(listProduct,listCategory,listAdd,listChange);
+            databaseChangeCategory("changeAndAddCategory", list)
+
+        }
             
-    }else if (product.value && change.value || product.value && add.value){
+    }else if (category.value && product.value && change.value || category.value && product.value && add.value){
         document.getElementById("productDatalistReturn").innerText = ""
         document.getElementById("noBTNReturn").innerText = ""
-        if(product.value && change.value){
-            console.log(" ProductId", product.value,  "Old CategoryID", category.value, " ChangeId", change.value)
-        }else if ( product.value && add.value){
-            console.log(" ProductId", product.value, " addId", add.value)
+
+        if(category.value && product.value && change.value){
+            if(category.value === change.value){
+                console.log("The old category id is the same what you want to change")
+                document.getElementById("noBTNReturn").innerText = "The old category id is the same what you want to change"
+            }else{
+                let list = []
+                list.push(listProduct,listCategory,listChange);
+                databaseChangeCategory("changeCategory", list)
+                
+            }
+        
+        }else if (category.value && product.value && add.value){
+            if(category.value === add.value){
+                console.log("The old category id is the same what you want to add")
+                document.getElementById("noBTNReturn").innerText = "The old category id is the same what you want to add"
+
+            }else{
+                let list = []
+                list.push(listProduct,listCategory,listAdd);
+                databaseChangeCategory("addCategory", list)                
+            }
         }
         
     }
     
-});
-
-async function databaseAddCategory(product,add){
-    let list = []
-    let action = "addCategory";
-    let body = new FormData();
-    list.push(product,add);
-    body.append("changeOrAddCategory", JSON.stringify(list));
-    let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body);
-    
-}
-async function databaseChangeCategory(category,product,change){
-    let list = []
-    let action = "changeCategory";
-    let body = new FormData();
-    list.push(category,product,change);
-    body.append("changeOrAddCategory", JSON.stringify(list));
-    let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body);
-    
 }
 
-async function databaseChangeAndAddCategory(category,product,change,add){
-    let list = []
-    let action = "changeAndAddCategory";
+async function databaseChangeCategory(action, list){
+    console.log(list)
+    console.log(action)
     let body = new FormData();
-    list.push(category,product,change,add);
     body.append("changeOrAddCategory", JSON.stringify(list));
-    let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body);
-    
+    let response = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "POST", body);
+    console.log(response)
 }
