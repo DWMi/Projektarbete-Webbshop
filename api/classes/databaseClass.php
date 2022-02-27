@@ -1,5 +1,7 @@
 <?php 
 
+include_once("../classes/createInstanceFunctions.php");
+
 class Database {
 
     public $db;

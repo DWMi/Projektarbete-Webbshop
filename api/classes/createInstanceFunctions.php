@@ -52,4 +52,11 @@ function createSubscriber($Id, $Email, $Name) {
 }
 
 
+include_once("../classes/freightClass.php");
+
+function createFreightOption($id, $type, $cost) {
+    return new FreightOption((int)$id, $type, $cost);
+}
+
+
 ?>
