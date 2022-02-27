@@ -142,6 +142,59 @@ async function renderCartProductCard(){
 //End forEach
 })
 
+// --------------------------- FREIGHT CONTAINER --------------------------------------------------
+
+
+
+  let freightContainer = document.createElement("div")
+  freightContainer.classList.add("freightContainer")
+  productCardContainer.append(freightContainer)
+
+  let freightInfo = document.createElement("h3");
+  freightInfo.innerText = "CHOOSE FREIGHT OPTION:"
+  freightContainer.append(freightInfo);
+
+
+  let freightOptions = await getFreightOptions();
+
+  freightOptions.forEach(freightOption => {
+
+    let optionContainer = document.createElement("div");
+    optionContainer.classList.add("freightOptionContainer");
+
+
+    let optionNameContainer = document.createElement("div");
+    optionNameContainer.classList.add("freightOptionTextContainer")
+
+
+    let optionName = document.createElement("p");
+    optionName.classList.add("freightText");
+    optionName.innerHTML = freightOption.ShippingType;
+    optionNameContainer.append(optionName);
+
+    let optionPriceContainer = document.createElement("div");
+    optionPriceContainer.classList.add("freightOptionTextContainer")
+
+    let optionPrice = document.createElement("p");
+    optionPrice.classList.add("freightText");
+    optionPrice.innerHTML = freightOption.ShippingCost + " $";
+    optionPriceContainer.append(optionPrice);
+
+
+    let freightButton = document.createElement("div");
+    freightButton.classList.add("freightButton");
+    freightButton.innerHTML = "CHOOSE"
+
+    optionContainer.append(optionNameContainer, optionPriceContainer, freightButton);
+    freightContainer.append(optionContainer);
+
+
+  
+  })
+
+
+  console.log(freightOptions);
+
 
 
 
@@ -367,6 +420,16 @@ async function removeCartItem(cartItem) {
   body.append("cartItem", JSON.stringify(cartItem));
 
   let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+
+  return response;
+
+}
+
+async function getFreightOptions() {
+
+  const action = "getAll";
+
+  let response = await makeRequest(`../api/receivers/freightReciever.php?action=${action}`, "GET");
 
   return response;
 
