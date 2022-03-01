@@ -2,16 +2,18 @@
 
 Class Category {
 
-    public $CategoryId;
+    public $ID;
     public $CategoryName;
     public $CategoryDescription;
-    public $CategoryImg;
+    public $CategoryIMG;
+    public $CategoryBackGround;
 
-    function __construct($id, $categoryName, $categoryDescription, $categoryImg){
-        $this->CategoryId = $id;
+    function __construct($id, $categoryName, $categoryDescription, $categoryImg, $categoryBackground){
+        $this->ID = $id;
         $this->CategoryName = $categoryName;
         $this->CategoryDescription = $categoryDescription;
-        $this->CategoryImg = $categoryImg;
+        $this->CategoryIMG = $categoryImg;
+        $this->CategoryBackGround = $categoryBackground;
     }
 
 }

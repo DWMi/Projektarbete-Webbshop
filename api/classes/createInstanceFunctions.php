@@ -25,8 +25,8 @@ function createSize($id, $productId, $sizesInStock, $size) {
 
 include_once("../classes/categoryClass.php");
 
-function createCategory($id, $categoryName, $categoryDescription, $categoryImg) {
-    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
+function createCategory($id, $categoryName, $categoryDescription, $categoryImg, $categoryBackground) {
+    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg, $categoryBackground);
 }
 
 include_once("../classes/productInCategoryClass.php");
@@ -48,7 +48,7 @@ $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserS
 include_once("../classes/subscriberClass.php");
 
 function createSubscriber($Id, $Email, $Name) {
-    return new Subscriber((int)$ID, $Email, $Name);
+    return new Subscriber((int)$Id, $Email, $Name);
 }
 
 
