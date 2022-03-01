@@ -117,7 +117,7 @@ async function getOrders(){
     let body = new FormData()
     body.set("userID", JSON.stringify(userID))
 
-    let result = await makeRequest(`../api/receivers/orderReceiver.php?action=${action}`, method, body)
+    let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
 
     return result;
 }
