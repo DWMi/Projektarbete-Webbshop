@@ -26,21 +26,9 @@
             if($_GET["action"] == "newProduct") {
 
                 $body = json_decode($_POST["product"], true);
-                
-                
+
                 $productController = new ProductController();
                 echo json_encode($productController->newProduct($body));
-
-                // new product
-                // insert product och få tillbaka id´t
-    
-                // new image och insert med loop från productController? 
-                // insert bildernas src.
-                // kolla om det går bra annars ta bort produkten igen.
-
-                // new size och insert med loop?
-                // insert sizes.
-                // kolla om det går bra annars ta bort bilder och produkten??
 
             }
 
@@ -58,6 +46,28 @@
                 $uploadStatus = uploadImage($_FILES["image"], "PRODUCTS/");
 
                 echo json_encode($uploadStatus);
+
+            }
+
+            if($_GET["action"] == "updateStock") {
+
+                $body = json_decode($_POST["sizes"], true);
+
+                $productController = new ProductController();
+
+                echo json_encode($productController->updateStock($body));
+
+            }
+            
+            if($_GET["action"] == "deleteProduct") {
+
+                $body = json_decode($_POST["product"], true);
+
+                
+
+                $productController = new ProductController();
+
+                echo json_encode($productController->deleteProduct($body));
 
             }
 

@@ -1,7 +1,7 @@
 import {makeRequest} from "./main.js";
 import {renderCategories} from "./uploadProduct.js";
+import {renderAllProducts} from "./removeProduct.js";
 import {navbar} from '../components/navbar.js';
-
 
 async function initSite(){
     navbar;
@@ -10,6 +10,7 @@ async function initSite(){
     renderCategories();
     localStorage.clear();
 
+    renderAllProducts();
 }
 
 
