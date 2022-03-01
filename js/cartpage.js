@@ -3,6 +3,7 @@ import {getCart, makeRequest} from '../js/main.js';
 async function initSite(){
   navbar;
   renderCartProductCard();
+  localStorage.removeItem("freightOption")
 }
 
 var y = window.matchMedia("(max-width: 1032px)")
@@ -142,8 +143,15 @@ async function renderCartProductCard(){
 //End forEach
 })
 
+// --------------------------- FREIGHT CONTAINER --------------------------------------------------
 
+  let freightContainer = document.createElement("div")
+  freightContainer.classList.add("freightContainer")
+  //productCardContainer.append(freightContainer)
 
+  productCardContainer.append(freightContainer);
+
+  await renderFreightOptions(cart);
 
 // --------------------------- CHECKOUT CONTAINER --------------------------------------------------
       //
@@ -183,11 +191,12 @@ async function renderCartProductCard(){
   checkoutInfoCard.append(checkoutDiscountWrapper)
 
   let discountText = document.createElement("h4")
-  discountText.innerHTML = "Discount"
+  discountText.innerHTML = "Freight Cost"
   checkoutDiscountWrapper.append(discountText)
 
   let discountPrice = document.createElement("h4")
   discountPrice.innerHTML = "0 $"
+  discountPrice.id = "freightCost";
   checkoutDiscountWrapper.append(discountPrice)
 
   //checkout-total-wrapper
@@ -213,6 +222,28 @@ async function renderCartProductCard(){
   checkoutBtn.classList.add("checkout-btn")
   checkoutBtnWrapper.append(checkoutBtn)
 
+  checkoutBtn.addEventListener("click", async function(){
+
+    if(localStorage.getItem("freightOption")) {
+
+      document.getElementById("checkoutMessage").innerHTML = "";
+
+      cart.unshift(JSON.parse(localStorage.getItem("freightOption")));
+
+      await placeOrder(cart);
+
+    } else {
+
+      document.getElementById("checkoutMessage").innerHTML = "Please choose a freight option.";
+
+    }
+
+  })
+
+  let checkoutMessage = document.createElement("p");
+  checkoutMessage.id = "checkoutMessage";
+  checkoutBtnWrapper.append(checkoutMessage);
+
   let checkoutBtnSpan = document.createElement("span")
   checkoutBtnSpan.innerHTML = "CHECKOUT NOW"
   checkoutBtn.append(checkoutBtnSpan)
@@ -232,6 +263,78 @@ async function renderCartProductCard(){
   renderTotalPrice(cart);
 
 }
+
+
+async function renderFreightOptions(cart){
+
+  document.getElementsByClassName("freightContainer")[0].innerHTML = "";
+
+  let freightContainer = document.createElement("div")
+  //productCardContainer.append(freightContainer)
+
+  let freightInfo = document.createElement("h3");
+  freightInfo.innerText = "CHOOSE FREIGHT OPTION:"
+  freightContainer.append(freightInfo);
+
+
+
+  let freightOptions = await getFreightOptions();
+
+  freightOptions.forEach(freightOption => {
+
+    let optionContainer = document.createElement("div");
+    optionContainer.classList.add("freightOptionContainer");
+
+    let optionNameContainer = document.createElement("div");
+    optionNameContainer.classList.add("freightOptionTextContainer")
+
+    let optionName = document.createElement("p");
+    optionName.classList.add("freightText");
+    optionName.innerHTML = freightOption.ShippingType;
+    optionNameContainer.append(optionName);
+
+    let optionPriceContainer = document.createElement("div");
+    optionPriceContainer.classList.add("freightOptionTextContainer")
+
+    let optionPrice = document.createElement("p");
+    optionPrice.classList.add("freightText");
+    optionPrice.innerHTML = freightOption.ShippingCost + " $";
+    optionPriceContainer.append(optionPrice);
+
+    let freightButton = document.createElement("div");
+    freightButton.classList.add("freightButton");
+    freightButton.innerHTML = "CHOOSE"
+
+    if(localStorage.getItem("freightOption")) {
+      if (JSON.parse(localStorage.getItem("freightOption")).ID == freightOption.ID) {
+        freightButton.style.backgroundColor = "grey";
+      }
+    }
+
+    freightButton.addEventListener("click", function(){
+      
+      if (localStorage.getItem("freightOption")) {
+        localStorage.setItem("freightOption", JSON.stringify(freightOption));
+        renderFreightOptions();
+        renderTotalPrice(cart);
+      } else {
+        localStorage.setItem("freightOption", JSON.stringify(freightOption))
+        freightButton.style.backgroundColor = "grey";
+        renderTotalPrice(cart);
+      }
+
+    })
+
+    optionContainer.append(optionNameContainer, optionPriceContainer, freightButton);
+    freightContainer.append(optionContainer);
+
+  })
+
+  document.getElementsByClassName("freightContainer")[0].append(freightContainer);
+
+
+}
+
 
 // ------------------ NOT IN USE ITS >>>TRASH<<<< BUT KEEP IT ------------THANKS!-----------------
 function cartProductCardsdsads(y) {
@@ -329,6 +432,14 @@ function renderTotalPrice(cart){
   })
 
   document.getElementById("subtotal").innerHTML = totalPrice + " $";
+
+  if(localStorage.getItem("freightOption")) {
+    totalPrice = totalPrice + parseInt(JSON.parse(localStorage.getItem("freightOption")).ShippingCost);
+    document.getElementById("freightCost").innerHTML = JSON.parse(localStorage.getItem("freightOption")).ShippingCost + " $";
+  }
+
+
+
   document.getElementById("estimatedTotal").innerHTML = totalPrice + " $";
 
 }
@@ -372,9 +483,29 @@ async function removeCartItem(cartItem) {
 
 }
 
+async function getFreightOptions() {
+
+  const action = "getAll";
+
+  let response = await makeRequest(`../api/receivers/freightReciever.php?action=${action}`, "GET");
+
+  return response;
+
+}
+
+async function placeOrder(cart) {
+
+  let action = "newOrder";
+
+  let body = new FormData();
+  body.append("cart", JSON.stringify(cart));
+
+  let response = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, "POST", body);
+
+  console.log(response);
 
 
-
+}
 
 
   window.addEventListener("load", initSite)

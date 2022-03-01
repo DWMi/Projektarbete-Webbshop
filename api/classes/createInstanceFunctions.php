@@ -52,4 +52,21 @@ function createSubscriber($Id, $Email, $Name) {
 }
 
 
+include_once("../classes/freightClass.php");
+
+function createFreightOption($id, $type, $cost) {
+    return new FreightOption((int)$id, $type, $cost);
+}
+
+include_once("../classes/orderClass.php");
+
+function createOrder($id, $userId, $shippingId, $dateCreated, $orderStatus) {
+    return new Order((int)$id, (int)$userId, (int)$shippingId, $dateCreated, $orderStatus);
+}
+
+function createOrderDetails($productId, $orderId, $sizesId, $orderDetailsPrice, $orderDetailsQuantity) {
+    return new OrderDetails((int)$productId, (int)$orderId, (int)$sizesId, $orderDetailsPrice, $orderDetailsQuantity);
+}
+
+
 ?>
