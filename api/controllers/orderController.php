@@ -17,36 +17,36 @@
             $result = $this->database->fetchOrders($userID, $this->createFunction);
             return $result;
         }
-  
-       public function newOrder($cart) {
 
-        session_start();
+        public function newOrder($cart) {
 
-        $userId = $this->getUserId();
+            session_start();
 
-        $shippingId = $cart[0][ID];
+            $userId = $this->getUserId();
 
-        $orderStatus = "orderPlaced";
+            $shippingId = $cart[0][ID];
 
-        $order = new Order(null, $userId, $shippingId, null, $orderStatus);
+            $orderStatus = "orderPlaced";
 
-        $orderId = $this->database->insert($order);
+            $order = new Order(null, $userId, $shippingId, null, $orderStatus);
 
-        foreach((array)$cart as $key => $product) {
+            $orderId = $this->database->insert($order);
 
-            if(!$key == 0) {
+            foreach((array)$cart as $key => $product) {
 
-                $productId = $product["ProductId"];
-                $sizesId = $product["ID"];
-                $price = $product["Price"];
-                $quantity = $product["Quantity"];
+                if(!$key == 0) {
 
-                $orderDetails = new OrderDetails($productId, $orderId, $sizesId, $price, $quantity);
-                $orderDetailsController = new OrderDetailsController();
+                    $productId = $product["ProductId"];
+                    $sizesId = $product["ID"];
+                    $price = $product["Price"];
+                    $quantity = $product["Quantity"];
 
-                $orderDetailsController->newOrderDetails($orderDetails);
+                    $orderDetails = new OrderDetails($productId, $orderId, $sizesId, $price, $quantity);
+                    $orderDetailsController = new OrderDetailsController();
 
-            } 
+                    $orderDetailsController->newOrderDetails($orderDetails);
+
+                } 
 
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+include_once("../controllers/mainController.php");
+
 
 class OrderDetailsController extends MainController {
 
