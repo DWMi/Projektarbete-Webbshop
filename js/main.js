@@ -18,12 +18,13 @@ export async function makeRequest(url, method, body) {
 
 
 // Function for fetching all products from the database.
-async function getAllProducts(){
+export async function getAllProducts(){
 
     const action = "getAll";
 
     let allProducts = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "GET");
-    
+    console.log(allProducts)
+    return allProducts;
 }
 
 export async function getProductById(id) {

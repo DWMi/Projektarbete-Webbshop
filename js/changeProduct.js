@@ -1,261 +1,185 @@
-import { getAllProductsByCategory } from '../js/main.js';
-import { makeRequest,getCategoryById,getAllCategories  } from '../js/main.js';
+
+import { makeRequest,getAllProducts,getAllCategories  } from '../js/main.js';
+//value from product option
+let optionProductList = document.getElementById("dataProductList")
+let addNewCategorys = document.getElementById("addNewCategory")
+let addCategoryText = document.getElementById("addCategoryText")
+let deleteCategorys = document.getElementById("deleteCategory")
+let deleteCategoryText = document.getElementById("deleteCategoryText")
+let optionDelList = document.getElementById("dataRemoveCategoryList")
 
 
-
-let categoryList = document.getElementById("adminCategoryDatalist")
-let addCategoryBtn = document.getElementById("addBtn") 
-let changeCategoryBtn = document.getElementById("changeBtn")
-let productList = document.getElementById("adminProductDatalist")
-let removeAdd = document.getElementById("removeAdd")
-let removeChange = document.getElementById("removeChange")
-
-category()
-
-// Function to gett all productInCategory.
-async function getAllProductsInCategory(){
-
-    const action = "getAllProductsInCategory";
-
-    let productsIncategory = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "GET");
-   
-
-    return productsIncategory;
-
+async function initSite(){
+    gettAllProductAdd()
+    gettAllProductDel()
 }
-
-getAllProductsInCategory()
-
-
-async function category(){
-    let renderAllCategories = await getAllCategories()
-   
-    renderAllCategories.forEach(element => {
-        let categoryOption = document.createElement("option")
-        categoryOption.innerHTML = element.CategoryName
-        categoryOption.value = element.CategoryId
-        categoryList.append(categoryOption)
-    });
-
-}
-
-
-
-async function product(id,event){
-    event.preventDefault()
-    productList.innerHTML = ""
-    let renderAllProductByCategories = await getAllProductsByCategory(id)
-    let option = document.createElement("option")
-    option.disabled = true
-    option.selected = true
-    option.innerText = "Chose a product from the category above!"
-
-    productList.append(option)
-
-    renderAllProductByCategories.forEach(element => {
-        let productOption = document.createElement("option")
-        productOption.innerHTML = element.ProductName
-        productOption.value = element.ProductId
-        productList.append(productOption) 
-    }); 
-}
-
-
-
-async function changeCategory(){
-    let test = await getAllProductsInCategory() 
-
-    let renderAllCategories = await getAllCategories()
-
-    /* let intersection = renderAllCategories.filter(x => arr2.includes(x))
-    let allCategories = array(1,2,3);
-    let productCategories = array(1,2);
- */
-   
-    let getDiv = document.getElementById("changeDiv")
-    let changeCategoryDatalist = document.getElementById("changeCategoryDatalist")
-    let option = document.createElement("option")
-    option.disabled = true
-    option.selected = true
-    option.value = ""
-    option.innerText = "Change a category!"
-  
-    changeCategoryDatalist.append(option)
-  
-    renderAllCategories.forEach(element => {  
-        let list = []
-        console.log(element)
-        test.forEach(x => {
-            
-            if(x.CategoryId == element.CategoryId && x.ProductId == productList.value ){
-                console.log(element.CategoryId ==! renderAllCategories)
-                if(element.CategoryId ==! renderAllCategories){
-                    console.log(element.CategoryId, "HEEEEEEEEJ!")
-                }
-                
-                list.push(element.CategoryId)
-                console.log(list)
-                
-                let categoryOption = document.createElement("option")
-                categoryOption.classList.add("changeOption")
-                categoryOption.innerHTML = element.CategoryName
-                categoryOption.value = element.CategoryId 
-                changeCategoryDatalist.append(categoryOption)     
-            }else{
-                
-            }
-        });
-       
-        
-        
-    
-   
-    });
-    removeChange.addEventListener("click", function(){
-        getDiv.style.display = "none";
-        changeCategoryBtn.style.visibility = "visible";
-        changeCategoryDatalist.innerHTML = ""
-        changeCategoryDatalist.value = null    
-    })
-}
-
-
-
-async function addCategory(){
-    let renderAllCategories = await getAllCategories()
-    
-    let getDiv = document.getElementById("addDiv")
-    let addCategoryDatalist = document.getElementById("addCategoryDatalist")
-    let option = document.createElement("option")
-    option.disabled = true
-    option.selected = true
-    option.value = ""
-    option.innerText = "Add a category!"
-
-    addCategoryDatalist.append(option)
-    
-    renderAllCategories.forEach(element => {
-
-        let categoryOption = document.createElement("option")
-        categoryOption.innerHTML = element.CategoryName
-        categoryOption.value = element.CategoryId
-        addCategoryDatalist.append(categoryOption)
-        
-    });
-
-    removeAdd.addEventListener("click", function(){
-        getDiv.style.display = "none";
-        addCategoryBtn.style.visibility = "visible";
-        addCategoryDatalist.innerHTML = ""
-        addCategoryDatalist.value = null
-    })
-}
-//--------------------------------EventListener for BTN ----------------------------------------
-
-
-changeCategoryBtn.addEventListener("click", function() {
-    let getDiv = document.getElementById("changeDiv")
-    getDiv.style.display = "block";
-    changeCategoryBtn.style.visibility = "hidden";
-    changeCategory() 
-});
-
-addCategoryBtn.addEventListener("click", function() {
-    let getDiv = document.getElementById("addDiv")
-    getDiv.style.display = "block";
-    addCategoryBtn.style.visibility = "hidden";
-    addCategory()
-});
-//-------------------------------------------------------------------------------------------------
-
-document.querySelector("#adminCategoryDatalist").addEventListener("change", function(event){
-    product(adminCategoryDatalist.value,event)
-});
-
-
-document.querySelector("#submitCategoryChange").addEventListener("click", function(){
-    logic()
-    
-});
-
-
-async function logic(){
-    let category = document.getElementById("adminCategoryDatalist")
-    let product = document.getElementById("adminProductDatalist")
-    let change = document.getElementById("changeCategoryDatalist")
-    let add = document.getElementById("addCategoryDatalist")
-    
-    let listCategory = {"currentCategoryId": category.value}
-    let listProduct = {"productId": product.value}
-    let listChange = {"changeCategoryId": change.value}
-    let listAdd = {"addCategoryId": add.value}
-
-    if(category.value === "" || isNaN(category.value)){
-        document.getElementById("categoryDatalistReturn").innerText = "Pleas pick a Category"
-        document.getElementById("productDatalistReturn").innerText = "Pleas pick a product"
-        document.getElementById("noBTNReturn").innerText = "Please choose one or two of options"
-    
-        
-    }else if(product.value === "" || isNaN(product.value)){
-        document.getElementById("categoryDatalistReturn").innerText = ""
-        document.getElementById("productDatalistReturn").innerText = "Pleas pick a product"
-        document.getElementById("noBTNReturn").innerText = "Please choose one or two of options"
-        console.log("1 Else IF")
-
-    }else if (change.value === "" && add.value === "" || isNaN(change.value) && isNaN(add.value)){
-        console.log("2 Else IF")
-        document.getElementById("productDatalistReturn").innerText = ""
-        document.getElementById("noBTNReturn").innerText = "Please choose one or two of options"
-
-    }else if (category.value && product.value && change.value && add.value){
-        document.getElementById("productDatalistReturn").innerText = ""
-        document.getElementById("noBTNReturn").innerText = ""
-
-        if(category.value === change.value || add.value && change.value === add.value){
-            console.log("category.value === change.value || add.value || change.value === add.value")
-        }else{
-            let list = []
-            list.push(listProduct,listCategory,listAdd,listChange);
-            databaseChangeCategory("changeAndAddCategory", list)
-
-        }
-            
-    }else if (category.value && product.value && change.value || category.value && product.value && add.value){
-        document.getElementById("productDatalistReturn").innerText = ""
-        document.getElementById("noBTNReturn").innerText = ""
-
-        if(category.value && product.value && change.value){
-            if(category.value === change.value){
-                console.log("The old category id is the same what you want to change")
-                document.getElementById("noBTNReturn").innerText = "The old category id is the same what you want to change"
-            }else{
-                let list = []
-                list.push(listProduct,listCategory,listChange);
-                databaseChangeCategory("changeCategory", list)
-                
-            }
-        
-        }else if (category.value && product.value && add.value){
-            if(category.value === add.value){
-                console.log("The old category id is the same what you want to add")
-                document.getElementById("noBTNReturn").innerText = "The old category id is the same what you want to add"
-
-            }else{
-                let list = []
-                list.push(listProduct,listCategory,listAdd);
-                databaseChangeCategory("addCategory", list)                
-            }
-        }
-        
-    }
-    
-}
-
-async function databaseChangeCategory(action, list){
-    console.log(list)
-    console.log(action)
+//--------------------- Receivers ------------------------------------------
+async function addCategoryByProductId(productId,categoryId){
+    let list = []
+    list.push(productId, categoryId)
+    let action = "addCategoryByProductId";
     let body = new FormData();
-    body.append("changeOrAddCategory", JSON.stringify(list));
-    let response = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "POST", body);
-    console.log(response)
+    body.append("addCategory", JSON.stringify(list));
+    let res = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "POST", body);
+    return res
 }
+// get categorys by product id
+async function gettAllCategoryInProduct(id){ 
+    const action = "gettAllCategoryInProduct";
+    let productsIncategory = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${id}`, "GET");
+    return productsIncategory;
+}
+
+//remove one category from product
+async function removeCategoryFromProduct(productId,categoryId){
+    let action = "deleteCategoryByProductId";
+    let res = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}&id=${productId}&categoryId=${categoryId}`, "DEL");
+    return res
+  
+}
+
+//-----------------------Get all products -------------------------------------
+//get products to Add option
+async function gettAllProductAdd(){
+    let product = await getAllProducts()
+    product.forEach(element => {
+        let product = document.createElement("option")
+        product.innerHTML = element.ProductName
+        product.value = element.ProductId
+        optionProductList.append(product) 
+    });
+}
+//get products to Delete option
+async function gettAllProductDel(){
+    let product = await getAllProducts()
+    product.forEach(element => {
+        let product = document.createElement("option")
+        product.innerHTML = element.ProductName
+        product.value = element.ProductId
+        optionDelList.append(product) 
+    });
+}
+//--------------------ADD NEW CATEGORY---------------------------------
+
+
+async function addNewCategory(id){
+   
+   addNewCategorys.innerHTML = ""
+   addCategoryText.innerHTML = ""
+   let name = document.createElement("h2")
+   name.classList.add("categoryTitle")
+   name.innerText = "Add a category that the product dont have"
+   addCategoryText.append(name)
+    
+    let getAllCategory = await getAllCategories()
+    let productCategory = await gettAllCategoryInProduct(id)
+
+    let getCategory = getAllCategory.filter((getAllCategory) => !productCategory.find(productCategory => getAllCategory.CategoryId === productCategory.CategoryId ))
+
+    getCategory.forEach(element => {
+
+        let container = document.createElement("div")
+        container.classList.add("categoryContainer", "flex", "flexColumn", "alignCenter")
+        let containerImg = document.createElement("div")
+        containerImg.classList.add("categoryImgContainer", "flex", "alignCenter")
+        let img = document.createElement("img")
+        img.classList.add("categoryImg")
+        let name = document.createElement("h2")
+        name.classList.add("categoryTitle")
+        let checkbox = document.createElement("input")
+        checkbox.type = "checkbox"
+        checkbox.name = "addCategory"
+        checkbox.value = element.CategoryId
+        img.src = "./ASSETS/1.LOGOS/" + element.CategoryImg
+        name.innerText = element.CategoryName
+
+        containerImg.append(img)
+        container.append(containerImg,name,checkbox)
+        addNewCategorys.append(container)
+
+
+    });
+    document.getElementById("submitAddCategory").addEventListener('click', function(){
+        let checkboxes = document.getElementsByName("addCategory")
+        
+            for(var i = 0; i < checkboxes.length; i++){
+                if(checkboxes[i].checked == true){
+                    
+                    console.log("Product ID:",optionProductList.value,"Category ID:",checkboxes[i].value)
+                    addCategoryByProductId(optionProductList.value,checkboxes[i].value)
+                }
+            }
+        
+        })
+    
+    
+}
+//------------------DEL CATEGORY-----------------------------------------
+
+
+
+async function deleteCategory(id){
+    
+    deleteCategorys.innerHTML = ""
+    deleteCategoryText.innerHTML = ""
+    let name = document.createElement("h2")
+    name.classList.add("categoryTitle")
+    name.innerText = "Chose category/categories that you want to delete"
+    deleteCategoryText.append(name)
+    
+     let getCategory = await gettAllCategoryInProduct(id)
+     
+ 
+        getCategory.forEach(element => {
+         
+            if( element.CategoryId ){
+  
+                let container = document.createElement("div")
+                container.classList.add("categoryContainer", "flex", "flexColumn", "alignCenter")
+                let containerImg = document.createElement("div")
+                containerImg.classList.add("categoryImgContainer", "flex", "alignCenter")
+                let img = document.createElement("img")
+                img.classList.add("categoryImg")
+                let name = document.createElement("h2")
+                name.classList.add("categoryTitle")
+                let checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.name = "delCategory"
+                checkbox.value = element.CategoryId
+                img.src = "./ASSETS/1.LOGOS/" + element.CategoryIMG
+                name.innerText = element.CategoryName
+    
+                containerImg.append(img)
+                container.append(containerImg,name,checkbox)
+                deleteCategorys.append(container)
+            }
+             
+        });
+
+        document.getElementById("submitDeleteCategory").addEventListener('click', function(){
+        let checkboxes = document.getElementsByName("delCategory")
+        
+            for(var i = 0; i < checkboxes.length; i++){
+                if(checkboxes[i].checked == true){
+                    console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
+                    removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
+                }
+            }
+        
+        })
+}
+
+
+
+
+//------------EventListener-------------------------------------
+
+optionProductList.addEventListener('change', () => {
+    addNewCategory(dataProductList.value)
+  });
+
+optionDelList.addEventListener('change', () => {
+    deleteCategory(dataRemoveCategoryList.value)
+});
+
+window.addEventListener("load", initSite);
