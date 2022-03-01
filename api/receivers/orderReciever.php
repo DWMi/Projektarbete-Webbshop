@@ -1,13 +1,22 @@
 <?php
 
-include_once("../controllers/orderController.php");
 
-if(isset($_SERVER['REQUEST_METHOD'])) {
+    try {
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
+        include_once("../controllers/orderController.php");
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if($_GET["action"] == "getOrders") {
+            if($_GET["action"] == "newOrder") {
+
+                $body = json_decode($_POST["cart"], true);
+
+                $orderController = new OrderController();
+
+                echo json_encode($orderController->newOrder($body));
+
+            }
+          
+           if($_GET["action"] == "getOrders") {
 
             $orderController = new OrderController();
             $userID = json_decode($_POST["userID"], true);
@@ -19,9 +28,16 @@ if(isset($_SERVER['REQUEST_METHOD'])) {
             echo json_encode(false);
         }
 
+
+        }
+
+
+
+    } catch (Exception $e) {
+        error_log($e);
     }
 
-}
+
 
 
 
