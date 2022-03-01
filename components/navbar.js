@@ -160,7 +160,7 @@ export async function checkIsNormalUser() {
         logInBtn.style.display = "none";
         logOutBtn.style.display = "flex";
         adminPageBtn.style.display = "none";
-        return true;
+        return result;
     }
 
     
