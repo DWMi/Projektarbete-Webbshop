@@ -1,7 +1,7 @@
 <?php
 
-function checkImage($image){
-    $target_dir = "../../ASSETS/PRODUCTS/";
+function checkImage($image, $pathName){
+    $target_dir = "../../ASSETS/" .$pathName;
     $target_file = $target_dir . basename($image["name"]);
     // php generate random string på namnet
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -21,9 +21,10 @@ function checkImage($image){
 
 }
 
-function uploadImage($image) {
+function uploadImage($image, $pathName) {
 
-    $target_dir = "../../ASSETS/PRODUCTS/";
+
+    $target_dir = "../../ASSETS/" .$pathName;
     // HASHA INNAN MAN TAR IN NAMNET?? basename image name är vad som ska hashas. 
     $target_file = $target_dir . basename($image["name"]);
 

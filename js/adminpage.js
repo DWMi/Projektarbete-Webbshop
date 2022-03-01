@@ -1,6 +1,6 @@
 import {makeRequest} from "./main.js";
 import {renderCategories} from "./uploadProduct.js";
-import {navbar} from '../components/navbar.js'
+import {navbar} from '../components/navbar.js';
 
 
 async function initSite(){
@@ -99,6 +99,8 @@ async function getNewsletterSubsEmail(){
 document.getElementById("saveNews").addEventListener("click", function(){
     newNewsletter();
 });
+
+
 
 
 window.addEventListener("load", initSite);

@@ -66,8 +66,8 @@ async function addCategoryLinks() {
     const categoryList = await getAllCategories();
 
     categoryList.forEach(data => {
-        document.getElementsByTagName('h1')[data.CategoryId].addEventListener("click",function(){
-            window.location.href = `./product.html?category=${data.CategoryId}`
+        document.getElementsByTagName('h1')[data.ID].addEventListener("click",function(){
+            window.location.href = `./product.html?category=${data.ID}`
     })
 })
 

@@ -21,6 +21,12 @@ class CategoryController extends MainController {
         return $this->database->fetchById($id, $this->createFunction);
     }
 
+    public function addCategory($body){
+        
+        $category = new Category(null, $body[1]["name"], $body[1]["description"], $body[0][0]["src"], $body[0][1]["src"]);
+        return $this->database->insert($category);
+    }
+
     public function getAllProductsByCategory($id) {
         $query = "SELECT product.ID, product.ProductName, product.ProductDescription, product.ProductPrice FROM productincategory INNER JOIN product ON ProductID = product.ID WHERE CategoryID = " . $id . ";";
         $products = $this->database->freeQuery($query, "createProduct");
