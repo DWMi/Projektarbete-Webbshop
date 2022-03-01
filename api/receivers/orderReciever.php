@@ -15,6 +15,18 @@
                 echo json_encode($orderController->newOrder($body));
 
             }
+          
+           if($_GET["action"] == "getOrders") {
+
+            $orderController = new OrderController();
+            $userID = json_decode($_POST["userID"], true);
+            echo json_encode($orderController->getOrders($userID));
+           
+
+        } else {
+
+            echo json_encode(false);
+        }
 
 
         }
@@ -24,9 +36,6 @@
     } catch (Exception $e) {
         error_log($e);
     }
-
-
-
 
 
 

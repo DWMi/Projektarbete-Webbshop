@@ -1,19 +1,24 @@
 <?php
 
+    include_once("../classes/createInstanceFunctions.php");
+    include_once("../controllers/orderDetailsController.php");
+    include_once("../controllers/mainController.php");
 
-include_once("../controllers/mainController.php");
-include_once("../controllers/orderDetailsController.php");
-include_once("../classes/orderClass.php");
+    class OrderController extends MainController {
 
-class OrderController extends MainController {
+        private $createFunction = "createOrder";
 
-    private $createFunction = "createOrder";
+        function __construct() {
+            parent::__construct("orders", "order");
+        }
 
-    function __construct() {
-        parent::__construct("orders", "orders");
-    }
+        public function getOrders($userID){
 
-    public function newOrder($cart) {
+            $result = $this->database->fetchOrders($userID, $this->createFunction);
+            return $result;
+        }
+  
+       public function newOrder($cart) {
 
         session_start();
 
@@ -66,8 +71,12 @@ class OrderController extends MainController {
     }
 
 
+    
 
 }
+
+
+
 
 
 

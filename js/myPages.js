@@ -1,26 +1,48 @@
 import {navbar} from '../components/navbar.js'
+import {checkIsNormalUser} from '../components/navbar.js'
+/* import {checkUserIsAdmin} from '../components/navbar.js'
+ */import { makeRequest } from '../js/main.js';
+
+
+
 
 function initSite(){
     divRenderer();
     navbar;
 
+    if(localStorage.getItem("button") !== null){
+        btnAdmin.style.display = "none"
+        adminMsg.style.display = "flex"
+     }
+
+
 }
 
-const divRenderer = () => {
+
+
+let btnAdmin = document.createElement('button')
+let adminMsg = document.createElement('p')
+
+btnAdmin.addEventListener("click", sendAdminRequest)
+
+
+   async function divRenderer() {
     
     const divCon = document.getElementById("container"),
         productCardContainer = document.createElement('div'),
-        btnAdmin = document.createElement('button'),
         pageBtnContainer = document.createElement('div')
   
         pageBtnContainer.setAttribute('id', 'pageBtnContainer')
         btnAdmin.setAttribute("class", "adminBtn")
+        adminMsg.setAttribute("class", "adminMsg")
+
+        let orders = await getOrders()
+
+        console.log(orders)
+
+       
     
-    
-    
-    
-    
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < orders.length; i++) {
         
         const receivedBtn = document.createElement('button'),
             parentProductCard = document.createElement('div'),
@@ -30,6 +52,10 @@ const divRenderer = () => {
             parentReceivedBtn = document.createElement('div'),
             productCard = document.createElement('div'),
             totalSum = document.createElement('h5')
+
+            receivedBtn.addEventListener("click", () =>{
+                console.log(receivedBtn)
+            })
 
         
         totalSum.setAttribute('class', 'totalSum')
@@ -42,9 +68,11 @@ const divRenderer = () => {
        
         
         receivedBtn.innerText =`Received✔️`
-        totalSum.innerText = `Total $__`     
-        orderNr.innerText = `Order#___`
-        orderStatus.innerText = `Order Status:__`
+        totalSum.innerText = `Order date: ${orders[i].DateCreated}`     
+        orderNr.innerText = `Order number: ${orders[i].ID}` 
+        orderStatus.innerText = `Order Status: ${orders[i].OrderStatus}`
+
+        
 
 
         divCon.appendChild(productCardContainer).setAttribute("class", "productCardContainer")
@@ -55,46 +83,90 @@ const divRenderer = () => {
         productCard.appendChild(parentReceivedBtn)
         parentProductCard.appendChild(productCard)
         productCardContainer.appendChild(parentProductCard).setAttribute("class", "parentProductCard")
-        parentProductCard.appendChild(totalSum)
-    }
+        parentProductCard.append(totalSum)
+
+
     
+    }
+
+
+    
+
+  
     productCardContainer.appendChild(pageBtnContainer)    
-    pageBtnContainer.appendChild(btnAdmin)
+    pageBtnContainer.append(btnAdmin,adminMsg)
     
     btnAdmin.innerText = "Request to be ADMIN😎"
+    adminMsg.innerText = "Admin request pending..."
     
-    btnAdmin.addEventListener("onclick",sendAdminRequest())
-
-
-    
-    
-    document.getElementById('receivedBtn').addEventListener("onclick",sendReceivedOrder())       
-}
-
-const sendReceivedOrder = () => {
-    
-}
-
-const sendAdminRequest = () => {
-    
-
-
-}
-
-async function makeRequest(url, method, body) {
-    try {
-        let response = await fetch(url, {
-            method,
-            body
-        })
-        let result = await response.json();
-        return result
-    }   catch(err) {
-        console.error(err)
+    if(UserLoggedInObject[0].AdminRequest == 1){
+        btnAdmin.style.display = "none";
+        adminMsg.style.display = "flex"
     }
-} 
+    
+    
+}
 
 
+
+
+async function getOrders(){
+    const action = "getOrders";
+    let method = "POST"
+    let userID = UserLoggedInObject[0].ID
+    let body = new FormData()
+    body.set("userID", JSON.stringify(userID))
+
+    let result = await makeRequest(`../api/receivers/orderReceiver.php?action=${action}`, method, body)
+
+    return result;
+}
+
+
+async function sendAdminRequest(){
+    let url  = "../api/receivers/adminRequestReceiver.php"
+    let method = "POST"
+    let adminValue = 1;
+    let userObj = UserLoggedInObject[0]
+    let requestObj = {
+        ID: userObj.ID,
+        AdminRequest: adminValue
+    }
+    let body = new FormData()
+    body.set('adminRequest', JSON.stringify(requestObj))
+
+    let result = await makeRequest(url, method, body)
+    
+    if(result == true){
+    localStorage.setItem("button", "clicked")
+    btnAdmin.style.display = "none"
+    adminMsg.style.display = "flex"
+    
+
+    console.log(result);
+    }
+    
+    
+
+}
+
+/* function showMsg(){
+    adminMsg.style.display = "flex" 
+}
+
+function hideBtn(){
+    btnAdmin.style.display = "none" 
+} */
 
 
 window.addEventListener("load", initSite);
+
+
+let UserLoggedInObject = await checkIsNormalUser();
+
+console.log(UserLoggedInObject);
+
+
+
+
+

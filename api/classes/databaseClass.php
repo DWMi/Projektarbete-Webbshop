@@ -150,6 +150,22 @@ class Database {
         $query->execute();
     }
 
+
+    public function updateAdminRequestRow($id, $adminReq){
+         
+        $query = $this->db->prepare("UPDATE users SET AdminRequest = $adminReq WHERE ID = $id");
+        $query->execute();
+        return true;
+
+    }
+
+    public function fetchOrders($userID, $createInstanceFunction){
+        $query = $this->db->prepare("SELECT * FROM " . $this->selectedTable . " WHERE UserID=" .  $userID .  ";"  );
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_FUNC, $createInstanceFunction);
+        return $result;
+    }
+
     // freeQuery som bara ger tillbaka en assosiativ lista
 
 
