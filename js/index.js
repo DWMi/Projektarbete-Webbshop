@@ -10,7 +10,7 @@ const initSite=()=>{
 
 
 // Renders section to landing page
- const  sectionRenderer = async ()=>  {
+const  sectionRenderer = async ()=>  {
 
     const catList = await getAllCategories(),
     divCon = document.getElementById('container'),
@@ -26,10 +26,10 @@ const initSite=()=>{
                 sectSnap.setAttribute('class','snapper')
                 sectSnap.appendChild(document.createElement('div')).setAttribute('class','imgSnap')
                 sectSnap.appendChild(document.createElement('h1')).innerText = `Checkout our shoes by ${catList[i].CategoryName}`    
-               
+
             //    fetching catID and giving href to brands
-                document.getElementsByTagName('h1')[catList[i].CategoryId].addEventListener("click",function(){
-                            window.location.href = `./product.html?category=${catList[i].CategoryId}`
+                document.getElementsByTagName('h1')[catList[i].ID].addEventListener("click",function(){
+                            window.location.href = `./product.html?category=${catList[i].ID}`
                             })
     }
 
@@ -44,7 +44,7 @@ const initSite=()=>{
         const incest = document.createElement('footer')
         incest.appendChild(footer)
         divCon.appendChild(incest)
- 
+
 
 
 async function addCategoryLinks() {
@@ -57,6 +57,7 @@ async function addCategoryLinks() {
 })
 
 
+}
 }
 
 
