@@ -7,7 +7,22 @@ import {checkUserIsAdmin} from '../components/navbar.js'
 
 
 async function initSite(){
-    divRenderer();
+
+
+let UserLoggedInObject;
+
+let resultAdmin = await checkUserIsAdmin();
+let resultUser = await checkIsNormalUser();
+
+if(resultAdmin != false){
+    
+    UserLoggedInObject = await checkUserIsAdmin();
+}
+ 
+if(resultUser != false) {
+    UserLoggedInObject = await checkIsNormalUser(); 
+}
+    divRenderer(UserLoggedInObject);
     navbar;
 
     if(localStorage.getItem("button") !== null){
@@ -23,10 +38,10 @@ async function initSite(){
 let btnAdmin = document.createElement('button')
 let adminMsg = document.createElement('p')
 
-btnAdmin.addEventListener("click", sendAdminRequest)
 
 
- async function divRenderer() {
+
+ async function divRenderer(UserLoggedInObject) {
     
     const divCon = document.getElementById("container"),
         productCardContainer = document.createElement('div'),
@@ -38,7 +53,7 @@ btnAdmin.addEventListener("click", sendAdminRequest)
 
         
         
-        let orders = await getOrders()
+        let orders = await getOrders(UserLoggedInObject)
         console.log(orders);
        
     
@@ -98,11 +113,11 @@ btnAdmin.addEventListener("click", sendAdminRequest)
         productCardContainer.appendChild(parentProductCard).setAttribute("class", "parentProductCard")
         parentProductCard.append(totalSum)
 
+       
+
 
     
     }
-
-
     
 
     divCon.appendChild(productCardContainer).setAttribute("class", "productCardContainer")
@@ -112,6 +127,11 @@ btnAdmin.addEventListener("click", sendAdminRequest)
     
     btnAdmin.innerText = "Request to be ADMIN😎"
     adminMsg.innerText = "Admin request pending...😴"
+
+    btnAdmin.addEventListener("click", () =>{
+        sendAdminRequest(UserLoggedInObject)
+        
+    })
     
     if(UserLoggedInObject[0].AdminRequest == 1){
         btnAdmin.style.display = "none"
@@ -128,7 +148,7 @@ btnAdmin.addEventListener("click", sendAdminRequest)
 
 // FUNCTIONS
 
-async function getOrders(){
+async function getOrders(UserLoggedInObject){
     const action = "getOrders";
     let method = "POST"
     let userID = UserLoggedInObject[0].ID
@@ -155,7 +175,7 @@ async function sendOrderReceived(orders){
 
 
 
-async function sendAdminRequest(){
+async function sendAdminRequest(UserLoggedInObject){
     let url  = "../api/receivers/adminRequestReceiver.php"
     let method = "POST"
     let adminValue = 1;
@@ -181,21 +201,8 @@ async function sendAdminRequest(){
 
 }
 
-let UserLoggedInObject;
-
-let resultAdmin = await checkUserIsAdmin();
-let resultUser = await checkIsNormalUser();
-
-if(resultAdmin != false){
-    
-    UserLoggedInObject = await checkUserIsAdmin();
-}
- 
-if(resultUser != false) {
-    UserLoggedInObject = await checkIsNormalUser(); 
-}
 
 
-console.log(UserLoggedInObject)
+
 
 window.addEventListener("load", initSite);
