@@ -1,10 +1,8 @@
-import {navbar, checkIsNormalUser} from '../components/navbar.js';
+import {navbar} from '../components/navbar.js';
 import {getCart, makeRequest} from '../js/main.js';
 async function initSite(){
   navbar;
-  renderCartProductCard()
-
-  
+  renderCartProductCard();
   localStorage.removeItem("freightOption")
 }
 
@@ -26,8 +24,8 @@ async function renderCartProductCard(){
   cartCardWrapper.classList.add("cartProductCard-wrapper")
   productCardContainer.append(cartCardWrapper)
 
-  console.log(cart)
   cart.forEach(cartProduct => {
+
   // --------------------------- CART ITEM --------------------------------------------------
     let cartItem = document.createElement("div")
     cartItem.classList.add("cartItem")
@@ -249,14 +247,13 @@ async function renderCartProductCard(){
   let checkoutBtnSpan = document.createElement("span")
   checkoutBtnSpan.innerHTML = "CHECKOUT NOW"
   checkoutBtn.append(checkoutBtnSpan)
-  checkoutBtnSpan.setAttribute('id', 'coBtn')
   //checkout-payment       
   let checkoutPayment = document.createElement("div")
   checkoutPayment.classList.add("checkout-payment")
   checkoutWrapper.append(checkoutPayment)
 
   let paymentMethods = document.createElement("span")
-  paymentMethods.innerHTML = "PAYMENT METHODS"
+  paymentMethods.innerHTML = "PAYMENTS METHODS"
   checkoutPayment.append(paymentMethods)
 
   let paymentMethodsImg = document.createElement("img")
@@ -264,7 +261,7 @@ async function renderCartProductCard(){
   checkoutPayment.append(paymentMethodsImg)
 
   renderTotalPrice(cart);
-  pleaseLogin()
+
 }
 
 
@@ -508,22 +505,6 @@ async function placeOrder(cart) {
   console.log(response);
 
 
-}
-
-async function pleaseLogin(){
-  
-  const userFetch = await checkIsNormalUser();
-  console.log(userFetch)
-
-  if(!userFetch) {
-    const plsLogin = document.getElementById('coBtn'),
-        checkoutBtn = document.getElementsByClassName('checkout-btn')[0]
-
-    plsLogin.innerText = "Please log in before check out"
-    checkoutBtn.addEventListener('click',function(){
-      window.location.href = "login.html"
-    })
-  } 
 }
 
 
