@@ -6,7 +6,7 @@
 @media only screen and (max-width: 1630px) {
    
     .productCard-container  {
-        justify-content: space-evenly;
+      justify-content: space-evenly;
     }
    
     .productSwiper-container{
@@ -69,9 +69,6 @@
         font-size: 1.5vw;
       }
 
-
-      /* -----------LANDING PAGE-------------- */
-   
 }
 
 
@@ -224,55 +221,7 @@
      margin: 10%;
   }
 
-  /* ----------LANDING-------------- */
-    .imgSnap{
-        object-fit: cover;
-    }
-    .snapper h1{
-        font-size: 25px;
-        border: 3px solid white;
-
-    }
 }
-
-@media only screen and (max-width: 850px){
-
-    /* -----------------LANDING------------ */
-
-    .imgSnap{
-        object-fit: fill;
-    }
-    .snapper h1{
-        font-size: 25px;
-        border: 3px solid white;
-
-    }
-}
-
-@media only screen and (max-width: 700px){
-
-    /* -----------------LANDING------------ */
-    .snapper{
-        height:31vh;
-    }
-    .snapper h1{
-        font-size: 25px;
-        border: 3px solid white;
-
-    }
-    .navBar-category, .navBar-user{
-        display:none;
-    }
-    .hamburger{
-        display:flex;
-        font-size:30px;
-        margin:10px;
-    }
-    .hamburger:hover{
-        
-    }
-}
-
 
 
 @media only screen and (max-width: 500px) {
@@ -330,20 +279,4 @@
         color: rgba(0, 0, 0, 0.7);
     }
 
-
-    /* -----------LANDING-----------*/
-
-    .snapper{
-        height:31vh;
-    }
-
-    .imgSnap{
-        object-fit: cover;
-    }
-
-    .snapper h1{
-        font-size: 20px;
-        border: 2px solid white;
-
-    }
 }

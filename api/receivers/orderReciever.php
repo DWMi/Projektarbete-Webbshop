@@ -25,8 +25,18 @@
 
             } 
 
+            
         }
 
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+            if($_GET["action"] == "getAllOrder") {
+                $orderController = new OrderController();
+                echo json_encode($orderController->getAllOrder());
+
+            } 
+
+        }   
 
     } catch (Exception $e) {
         error_log($e);
