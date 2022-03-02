@@ -141,60 +141,7 @@
                 <p id="categoryResponse"></p>
             </div>
         </div>
-        <br>
-
-        <div class="container flex flexColumn">
-                <h1 class="containerHeader">Change a product category: </h1>
-                
-                <div  class="component ">
-                    <h2 class="containerHeaderTwo">Current category:</h2>
-                    <form action="" method="" id="changeCategory">
-                        <!---pick a category-->
-                        <select id="adminCategoryDatalist">
-                            <option value="" disabled selected>Category</option>
-                        </select>
-                        <p id="categoryDatalistReturn"></p>
-                        <!---pick a product from category-->
-                        <h2 class="containerHeaderTwo">Chose product from current category:</h2>
-                        <select id="adminProductDatalist" required>
-                            <option value="" disabled selected>Product</option>
-                        </select>
-                        <p id="productDatalistReturn"></p>    
-                        <br>
-
-                        <!---BTN -->
-                        <button id="changeBtn" type="button"  >Change category</button>
-                        <button id="addBtn" type="button"  >Add category</button>
-                        <br>
-                        <p id="noBTNReturn"></p>
-                        <!---change category-->
-                        <div id="changeDiv" style="display: none;">
-                            <h2 class="containerHeaderTwo">Change category:</h2>
-                            <select id="changeCategoryDatalist"></select> 
-                            <i id="removeChange" class="fa fa-trash"></i>
-                        </div>
-                        <p id="changeDatalistReturn"></p> 
-
-                        <!---Add category-->
-                        <br>
-                        <div id="addDiv" style="display: none;" >
-                            <h2 class="containerHeaderTwo">Add category to product:</h2>
-                            <select id="addCategoryDatalist"></select>
-                            <i id="removeAdd" class="fa fa-trash"></i> 
-                        </div>
-                        <p id="addDatalistReturn"></p> 
-                    </form>
-                    <div class="component">
-                        <button id="submitCategoryChange" type="reset" class="button flex justifyCenter alignCenter">Change category</button>
-                        
-                    </div>
-                </div>     
-                <div  class="component ">
-                </div>  
-                <div  class="component ">
-                </div>  
-        </div>
-  
+          
         <br>
 
         <div class="container flex  flexWrap">
@@ -226,9 +173,6 @@
                     <div id="deleteCategoryText"class="component"></div>
                     <div id="deleteCategory" class="flex flexWrap"></div>
                     <div id="delCategoryBTN"class="component"></div>   
-
-                       
-                    </div>
                 </form>
             </div>
         </div>
@@ -272,28 +216,24 @@
 
                 </div>
             
-                </div>
-        
             </div>
         
+        </div>
+
+        <br>
 
 
-    <br>
+        <div class="container flex flexColumn" id="subsContainer">
+            <h1 class="containerHeader">List of all the orders placed:</h1>
+            
 
+            <div id="orderList">
+            
 
-    <div class="container flex flexColumn" id="subsContainer">
-        <h1 class="containerHeader">List of all the orders placed:</h1>
-        
-
-        <div id="orderList">
-        
-
-        
+            
         </div>
     
-</div>
+    </div>
 
-</div>
-</div>
 </body>
 </html>
