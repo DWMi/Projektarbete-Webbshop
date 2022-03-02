@@ -88,7 +88,8 @@ const myAccBtn = document.getElementById("myAcc");
 async function initSite() {
   navbar;
   isAUser();
-  checkUserIsAdmin();
+  UserIsAdmin();
+  renderCategory();
 }
 
 
@@ -105,14 +106,24 @@ async function logOutUser() {
 }
 
 // CHECK WHAT KIND OF USER IS LOGGED IN
+
 export async function checkUserIsAdmin() {
+  let url = "../api/controllers/authAdmin.php";
+  let method = "GET";
+
+  let result = await makeRequest(url, method, undefined);
+  
+  return result;
+}
+
+export async function UserIsAdmin() {
   let url = "../api/controllers/authAdmin.php";
   let method = "GET";
 
   let result = await makeRequest(url, method, undefined);
   let user = result[0];
 
-  console.log(result, "checkUserIsAdmin");
+  console.log(result,  "checkUserIsAdmin");
 
   if (result) {
     
@@ -155,6 +166,7 @@ export async function checkUserIsAdmin() {
 
       admBtn.style.display = "flex";
       myAcc.style.display = "flex";
+      return result;
     }
   }
 }
@@ -170,7 +182,7 @@ export async function checkIsNormalUser() {
 
 
 
- async function isAUser() {
+ export async function isAUser() {
   let url = "../api/controllers/authUser.php";
   let method = "GET";
 
@@ -197,5 +209,5 @@ export async function checkIsNormalUser() {
   }
 }
 
-renderCategory();
+
 window.addEventListener("load", initSite);
