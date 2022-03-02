@@ -6,7 +6,7 @@ export async function renderAllProducts(){
 
     let products = await getAllProducts();
 
-    console.log(products)
+    
 
     let select = document.getElementById("productSelect");
 
@@ -118,7 +118,7 @@ async function updateStock(sizes) {
 
         let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body)
 
-        console.log(response);
+        
         if(response == "success") {
             document.getElementById("updateStockReturn").innerHTML = "The product was successfully updated!";
         }
