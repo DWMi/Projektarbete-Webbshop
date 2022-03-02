@@ -26,6 +26,12 @@
             return $result;
         }
 
+        public function sendOrderSent($id){
+            $query = "UPDATE orders SET OrderStatus = 'Sent' WHERE ID = $id";
+            $result = $this->database->freeQuery($query, null);
+            return $result;
+        }
+
         public function getAllOrder(){
 
             return $this->database->fetchAll($this->createFunction);

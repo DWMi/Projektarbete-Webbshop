@@ -71,8 +71,8 @@ let adminMsg = document.createElement('p')
 
             if(orders[i].OrderStatus == "sent"){
                 receivedBtn.addEventListener("click", () =>{
-                  sendOrderReceived(orders[i]);
-                  location.reload();
+                sendOrderReceived(orders[i]);
+                location.reload();
                 })
         
             } else {
