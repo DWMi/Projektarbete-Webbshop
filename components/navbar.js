@@ -55,8 +55,7 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
         
         
         `);
-// <a class="myAcc" id="myAcc" href="./myPages.html">My account</a>
-// <a class="myAdm" id="myAdm" href="./admin.html">Admin Page 😎</a>
+
 export async function renderCategory() {
   let allCategories = await getAllCategories();
   let categoryContainer =
@@ -113,7 +112,6 @@ export async function checkUserIsAdmin() {
   let result = await makeRequest(url, method, undefined);
   let user = result[0];
 
-  console.log(result, "checkUserIsAdmin");
 
   if (result) {
     
@@ -131,9 +129,9 @@ export async function checkUserIsAdmin() {
         logOutBtn.style.display = "flex";
       return false
     } else if (user.UserIsAdmin === 1) {
+        logInBtn.style.display = "none";
       console.log("ADMIN");
       userName.innerText = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`;
-      logInBtn.style.display = "none";
       logOutBtn.style.display = "flex";
 
       const btnDropdownRenderer = document.getElementsByClassName(
@@ -182,6 +180,7 @@ export async function checkIsNormalUser() {
     logInBtn.style.display = "flex";
 
     console.log(false);
+    
   } else if (user.UserIsAdmin === 0) {
     const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
     const myAcc = document.createElement("a");
