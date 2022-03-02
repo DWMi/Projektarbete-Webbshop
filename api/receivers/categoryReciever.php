@@ -3,7 +3,6 @@
     try {
         include_once("../controllers/categoryController.php");
         include_once("../controllers/fileController.php");
-        include_once("../controllers/changeCategoryController.php");
         include_once("../controllers/productInCategoryController.php");
 
 

@@ -66,9 +66,12 @@
 
                     $orderDetailsController->newOrderDetails($orderDetails);
 
-                } 
+                    $query = "UPDATE size SET SizesInStock = SizesInStock-" . $quantity .  " WHERE ID = " . $sizesId . ";";
+                    $result = $this->database->freeQuery($query, null);
 
-        }
+                }
+
+            }
 
         unset($_SESSION["cart"]);
 
@@ -86,7 +89,6 @@
             $user = unserialize($_SESSION["loggedInAdmin"]);
             return $user[0]->ID;
         }
-
 
     }
 
