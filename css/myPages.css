@@ -11,10 +11,9 @@
 /* -----------Containers--------------- */
 #container {
     display: flex;
-    
+    margin-bottom: 25px;
     align-items: center;
     flex-direction: column;
-    height:100vh;
     position: relative;
 }
 .parentReceivedBtn{
