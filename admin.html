@@ -23,7 +23,7 @@
 
     <div class="wrapper justifyCenter">
 
-
+        <!--------------------Add new Product------------------------->
         <div class="container flex flexColumn">
             <h1 class="containerHeader">Add product:</h1>
 
@@ -99,6 +99,26 @@
 
         </div>
         <br>
+
+        <!--------------------Remove Product------------------------->
+
+        <div class="container flex flexColumn">
+
+            <h1 class="containerHeader">Update or delete product:</h1>
+            <div class="component">
+                <select id="productSelect">
+                    <option value="">Choose a product:</option>
+                </select>
+            </div>
+
+            <div id="productSizeRenderContainer" class="component flex flexWrap"></div>
+            <p id="sizeChangeReturn"></p>
+
+            <div class="component flex flexWrap" id="removeProductButtonContainer"></div>
+            <p id="updateStockReturn"></p>
+        </div>
+        <br>
+
         <!--------------------Add new Category------------------------->
 
         <div class="container flex flexColumn">
