@@ -281,42 +281,90 @@ async function getNewsletterSubsEmail(){
 async function getOrder(){ 
 
     let orderList = document.getElementById("orderList")
-    let orderId = document.getElementById("orderId")
-    let orderDate = document.getElementById("orderDate")
-    let orderStatus = document.getElementById("orderStatus")
+    
 
     let action = "getAllOrder";
 
     let response = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, "GET");
     console.log(response);
     for (let i = 0; i < response.length; i++) {
+        let orderId = document.createElement("div")
+        let orderDate = document.createElement("div")
+        let orderStatus = document.createElement("div")
+        let markAsSentBtns = document.createElement("div")
         let idOrder = document.createElement("p")
         let dateOrder = document.createElement("p")
         let statusOrder = document.createElement("p")
+        let markAsComplete = document.createElement("button")
+        let singleOrder = document.createElement("div")
+        singleOrder.classList.add("singleOrder")
+        orderId.classList.add("orderId")
+        orderDate.classList.add("orderDate")
+        orderStatus.classList.add("orderStatus")
+        markAsSentBtns.classList.add("markAsSentBtns")
         idOrder.classList.add("order")
         dateOrder.classList.add("order")
         statusOrder.classList.add("order")
+        markAsComplete.classList.add("button")
         idOrder.append(response[i].ID)
         dateOrder.append(response[i].DateCreated)
         statusOrder.append(response[i].OrderStatus)
         orderId.append(idOrder)
         orderDate.append(dateOrder)
         orderStatus.append(statusOrder)
-        orderList.append(orderId, orderDate, orderStatus)
+        markAsSentBtns.append(markAsComplete)
+        singleOrder.append(orderId, orderDate, orderStatus, markAsSentBtns)
+        orderList.append(singleOrder)
 
         if (response[i].OrderStatus === "orderPlaced") {
-            let markAsComplete = document.createElement("button")
-            markAsComplete.classList.add("button")
-            markAsComplete.innerHTML = "Mark as complete"
-            orderList.append(orderId, orderDate, orderStatus, markAsComplete)
+            
+            markAsComplete.innerHTML = "Mark as sent"
 
+
+            markAsComplete.addEventListener("click", function(){
+                orderSent(response[i])
+                
+                location.reload("1000")
+            })
         }
+
+        if (response[i].OrderStatus === "Sent") {
+            markAsComplete.innerHTML = "Sent!"
+            markAsComplete.style.backgroundColor = "whitesmoke"
+            
+        }
+
+        if (response[i].OrderStatus === "Received") {
+            markAsComplete.innerHTML = "Received!"
+            markAsComplete.style.backgroundColor = "green"
+            
+        }
+
+
+    
         
     }
     console.log(response);
     
 
 }
+
+
+async function orderSent(response){
+
+    console.log(response.ID)
+    const action = "sendOrderSent";
+    let method = "POST"
+    let body = new FormData()
+    body.set("orderID", JSON.stringify(response.ID))
+
+    let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
+
+    console.log(result)
+}
+
+
+
 
 
 
