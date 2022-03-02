@@ -23,7 +23,7 @@
 
     <div class="wrapper justifyCenter">
 
-
+        <!--------------------Add new Product------------------------->
         <div class="container flex flexColumn">
             <h1 class="containerHeader">Add product:</h1>
 
@@ -99,6 +99,26 @@
 
         </div>
         <br>
+
+        <!--------------------Remove Product------------------------->
+
+        <div class="container flex flexColumn">
+
+            <h1 class="containerHeader">Update or delete product:</h1>
+            <div class="component">
+                <select id="productSelect">
+                    <option value="">Choose a product:</option>
+                </select>
+            </div>
+
+            <div id="productSizeRenderContainer" class="component flex flexWrap"></div>
+            <p id="sizeChangeReturn"></p>
+
+            <div class="component flex flexWrap" id="removeProductButtonContainer"></div>
+            <p id="updateStockReturn"></p>
+        </div>
+        <br>
+
         <!--------------------Add new Category------------------------->
 
         <div class="container flex flexColumn">
@@ -121,8 +141,8 @@
                 <p id="categoryResponse"></p>
             </div>
         </div>
-        <!--------------------Change Category------------------------->
         <br>
+
         <div class="container flex flexColumn">
                 <h1 class="containerHeader">Change a product category: </h1>
                 
@@ -170,16 +190,53 @@
                     </div>
                 </div>     
                 <div  class="component ">
-                
-                    
-                
                 </div>  
                 <div  class="component ">
-        
-                
                 </div>  
+          </div>
+  
+        <br>
+
+        <div class="container flex  flexWrap">
+            <!--------------------NEW add Category To Product------------------------->
+            <div class="component">
+                <h1 class="containerHeader">Add a product category: </h1>
+                <br>
+                <h2 class="containerHeaderTwo">Chose product:</h2>
+                <form action="">
+                    <select id="dataProductList" required>
+                        <option value="" disabled selected>Product</option>
+                    </select>
+                    <br>
+                    <div id="addCategoryText"class="component"></div>
+                    <div id="addNewCategory" class="flex flexWrap"></div>
+                    <div class="component">
+                        <div id="submitAddCategory" type="reset" class="button flex justifyCenter alignCenter">Add Category</div>
+                        <p id=""></p>
+                    </div>   
+                </form>
+            </div>
+            <!--------------------Delete Category From Product------------------------->
+            <div class="component">
+                <h1 class="containerHeader">Delete Category: </h1>
+                <br>
+                <h2 class="containerHeaderTwo">Chose product:</h2>
+                <form id="delform">
+                    <select id="dataRemoveCategoryList" required>
+                        <option value="" disabled selected>Product</option>
+                    </select>
+                    <br>
+                    <div id="deleteCategoryText"class="component"></div>
+                    <div id="deleteCategory" class="flex flexWrap"></div>
+                    <div class="component">
+                        <div id="submitDeleteCategory" type="reset" class="button flex justifyCenter alignCenter">Delete Category</div>
+                        <p id=""></p>
+                    </div>
+                </form>
+            </div>
         </div>
         <br>
+
 
         <!--------------------Add Newsletter------------------------->
         <div class="container flex flexColumn">

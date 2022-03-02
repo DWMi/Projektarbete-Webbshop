@@ -35,6 +35,14 @@ function createProductInCategory($productId, $categoryId) {
     return new ProductInCategory((int)$productId, (int)$categoryId);
 }
 
+
+include_once("../classes/productInCategoryClass.php");
+
+function gettAllCategoryInProduct($categoryId,$productId,$categoryName,$categoryIMG) {
+    return new CategoryInProduct((int)$categoryId,(int)$productId,$categoryName,$categoryIMG );
+}
+
+
 // CREATES A NEW USER FROM THE UserClass
 include_once("../classes/userClass.php");
 

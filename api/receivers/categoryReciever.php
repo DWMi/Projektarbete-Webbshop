@@ -4,6 +4,7 @@
         include_once("../controllers/categoryController.php");
         include_once("../controllers/fileController.php");
         include_once("../controllers/changeCategoryController.php");
+        include_once("../controllers/productInCategoryController.php");
 
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -26,38 +27,35 @@
                 exit;
             }
             
-            if($_GET["action"] == "getAllProductsInCategory") {
+          
+            if($_GET["action"] == "gettAllCategoryInProduct") {
                 
-                $productInCategoryController = new ChangeCategoryController();
-                echo json_encode($productInCategoryController->getAll());
+                $CategoryController = new CategoryController();
+                echo json_encode($CategoryController->gettAllCategoryInProduct((int)$_GET["id"]));
                 exit; 
             }
-            
 
         }
 
        
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-            if($_GET["action"] == "addCategoryToProduct"){
-
-                $body = json_decode($_POST["changeOrAddCategory"], true);
-
-                $changeCategoryController = new ChangeCategoryController();
-                echo json_encode($changeCategoryController->addCategory($body));
+            
+            if($_GET["action"] == "addCategoryByProductId"){
+                $body = json_decode($_POST["addCategory"], true);
+                $ProductInCategoryController = new ProductInCategoryController();
+                echo json_encode($ProductInCategoryController->addCategory($body));
                 
             }
-            if($_GET["action"] == "changeCategory"){
-                $body = json_decode($_POST["changeOrAddCategory"], true);
+          
+        }
+        if($_SERVER["REQUEST_METHOD"] == "DEL"){
 
-                $changeCategoryController = new ChangeCategoryController();
-                echo json_encode($changeCategoryController->changeCategory($body));
-            }
-            if($_GET["action"] == "changeAndAddCategory"){
-                $body = json_decode($_POST["changeOrAddCategory"], true);
-
-                $changeCategoryController = new ChangeCategoryController();
-                echo json_encode($changeCategoryController->changeAndAddCategory($body));
+            if($_GET["action"] == "deleteCategoryByProductId") {
+                
+                $ProductInCategoryController = new ProductInCategoryController();
+                echo json_encode($ProductInCategoryController->delCategoryByProductId((int)$_GET["id"],(int)$_GET["categoryId"]));
+                exit; 
             }
             
 
@@ -108,7 +106,6 @@
 
 
             
-
 
 
 
