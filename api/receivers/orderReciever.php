@@ -5,15 +5,20 @@
 
         include_once("../controllers/orderController.php");
 
+        session_start();
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if($_GET["action"] == "newOrder") {
 
+            if(isset($_SESSION["loggedInUser"]) || isset($_SESSION["loggedInAdmin"])){
+
                 $body = json_decode($_POST["cart"], true);
-                //echo json_encode($body);
+
                 $orderController = new OrderController();
 
                 echo json_encode($orderController->newOrder($body));
+
+            }
 
             }
 
