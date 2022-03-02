@@ -78,18 +78,30 @@ async function gettAllProductDel(){
 
 async function addNewCategory(id){
    
-   addNewCategorys.innerHTML = ""
-   addCategoryText.innerHTML = ""
-   let name = document.createElement("h2")
-   name.classList.add("categoryTitle")
-   name.innerText = "Add a category that the product dont have"
-   addCategoryText.append(name)
-    
+    addNewCategorys.innerHTML = ""
+    addCategoryText.innerText = "" 
+    //text 
+    let name = document.createElement("h2")
+    name.classList.add("categoryTitle")
+    name.innerText = "Add a category that the product dont have"
+    addCategoryText.append(name)
+    //remove btn
+    let submitBtn = document.createElement("button")
+    submitBtn.classList.add("button", "flex", "justifyCenter", "alignCenter")
+    submitBtn.id = "submitAddCategory"
+    submitBtn.innerText = "Add Category"
+    submitBtn.type = "reset"
+    let btnContainer = document.getElementById("addCategoryBTN")
+    btnContainer.append(submitBtn)
+    //fetch
     let getAllCategory = await getAllCategories()
     let productCategory = await gettAllCategoryInProduct(id)
-    
+    //filter that show getAllCategory that is not = to productCategory
     let getCategory = getAllCategory.filter((getAllCategory) => !productCategory.find(productCategory => getAllCategory.ID === productCategory.CategoryId ))
-
+    
+    if(getCategory === ""){
+        name.innerText = "The product all ready have all categories!"
+    }
     getCategory.forEach(element => {
 
         let container = document.createElement("div")
@@ -121,10 +133,13 @@ async function addNewCategory(id){
                     
                     console.log("Product ID:",optionProductList.value,"Category ID:",checkboxes[i].value)
                     addCategoryByProductId(optionProductList.value,checkboxes[i].value)
+                    addNewCategorys.innerHTML = ""
+                    btnContainer.innerHTML = ""
+                    name.innerText = "success to Add!"
                 }
             }
-        
-        })
+            
+    })
     
     
 }
@@ -136,13 +151,24 @@ async function deleteCategory(id){
     
     deleteCategorys.innerHTML = ""
     deleteCategoryText.innerHTML = ""
+    //name
     let name = document.createElement("h2")
     name.classList.add("categoryTitle")
     name.innerText = "Chose category/categories that you want to delete"
     deleteCategoryText.append(name)
-    
+    //btn
+    let submitBtn = document.createElement("button")
+    submitBtn.classList.add("button", "flex", "justifyCenter", "alignCenter")
+    submitBtn.id = "submitDeleteCategory"
+    submitBtn.innerText = "Delete Category"
+    submitBtn.type = "reset"
+    let btnContainer = document.getElementById("delCategoryBTN")
+    btnContainer.append(submitBtn)
+
      let getCategory = await gettAllCategoryInProduct(id)
-     
+     if(getCategory == "" || getCategory == []){
+         name.innerText = "The product dont have any categories!" 
+    }
  
         getCategory.forEach(element => {
          
@@ -167,35 +193,43 @@ async function deleteCategory(id){
             
              
         });
-
         document.getElementById("submitDeleteCategory").addEventListener('click', function(){
-        let checkboxes = document.getElementsByName("delCategory")
-        
-            for(var i = 0; i < checkboxes.length; i++){
-                if(checkboxes[i].checked == true){
-                    console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
-                    removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
+            let checkboxes = document.getElementsByName("delCategory")
+            
+                for(var i = 0; i < checkboxes.length; i++){
+                    if(checkboxes[i].checked == true){
+                        
+                        console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
+                        removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
+                        deleteCategorys.innerHTML = ""
+                        btnContainer.innerHTML = ""
+                        name.innerText = "success to remove!"
+                    }
                 }
-            }
-        
         })
+        
+        
 }
 
 
 
 
-//------------EventListener-------------------------------------
+//------------EventListener---------------
 
 optionProductList.addEventListener('change', () => {
+    let btnContainer = document.getElementById("addCategoryBTN")
+    btnContainer.innerHTML = ""
     addNewCategory(dataProductList.value)
   });
 
 optionDelList.addEventListener('change', () => {
+    let btnContainer = document.getElementById("delCategoryBTN")
+    btnContainer.innerHTML = ""
     deleteCategory(dataRemoveCategoryList.value)
 });
 
 
-//----------------------------
+//----------------- NEWSLETTER SECTION --------------------------------------------
 
 
 async function newNewsletter(){

@@ -7,7 +7,11 @@ export async function makeRequest(url, method, body) {
         body: body
     })
         let result = await response.json();
-        return result;
+        if(result === "Unauthorized"){
+            alert("Unauthorized, you are not admin!")
+        }else{
+            return result;
+        }
     } catch(err){
         console.error(err);
     }

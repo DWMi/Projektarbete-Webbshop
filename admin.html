@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <!--CSS-->
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/adminPage.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    
-    <script defer type="module" src="./js/changeProduct.js"></script>
+    <!--JS-->
     <script defer type="module" src="./js/adminpage.js"></script>
     <script defer type="module" src="./js/uploadCategory.js"></script>
 
@@ -150,15 +150,12 @@
                 <h2 class="containerHeaderTwo">Chose product:</h2>
                 <form action="">
                     <select id="dataProductList" required>
-                        <option value="" disabled selected>Product</option>
+                        <option id="testOption" value="" disabled selected>Product</option>
                     </select>
                     <br>
                     <div id="addCategoryText"class="component"></div>
                     <div id="addNewCategory" class="flex flexWrap"></div>
-                    <div class="component">
-                        <div id="submitAddCategory" type="reset" class="button flex justifyCenter alignCenter">Add Category</div>
-                        <p id=""></p>
-                    </div>   
+                    <div id="addCategoryBTN"class="component"></div>   
                 </form>
             </div>
             <!--------------------Delete Category From Product------------------------->
@@ -173,9 +170,9 @@
                     <br>
                     <div id="deleteCategoryText"class="component"></div>
                     <div id="deleteCategory" class="flex flexWrap"></div>
-                    <div class="component">
-                        <div id="submitDeleteCategory" type="reset" class="button flex justifyCenter alignCenter">Delete Category</div>
-                        <p id=""></p>
+                    <div id="delCategoryBTN"class="component"></div>   
+
+                       
                     </div>
                 </form>
             </div>
