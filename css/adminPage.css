@@ -152,26 +152,26 @@ display: none;
 
 /* Subscribers list */
 
-#emailList{
+#emailList, #orderList{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 10px 20px;
 }
 
-#subEmail{
+#subEmail, #orderId, #orderStatus{
     display: flex;
     flex-direction: column;
 
 }
 
-#subName{
+#subName, #orderDate{
     display: flex;
     flex-direction: column;
 
 }
 
-.name, .email{
+.name, .email, .order{
     font-size: large;
     display: flex;
     margin-top: 10px;
@@ -182,4 +182,5 @@ display: none;
     display: flex;
     flex-direction: column;
 }
+
 

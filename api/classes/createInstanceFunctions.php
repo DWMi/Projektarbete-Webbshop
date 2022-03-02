@@ -50,7 +50,7 @@ function createUser($ID, $UserEmail, $UserPassword, $UserRegisterDate, $UserFirs
 $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode) {
     
     return new User((int)$ID, $UserEmail, $UserPassword, (int)$UserRegisterDate, $UserFirstName, $UserLastName,
-   (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
+    (int)$TermsConditions, (int)$UserIsAdmin, (int)$AdminRequest,  $UserCountry, $UserCity,  $UserStreet, $UserZipCode);
 } 
 
 include_once("../classes/subscriberClass.php");

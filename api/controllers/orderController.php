@@ -3,6 +3,8 @@
     include_once("../classes/createInstanceFunctions.php");
     include_once("../controllers/orderDetailsController.php");
     include_once("../controllers/mainController.php");
+    include_once("../classes/orderClass.php");
+    include_once("../classes/databaseClass.php");
 
     class OrderController extends MainController {
 
@@ -14,8 +16,14 @@
 
         public function getOrders($userID){
 
-            $result = $this->database->fetchOrders($userID, $this->createFunction);
-            return $result;
+            return $this->database->fetchOrders($userID, $this->createFunction);
+
+        }
+
+        public function getAllOrder(){
+
+            return $this->database->fetchAll($this->createFunction);
+
         }
 
         public function newOrder($cart) {

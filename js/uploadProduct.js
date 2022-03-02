@@ -179,7 +179,7 @@ export async function renderCategories() {
         button.classList.add("categoryButton", "flex", "justifyCenter", "alignCenter");
         button.innerHTML = "Choose category";
 
-        if (localStorage.getItem("choosenCategory") == category.CategoryId) {
+        if (localStorage.getItem("choosenCategory") == category.ID) {
 
             button.style.backgroundColor = "green";
 
@@ -187,11 +187,11 @@ export async function renderCategories() {
 
         button.addEventListener("click", function(){
 
-            if (localStorage.getItem("choosenCategory") == category.CategoryId) {
+            if (localStorage.getItem("choosenCategory") == category.ID) {
                 localStorage.removeItem("choosenCategory");
                 button.style.backgroundColor = "grey";
-            } else {
-                saveChoice(category.CategoryId);
+            } else {    
+                saveChoice(category.ID);
             }
         });
 
