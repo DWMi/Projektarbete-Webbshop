@@ -17,8 +17,8 @@
 </head>
 <body>
 
-     <!-- navbar -->
-     <div id="navbar" class="zindexThree"></div>
+    <!-- navbar -->
+    <div id="navbar" class="zindexThree"></div>
 
 
     <div class="wrapper justifyCenter">
@@ -92,7 +92,7 @@
             </div>
 
             <div class="component">
-                <div id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</div>
+                <button id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</button>
                 <p id="productResponse"></p>
             </div>
 
@@ -117,13 +117,13 @@
                 <p id="imageInfoReturn"></p>
             </div>
             <div class="component">
-                <div id="saveCategory" class="button flex justifyCenter alignCenter">Save</div>
+                <button id="saveCategory" class="button flex justifyCenter alignCenter">Save</button>
                 <p id="categoryResponse"></p>
             </div>
         </div>
         <!--------------------Change Category------------------------->
         <br>
-          <div class="container flex flexColumn">
+        <div class="container flex flexColumn">
                 <h1 class="containerHeader">Change a product category: </h1>
                 
                 <div  class="component ">
@@ -165,12 +165,12 @@
                         <p id="addDatalistReturn"></p> 
                     </form>
                     <div class="component">
-                        <div id="submitCategoryChange" type="reset" class="button flex justifyCenter alignCenter">Change category</div>
+                        <button id="submitCategoryChange" type="reset" class="button flex justifyCenter alignCenter">Change category</button>
                         
                     </div>
                 </div>     
                 <div  class="component ">
-                   
+                
                     
                 
                 </div>  
@@ -178,7 +178,7 @@
         
                 
                 </div>  
-          </div>
+        </div>
         <br>
 
         <!--------------------Add Newsletter------------------------->
@@ -188,18 +188,18 @@
             <div class="component flex flexColumn">
                 <h2 class="containerHeaderTwo">Newsletter title:</h2>
                 <input id="newsTitle" type="title">
-               
+            
             </div>
 
             <div class="component flex flexColumn">
                 <h2 class="containerHeaderTwo">Newsletter body:</h2>
                 <textarea id="newsBody" name="Text" cols="40" rows="5"></textarea>
                 <p id="newsletterInformationReturn"></p>
-               
+                
             </div>
 
             <div class="component">
-                <div id="saveNews" class="button flex justifyCenter alignCenter">Save Newsletter</div>
+                <button id="saveNews" class="button flex justifyCenter alignCenter">Save Newsletter</button>
                 <p id="newsResponse">Newsletter saved!</p>
             </div>
 
@@ -211,18 +211,45 @@
             <h1 class="containerHeader">List of emails subscribed to our newsletter:</h1>
 
             <div id="emailList">
-              <div id="subName">
+                <div id="subName">
 
-              </div>
-              <div id="subEmail">
+                </div>
+                <div id="subEmail">
 
-              </div>
-               
+                </div>
+            
+                </div>
+        
             </div>
         
-    </div>
-        
-    </div>
 
+
+    <br>
+
+
+    <div class="container flex flexColumn" id="subsContainer">
+        <h1 class="containerHeader">List of all the orders placed:</h1>
+
+        <div id="orderList">
+        
+            <div id="orderId">
+
+            </div>
+            <div id="orderDate">
+
+            </div>
+
+            <div id="orderStatus">
+
+            </div>
+
+           <!--  <button id="markAsComplete" class="button flex justifyCenter alignCenter">Mark as complete</button> -->
+        
+        </div>
+    
+</div>
+
+</div>
+</div>
 </body>
 </html>

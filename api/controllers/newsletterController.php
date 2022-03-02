@@ -32,7 +32,7 @@
     
             $newsletter = new Newsletter(null, $newsLetterName, $newsLetterDescription);
     
-             $newsletterId = $this->database->insert($newsletter);            
+            $newsletterId = $this->database->insert($newsletter);            
     
             return $newsletterId;
     
@@ -61,22 +61,22 @@
         
             
         function newSubscriber($newSubscriber){
-       
-           $subscriberInformation = $newSubscriber[0];
-           $subscriberName = $subscriberInformation[name];
-           $subscriberEmail = $subscriberInformation[email];
     
-           $subscriber = new Subscriber(null, $subscriberName, $subscriberEmail);
+        $subscriberInformation = $newSubscriber[0];
+        $subscriberName = $subscriberInformation[name];
+        $subscriberEmail = $subscriberInformation[email];
+    
+        $subscriber = new Subscriber(null, $subscriberName, $subscriberEmail);
     
             $subscriberId = $this->database->insert($subscriber);            
             
             if (!$subscriberId) {
                 return "You are already subscribed to our newsletter.";
             }
-           return "You have subscribed to our newsletter!";
-       }
+        return "You have subscribed to our newsletter!";
+    }
 
-       public function showEmailSubs() {
+    public function showEmailSubs() {
         return $this->database->fetchAll($this->createFunction);
     }
 
