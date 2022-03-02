@@ -245,9 +245,8 @@ async function renderCartProductCard(){
 
       let orderNumber = await placeOrder(cart);
 
-      console.log(orderNumber)
-      // alert("Thank you for your purchase! Your order number is: " + orderNumber)
-      // window.location.href = "myPages.html";
+      alert("Thank you for your purchase! Your order number is: " + orderNumber)
+      window.location.href = "myPages.html";
 
     } else {
 
