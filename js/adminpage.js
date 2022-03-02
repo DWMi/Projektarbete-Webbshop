@@ -1,7 +1,7 @@
 import {makeRequest} from "./main.js";
 import {renderCategories} from "./uploadProduct.js";
-import {navbar} from '../components/navbar.js'
-
+import {renderAllProducts} from "./removeProduct.js";
+import {navbar} from '../components/navbar.js';
 
 async function initSite(){
     navbar;
@@ -10,6 +10,7 @@ async function initSite(){
     renderCategories();
     localStorage.clear();
 
+    renderAllProducts();
 }
 
 
@@ -99,6 +100,8 @@ async function getNewsletterSubsEmail(){
 document.getElementById("saveNews").addEventListener("click", function(){
     newNewsletter();
 });
+
+
 
 
 window.addEventListener("load", initSite);

@@ -12,6 +12,7 @@
     
     <script defer type="module" src="./js/changeProduct.js"></script>
     <script defer type="module" src="./js/adminpage.js"></script>
+    <script defer type="module" src="./js/uploadCategory.js"></script>
 
 </head>
 <body>
@@ -22,7 +23,7 @@
 
     <div class="wrapper justifyCenter">
 
-
+        <!--------------------Add new Product------------------------->
         <div class="container flex flexColumn">
             <h1 class="containerHeader">Add product:</h1>
 
@@ -89,7 +90,6 @@
                 <input id="imageThree" name="image" type="file">
                 <p id="imageInformationReturn"></p>
             </div>
-            
 
             <div class="component">
                 <div id="saveProduct" class="button flex justifyCenter alignCenter">Save new product</div>
@@ -99,8 +99,51 @@
 
         </div>
         <br>
+
+        <!--------------------Remove Product------------------------->
+
+        <div class="container flex flexColumn">
+
+            <h1 class="containerHeader">Update or delete product:</h1>
+            <div class="component">
+                <select id="productSelect">
+                    <option value="">Choose a product:</option>
+                </select>
+            </div>
+
+            <div id="productSizeRenderContainer" class="component flex flexWrap"></div>
+            <p id="sizeChangeReturn"></p>
+
+            <div class="component flex flexWrap" id="removeProductButtonContainer"></div>
+            <p id="updateStockReturn"></p>
+        </div>
+        <br>
+
+        <!--------------------Add new Category------------------------->
+
+        <div class="container flex flexColumn">
+            <h1 class="containerHeader">Add new category:</h1>
+            <input id="categoryName" class="productInput" type="text" placeholder="Category name">
+            <input id="categoryDescription" class="productInput" type="text" placeholder="Category description">
+            <p id="categoryNameResponse"></p>
+
+            <div class="component">
+                <h2 class="containerHeaderTwo">Add a logo image:</h2>
+                <input id="logoImg" name="image" type="file">
+                <p id="logoInformationReturn"></p>
+                <br>
+                <h2 class="containerHeaderTwo">Add one brand image to show in the homepage:</h2>
+                <input id="backgroundImg" name="image" type="file">
+                <p id="imageInfoReturn"></p>
+            </div>
+            <div class="component">
+                <div id="saveCategory" class="button flex justifyCenter alignCenter">Save</div>
+                <p id="categoryResponse"></p>
+            </div>
+        </div>
+        <br>
         <div class="container flex  flexWrap">
-            <!--------------------NEW add Category------------------------->
+            <!--------------------NEW add Category To Product------------------------->
             <div class="component">
                 <h1 class="containerHeader">Add a product category: </h1>
                 <br>
@@ -118,7 +161,7 @@
                     </div>   
                 </form>
             </div>
-            <!--------------------Delete Category------------------------->
+            <!--------------------Delete Category From Product------------------------->
             <div class="component">
                 <h1 class="containerHeader">Delete Category: </h1>
                 <br>

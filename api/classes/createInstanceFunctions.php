@@ -25,8 +25,8 @@ function createSize($id, $productId, $sizesInStock, $size) {
 
 include_once("../classes/categoryClass.php");
 
-function createCategory($id, $categoryName, $categoryDescription, $categoryImg) {
-    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg);
+function createCategory($id, $categoryName, $categoryDescription, $categoryImg, $categoryBackground) {
+    return new Category((int)$id, $categoryName, $categoryDescription, $categoryImg, $categoryBackground);
 }
 
 include_once("../classes/productInCategoryClass.php");
@@ -56,7 +56,7 @@ $TermsConditions, $UserIsAdmin, $AdminRequest,  $UserCountry, $UserCity,  $UserS
 include_once("../classes/subscriberClass.php");
 
 function createSubscriber($Id, $Email, $Name) {
-    return new Subscriber((int)$ID, $Email, $Name);
+    return new Subscriber((int)$Id, $Email, $Name);
 }
 
 
@@ -64,6 +64,16 @@ include_once("../classes/freightClass.php");
 
 function createFreightOption($id, $type, $cost) {
     return new FreightOption((int)$id, $type, $cost);
+}
+
+include_once("../classes/orderClass.php");
+
+function createOrder($id, $userId, $shippingId, $dateCreated, $orderStatus) {
+    return new Order((int)$id, (int)$userId, (int)$shippingId, $dateCreated, $orderStatus);
+}
+
+function createOrderDetails($productId, $orderId, $sizesId, $orderDetailsPrice, $orderDetailsQuantity) {
+    return new OrderDetails((int)$productId, (int)$orderId, (int)$sizesId, $orderDetailsPrice, $orderDetailsQuantity);
 }
 
 

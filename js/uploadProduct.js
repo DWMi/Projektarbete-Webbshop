@@ -7,7 +7,7 @@ export async function newProduct(){
     if(document.getElementById("productName").value == "" || document.getElementById("productName").value == null || document.getElementById("productDescription").value == "" || document.getElementById("productDescription").value == null || document.getElementById("productPrice").value == "" || document.getElementById("productPrice").value == null) {
         document.getElementById("productInformationReturn").innerHTML= "Please fill out all the fields.";
     }
-    else if(document.getElementById("40").value === "" || isNaN(document.getElementById("40").value) || document.getElementById("41").value  === "" || isNaN(document.getElementById("41").value) || document.getElementById("42").value === "" || isNaN(document.getElementById("42").value) || document.getElementById("43").value === "" || isNaN(document.getElementById("43").value) || document.getElementById("44").value === "" || isNaN(document.getElementById("44").value) || document.getElementById("45").value === "" || isNaN(document.getElementById("45").value) || document.getElementById("46").value === "" || isNaN(document.getElementById("46").value) ) {
+    else if(document.getElementById("39").value === "" || isNaN(document.getElementById("39").value) || document.getElementById("40").value === "" || isNaN(document.getElementById("40").value) || document.getElementById("41").value  === "" || isNaN(document.getElementById("41").value) || document.getElementById("42").value === "" || isNaN(document.getElementById("42").value) || document.getElementById("43").value === "" || isNaN(document.getElementById("43").value) || document.getElementById("44").value === "" || isNaN(document.getElementById("44").value) || document.getElementById("45").value === "" || isNaN(document.getElementById("45").value) || document.getElementById("46").value === "" || isNaN(document.getElementById("46").value) ) {
         document.getElementById("sizeInformationReturn").innerHTML= "Please fill out all the fields.";
         document.getElementById("productInformationReturn").innerHTML= "";
     }
@@ -80,6 +80,10 @@ export async function newProduct(){
         productInformation.price = document.getElementById("productPrice").value;
 
         let sizes = [];
+        let size39 = {
+            "stock" : parseInt(document.getElementById("39").value),
+            "size" : 39
+        };
         let size40 = {
             "stock" : parseInt(document.getElementById("40").value),
             "size" : 40
@@ -109,7 +113,7 @@ export async function newProduct(){
             "size" : 46
         };
 
-        sizes.push(size40, size41, size42, size43, size44, size45, size46);
+        sizes.push(size39, size40, size41, size42, size43, size44, size45, size46);
 
         let choosenCategory = localStorage.getItem("choosenCategory");
 
@@ -164,7 +168,7 @@ export async function renderCategories() {
 
         let img = document.createElement("img");
         img.classList.add("categoryImg");
-        img.src = "../ASSETS/1.LOGOS/" + category.CategoryImg;
+        img.src = "../ASSETS/1.LOGOS/" + category.CategoryIMG;
         categoryImgContainer.append(img)
 
         let title = document.createElement("h2");
@@ -234,4 +238,9 @@ async function uploadImage(image) {
 document.getElementById("saveProduct").addEventListener("click", function(){
     newProduct();
 });
+
+/* document.getElementById("saveCategory").addEventListener("click", function(){
+    console.log("test");
+}); */
+
 

@@ -74,12 +74,12 @@ export async function renderCategory(){
         categoryContainer.append(categoryDiv)
 
         let categoryImg = document.createElement('img')
-        categoryImg.src = "./ASSETS/1.LOGOS/" + category.CategoryImg
+        categoryImg.src = "./ASSETS/1.LOGOS/" + category.CategoryIMG
         categoryDiv.append(categoryImg)
 
      
         categoryImg.addEventListener('click', function() {
-            let id = category.CategoryId
+            let id = category.ID
             console.log(category);
             window.location.href = "./product.html?category=" + id
 
@@ -160,7 +160,7 @@ export async function checkIsNormalUser() {
         logInBtn.style.display = "none";
         logOutBtn.style.display = "flex";
         adminPageBtn.style.display = "none";
-        return true;
+        return result;
     }
 
     

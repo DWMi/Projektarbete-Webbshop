@@ -147,6 +147,54 @@ class ProductController extends MainController {
     }
 
 
+    public function updateStock($sizes) {
+
+        $array = [];
+
+        foreach((array)$sizes as $key => $value) {
+
+            $query = "UPDATE size SET SizesInStock=".$value["SizesInStock"]." WHERE ID =".$value["ID"];
+
+            $response = $this->database->freeQuery($query, "createSize");
+
+            array_push($array, $response);
+        }
+
+        return "success";
+
+    }
+
+    public function deleteProduct($product) {
+
+        $id = $product["ProductId"];
+        $images = $product["Images"];
+
+        $productQuery = "DELETE FROM product WHERE ID =".$id.";";
+        $this->database->freeQuery($productQuery, $this->createFunction);
+
+        $sizesQuery = "DELETE FROM size WHERE ProductID =".$id.";";
+        $this->database->freeQuery($productQuery, "createSize");
+
+        $sizesQuery = "DELETE FROM images WHERE ProductID =".$id.";";
+        $this->database->freeQuery($productQuery, "createSize");
+        
+        $array = [];
+
+        foreach((array)$images as $key => $value) {
+
+            $img = "../../ASSETS/PRODUCTS/".$value["ImageSrc"];
+
+            unlink($img);
+
+        }
+
+        return "success";
+
+
+
+    }
+
+
 }
 
 

@@ -23,7 +23,7 @@ export async function getAllProducts(){
     const action = "getAll";
 
     let allProducts = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "GET");
-    console.log(allProducts)
+
     return allProducts;
 }
 
