@@ -7,26 +7,24 @@
 
 #container{
     top:80px;
-    height: 91.5vh;
+    height: 93.30vh;
     scroll-snap-type:y mandatory;
     scroll-behavior: smooth;
-    overflow-y: scroll;
+    overflow-y:scroll;
 }
 footer{
+
     margin-top:15px;
     scroll-snap-align: start;
 }
 
 section {
-    height:100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: start;
-    color:white;
+   
 }
-
+.imageContainer{
+    height: 100%;
+    width: 100%;
+}
 
 
 .imgSnap{
@@ -35,13 +33,20 @@ section {
     opacity: 90%;
     display: flex;
     justify-content: center;
-    background-size: fill;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
     
 }
 
 .snapper{
-    
+    height:100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    color:white;
     position: relative;
 }
 .snapper h1 {
