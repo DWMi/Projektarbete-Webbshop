@@ -59,6 +59,10 @@
 
             }
             
+            
+        }
+        
+        if($_SERVER["REQUEST_METHOD"] == "DEL"){
             if($_GET["action"] == "deleteProduct") {
 
                 $body = json_decode($_POST["product"], true);
