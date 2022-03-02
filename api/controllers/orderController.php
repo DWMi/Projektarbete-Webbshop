@@ -14,10 +14,16 @@
             parent::__construct("orders", "order");
         }
 
-        public function getOrders($userID){
+        public function getOrders($id){
+            $query = "SELECT ID, UserID, ShippingID, DateCreated, OrderStatus, SUM(orderdetails.OrderDetailsPrice) AS TotalPrice FROM `orders` INNER JOIN orderdetails ON orders.ID = orderdetails.orderID WHERE UserID = $id GROUP BY ID";
+            $result = $this->database->freeQuery($query, "createOrderMyPages");
+            return $result;
+        }
 
-            return $this->database->fetchOrders($userID, $this->createFunction);
-
+        public function sendOrderReceived($id){
+            $query = "UPDATE orders SET OrderStatus = 'Received' WHERE ID = $id";
+            $result = $this->database->freeQuery($query, null);
+            return $result;
         }
 
         public function getAllOrder(){

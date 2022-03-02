@@ -19,6 +19,26 @@ class Order {
 
 }
 
+class OrderMyPages {
+
+    public $ID;
+    public $UserID;
+    public $ShippingID;
+    public $DateCreated;
+    public $OrderStatus;
+    public $TotalPrice;
+
+    function __construct($id, $userId, $shippingId, $dateCreated, $orderStatus, $TotalPrice) {
+        $this->ID = $id;
+        $this->UserID = $userId;
+        $this->ShippingID = $shippingId;
+        $this->DateCreated = $dateCreated;
+        $this->OrderStatus = $orderStatus;
+        $this->TotalPrice = $TotalPrice;
+    }
+
+}
+
 class OrderDetails {
 
     public $ProductID;

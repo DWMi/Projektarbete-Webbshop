@@ -1,12 +1,12 @@
 import {navbar} from '../components/navbar.js'
+import { makeRequest } from '../js/main.js';
 import {checkIsNormalUser} from '../components/navbar.js'
-/* import {checkUserIsAdmin} from '../components/navbar.js'
- */import { makeRequest } from '../js/main.js';
+import {checkUserIsAdmin} from '../components/navbar.js'
 
 
 
 
-function initSite(){
+async function initSite(){
     divRenderer();
     navbar;
 
@@ -26,7 +26,7 @@ let adminMsg = document.createElement('p')
 btnAdmin.addEventListener("click", sendAdminRequest)
 
 
-   async function divRenderer() {
+ async function divRenderer() {
     
     const divCon = document.getElementById("container"),
         productCardContainer = document.createElement('div'),
@@ -36,10 +36,10 @@ btnAdmin.addEventListener("click", sendAdminRequest)
         btnAdmin.setAttribute("class", "adminBtn")
         adminMsg.setAttribute("class", "adminMsg")
 
+        
+        
         let orders = await getOrders()
-
-        console.log(orders)
-
+        console.log(orders);
        
     
     for(let i = 0; i < orders.length; i++) {
@@ -53,10 +53,18 @@ btnAdmin.addEventListener("click", sendAdminRequest)
             productCard = document.createElement('div'),
             totalSum = document.createElement('h5')
 
-            receivedBtn.addEventListener("click", () =>{
-                console.log(receivedBtn)
-            })
 
+            if(orders[i].OrderStatus == "sent"){
+                receivedBtn.addEventListener("click", () =>{
+                  sendOrderReceived(orders[i]);
+                  location.reload();
+                })
+        
+            } else {
+                receivedBtn.addEventListener("click", () =>{
+                    console.log("This order is not sent!")
+                })
+            }
         
         totalSum.setAttribute('class', 'totalSum')
         productCard.setAttribute('class', 'productCard')
@@ -65,17 +73,22 @@ btnAdmin.addEventListener("click", sendAdminRequest)
         orderStatus.setAttribute('class', 'orderStatusText')
         orderNr.setAttribute('class', 'orderNrText')
         receivedBtn.setAttribute("id", "receivedBtn")
-       
+
         
-        receivedBtn.innerText =`Received✔️`
-        totalSum.innerText = `Order date: ${orders[i].DateCreated}`     
+        if(orders[i].OrderStatus == "Received"){
+            receivedBtn.innerText = `${orders[i].OrderStatus}✔️ `
+            orderStatus.style.color = "green"
+
+        }else {
+            receivedBtn.innerText =`I received my order 👍`
+        }
+        totalSum.innerText = `Total Price: ${orders[i].TotalPrice}$`     
         orderNr.innerText = `Order number: ${orders[i].ID}` 
         orderStatus.innerText = `Order Status: ${orders[i].OrderStatus}`
-
         
 
 
-        divCon.appendChild(productCardContainer).setAttribute("class", "productCardContainer")
+
         parentReceivedBtn.appendChild(receivedBtn)
         parentProductCardText.appendChild(orderNr)
         parentProductCardText.appendChild(orderStatus)
@@ -92,23 +105,28 @@ btnAdmin.addEventListener("click", sendAdminRequest)
 
     
 
-  
+    divCon.appendChild(productCardContainer).setAttribute("class", "productCardContainer")
+
     productCardContainer.appendChild(pageBtnContainer)    
     pageBtnContainer.append(btnAdmin,adminMsg)
     
     btnAdmin.innerText = "Request to be ADMIN😎"
-    adminMsg.innerText = "Admin request pending..."
+    adminMsg.innerText = "Admin request pending...😴"
     
     if(UserLoggedInObject[0].AdminRequest == 1){
-        btnAdmin.style.display = "none";
+        btnAdmin.style.display = "none"
         adminMsg.style.display = "flex"
+    }
+
+    if(UserLoggedInObject[0].UserIsAdmin == 1){
+        btnAdmin.style.display = "none"
+        adminMsg.style.display = "none"
     }
     
     
 }
 
-
-
+// FUNCTIONS
 
 async function getOrders(){
     const action = "getOrders";
@@ -121,6 +139,20 @@ async function getOrders(){
 
     return result;
 }
+
+async function sendOrderReceived(orders){
+
+    console.log(orders.ID)
+    const action = "sendOrderReceived";
+    let method = "POST"
+    let body = new FormData()
+    body.set("orderID", JSON.stringify(orders.ID))
+
+    let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
+
+    console.log(result)
+}
+
 
 
 async function sendAdminRequest(){
@@ -146,27 +178,24 @@ async function sendAdminRequest(){
     console.log(result);
     }
     
+
+}
+
+let UserLoggedInObject;
+
+let resultAdmin = await checkUserIsAdmin();
+let resultUser = await checkIsNormalUser();
+
+if(resultAdmin != false){
     
-
+    UserLoggedInObject = await checkUserIsAdmin();
+}
+ 
+if(resultUser != false) {
+    UserLoggedInObject = await checkIsNormalUser(); 
 }
 
-/* function showMsg(){
-    adminMsg.style.display = "flex" 
-}
 
-function hideBtn(){
-    btnAdmin.style.display = "none" 
-} */
-
+console.log(UserLoggedInObject)
 
 window.addEventListener("load", initSite);
-
-
-let UserLoggedInObject = await checkIsNormalUser();
-
-console.log(UserLoggedInObject);
-
-
-
-
-

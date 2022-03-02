@@ -25,6 +25,15 @@
 
             } 
 
+            if($_GET["action"] == "sendOrderReceived") {
+
+                $orderController = new OrderController();
+                $orderID = json_decode($_POST["orderID"], true);
+                echo json_encode($orderController->sendOrderReceived($orderID));
+              
+
+            } 
+
             
         }
 
