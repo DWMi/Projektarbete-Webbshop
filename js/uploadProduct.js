@@ -22,6 +22,7 @@ export async function newProduct(){
     }
     else {
         document.getElementById("imageInformationReturn").innerHTML= "";
+        document.getElementById("productResponse").innerHTML = "";
 
         let list = []
 
@@ -135,7 +136,6 @@ export async function newProduct(){
                     let response = await uploadImage(imageFiles[i].file);
     
                 }
-                
                 document.getElementById("productResponse").innerHTML = "Product saved!";
             } else {
                 document.getElementById("productResponse").innerHTML = "Something went wrong saving your new product..";
