@@ -180,7 +180,6 @@ export async function checkIsNormalUser() {
 
   if (!user) {
     logInBtn.style.display = "flex";
-
     console.log(false);
   } else if (user.UserIsAdmin === 0) {
     const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
