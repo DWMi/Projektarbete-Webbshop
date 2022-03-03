@@ -102,10 +102,7 @@
 
   /* ----------------NAVBAR----------- */
 
-  .user-dropdown-content{
-
-    right:10%;
-  }
+  
 
 }
 
@@ -249,10 +246,6 @@
     font-size: 20px;
   }
 
-   .user-dropdown-content{
-
-    right:8%;
-  }
 
 }
 
@@ -411,10 +404,7 @@
 
     }
    
-    .user-dropdown-content{
-
-        right:0;
-      }
+    
 }
  
 
