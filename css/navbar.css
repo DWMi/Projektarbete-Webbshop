@@ -54,7 +54,7 @@
   height: 70px;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 .navbtn {
   display: flex;
@@ -140,11 +140,11 @@
   position: absolute;
   right: 130px;
   width: 200px;
-  height: 150px;
+  text-align: center;
   top: 80px;
   max-width: 80%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  z-index: 13;
   background-color: #f8f8f8;
   cursor: pointer;
   
@@ -238,6 +238,64 @@
 	100%{color: orange;}
 }
 
+/* ---------------HAMBURGER------------ */
+#hambDropDown{
+  display:none; 
+  z-index: 12;
+  font-size:30px;
+  font-weight: bold;
+  margin:10px;
+  cursor:pointer;
+  
+}
 
+#hambContainer{
+  display: none;
+  z-index: 10;
+  top:80px;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  overflow-y: scroll;
+}
 
+#brands div{
+  display: none;
+  height:70px;
+  cursor:pointer;
+  
+}
+#about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:70px;
+  width: 100%;
+  
+}
+#contact{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:70px;
+  width: 100%;
+  
+  
+}
+#account{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:70px;
+  width: 100%;
+  
+    
+}
+#cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:70px;
+  width: 100%;
+  
 
+}
