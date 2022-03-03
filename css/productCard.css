@@ -95,7 +95,7 @@ h4 {
 
 .productCard-container {
   display: flex;
-  flex-wrap: wrap;
+  
   align-items: center;
   justify-content: space-around;
   margin: 0 4%;
@@ -110,7 +110,7 @@ h4 {
 .productSize-container {
   display: flex;
   order: 3;
-  width: 300px;
+  width: 350px;
 }
 
 .category-container {
