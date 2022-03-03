@@ -34,7 +34,7 @@
 
             if($_GET["action"] == "checkImage") {
 
-                $uploadStatus = checkImage($_FILES["image"]);
+                $uploadStatus = checkImage($_FILES["image"], "PRODUCTS/");
 
                 echo json_encode($uploadStatus);
 
@@ -59,6 +59,10 @@
 
             }
             
+            
+        }
+        
+        if($_SERVER["REQUEST_METHOD"] == "DEL"){
             if($_GET["action"] == "deleteProduct") {
 
                 $body = json_decode($_POST["product"], true);

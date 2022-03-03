@@ -3,7 +3,6 @@
     try {
         include_once("../controllers/categoryController.php");
         include_once("../controllers/fileController.php");
-        include_once("../controllers/changeCategoryController.php");
         include_once("../controllers/productInCategoryController.php");
 
 
@@ -47,18 +46,7 @@
                 echo json_encode($ProductInCategoryController->addCategory($body));
                 
             }
-          
-        }
-        if($_SERVER["REQUEST_METHOD"] == "DEL"){
-
-            if($_GET["action"] == "deleteCategoryByProductId") {
-                
-                $ProductInCategoryController = new ProductInCategoryController();
-                echo json_encode($ProductInCategoryController->delCategoryByProductId((int)$_GET["id"],(int)$_GET["categoryId"]));
-                exit; 
-            }
-            
-
+        
             if($_GET["action"] == "addCategory"){
                 $body = json_decode($_POST["category"], true);
 
@@ -99,6 +87,16 @@
                 echo json_encode($uploadStatus);
         
             }
+        }
+        if($_SERVER["REQUEST_METHOD"] == "DEL"){
+
+            if($_GET["action"] == "deleteCategoryByProductId") {
+                
+                $ProductInCategoryController = new ProductInCategoryController();
+                echo json_encode($ProductInCategoryController->delCategoryByProductId((int)$_GET["id"],(int)$_GET["categoryId"]));
+                exit; 
+            }
+            
     }
 
 

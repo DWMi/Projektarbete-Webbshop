@@ -154,18 +154,24 @@ display: none;
 
 #emailList, #orderList{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 20px;
 }
 
-#subEmail, #orderId, #orderStatus{
+#subEmail, #orderId, #orderStatus, #markAsSentBtns, #orderDate{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
 }
 
-#subName, #orderDate{
+.singleOrder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#subName{
     display: flex;
     flex-direction: column;
 
@@ -175,6 +181,7 @@ display: none;
     font-size: large;
     display: flex;
     margin-top: 10px;
+    
 }
 
 

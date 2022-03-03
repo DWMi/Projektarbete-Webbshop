@@ -1,4 +1,4 @@
-import {navbar, checkIsNormalUser} from '../components/navbar.js';
+import {navbar, checkIsNormalUser, checkUserIsAdmin} from '../components/navbar.js';
 import {getCart, makeRequest} from '../js/main.js';
 async function initSite(){
   navbar;
@@ -17,6 +17,11 @@ async function renderCartProductCard(){
 
   let cart = await getCart();
 
+  if (!cart || cart.length < 1) {
+    document.getElementById("renderEmptyCart").innerText = "Your cart is empty.";
+    return;
+  } 
+
   let productCardContainer = document.createElement("div")
   productCardContainer.classList.add("cartProductCard-container")
   cartProductCards.append(productCardContainer)
@@ -26,7 +31,6 @@ async function renderCartProductCard(){
   cartCardWrapper.classList.add("cartProductCard-wrapper")
   productCardContainer.append(cartCardWrapper)
 
-  console.log(cart)
   cart.forEach(cartProduct => {
   // --------------------------- CART ITEM --------------------------------------------------
     let cartItem = document.createElement("div")
@@ -77,6 +81,7 @@ async function renderCartProductCard(){
     let cartItemQtyMiusDiv = document.createElement("div")
     //cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
     cartItemQtyMiusDiv.innerHTML = "-";
+    cartItemQtyMiusDiv.style.cursor = "pointer";
     cartItem.append(cartItemQtyMiusDiv)
     cartItemQtyMiusDiv.addEventListener("click", async function(){
       
@@ -112,11 +117,16 @@ async function renderCartProductCard(){
     let cartItemQtyPlusDiv = document.createElement("div")
     //cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
     cartItemQtyPlusDiv.innerHTML = "+";
+    cartItemQtyPlusDiv.style.cursor = "pointer";
     cartItem.append(cartItemQtyPlusDiv)
     cartItemQtyPlusDiv.addEventListener("click", async function(){
 
-      quantityPlus(cartProduct);
-      renderCartProductCard();
+      if(cartProduct.SizesInStock == cartProduct.Quantity) {
+        
+      } else {
+        quantityPlus(cartProduct);
+        renderCartProductCard();
+      }
 
     })
 
@@ -129,6 +139,7 @@ async function renderCartProductCard(){
     let cartItemDeleteDiv = document.createElement("div")
     //cartItemDeleteDiv.classList.add("cartItem-remove")
     cartItemDeleteDiv.innerHTML = "Remove";
+    cartItemDeleteDiv.style.cursor = "pointer";
     cartItem.append(cartItemDeleteDiv)
     cartItemDeleteDiv.addEventListener("click", async function(){
 
@@ -232,7 +243,10 @@ async function renderCartProductCard(){
 
       cart.unshift(JSON.parse(localStorage.getItem("freightOption")));
 
-      await placeOrder(cart);
+      let orderNumber = await placeOrder(cart);
+
+      alert("Thank you for your purchase! Your order number is: " + orderNumber)
+      window.location.href = "myPages.html";
 
     } else {
 
@@ -505,20 +519,19 @@ async function placeOrder(cart) {
 
   let response = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, "POST", body);
 
-  console.log(response);
-
+  return response;
 
 }
 
 async function pleaseLogin(){
   
   const userFetch = await checkIsNormalUser();
-  console.log(userFetch)
+  const adminFetch = await checkUserIsAdmin();
 
-  if(!userFetch) {
+
+  if(!userFetch && !adminFetch) {
     const plsLogin = document.getElementById('coBtn'),
         checkoutBtn = document.getElementsByClassName('checkout-btn')[0]
-
     plsLogin.innerText = "Please log in before check out"
     checkoutBtn.addEventListener('click',function(){
       window.location.href = "login.html"

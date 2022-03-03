@@ -134,7 +134,7 @@ async function removeProduct(product) {
     let body = new FormData();
     body.append("product", JSON.stringify(product));
 
-    let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body);
+    let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "DEL", body);
 
     if(response == "success") {
 

@@ -26,6 +26,12 @@
             return $result;
         }
 
+        public function sendOrderSent($id){
+            $query = "UPDATE orders SET OrderStatus = 'Sent' WHERE ID = $id";
+            $result = $this->database->freeQuery($query, null);
+            return $result;
+        }
+
         public function getAllOrder(){
 
             return $this->database->fetchAll($this->createFunction);
@@ -60,9 +66,12 @@
 
                     $orderDetailsController->newOrderDetails($orderDetails);
 
-                } 
+                    $query = "UPDATE size SET SizesInStock = SizesInStock-" . $quantity .  " WHERE ID = " . $sizesId . ";";
+                    $result = $this->database->freeQuery($query, null);
 
-        }
+                }
+
+            }
 
         unset($_SESSION["cart"]);
 
@@ -80,7 +89,6 @@
             $user = unserialize($_SESSION["loggedInAdmin"]);
             return $user[0]->ID;
         }
-
 
     }
 

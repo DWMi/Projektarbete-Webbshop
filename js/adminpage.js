@@ -79,18 +79,30 @@ async function gettAllProductDel(){
 
 async function addNewCategory(id){
    
-   addNewCategorys.innerHTML = ""
-   addCategoryText.innerHTML = ""
-   let name = document.createElement("h2")
-   name.classList.add("categoryTitle")
-   name.innerText = "Add a category that the product dont have"
-   addCategoryText.append(name)
-    
+    addNewCategorys.innerHTML = ""
+    addCategoryText.innerText = "" 
+    //text 
+    let name = document.createElement("h2")
+    name.classList.add("categoryTitle")
+    name.innerText = "Add a category that the product dont have"
+    addCategoryText.append(name)
+    //remove btn
+    let submitBtn = document.createElement("button")
+    submitBtn.classList.add("button", "flex", "justifyCenter", "alignCenter")
+    submitBtn.id = "submitAddCategory"
+    submitBtn.innerText = "Add Category"
+    submitBtn.type = "reset"
+    let btnContainer = document.getElementById("addCategoryBTN")
+    btnContainer.append(submitBtn)
+    //fetch
     let getAllCategory = await getAllCategories()
     let productCategory = await gettAllCategoryInProduct(id)
-    
+    //filter that show getAllCategory that is not = to productCategory
     let getCategory = getAllCategory.filter((getAllCategory) => !productCategory.find(productCategory => getAllCategory.ID === productCategory.CategoryId ))
-
+    
+    if(getCategory === ""){
+        name.innerText = "The product all ready have all categories!"
+    }
     getCategory.forEach(element => {
 
         let container = document.createElement("div")
@@ -122,10 +134,13 @@ async function addNewCategory(id){
                     
                     console.log("Product ID:",optionProductList.value,"Category ID:",checkboxes[i].value)
                     addCategoryByProductId(optionProductList.value,checkboxes[i].value)
+                    addNewCategorys.innerHTML = ""
+                    btnContainer.innerHTML = ""
+                    name.innerText = "success to Add!"
                 }
             }
-        
-        })
+            
+    })
     
     
 }
@@ -137,13 +152,24 @@ async function deleteCategory(id){
     
     deleteCategorys.innerHTML = ""
     deleteCategoryText.innerHTML = ""
+    //name
     let name = document.createElement("h2")
     name.classList.add("categoryTitle")
     name.innerText = "Chose category/categories that you want to delete"
     deleteCategoryText.append(name)
-    
+    //btn
+    let submitBtn = document.createElement("button")
+    submitBtn.classList.add("button", "flex", "justifyCenter", "alignCenter")
+    submitBtn.id = "submitDeleteCategory"
+    submitBtn.innerText = "Delete Category"
+    submitBtn.type = "reset"
+    let btnContainer = document.getElementById("delCategoryBTN")
+    btnContainer.append(submitBtn)
+
      let getCategory = await gettAllCategoryInProduct(id)
-     
+     if(getCategory == "" || getCategory == []){
+         name.innerText = "The product dont have any categories!" 
+    }
  
         getCategory.forEach(element => {
          
@@ -168,18 +194,22 @@ async function deleteCategory(id){
             
              
         });
-
         document.getElementById("submitDeleteCategory").addEventListener('click', function(){
-        let checkboxes = document.getElementsByName("delCategory")
-        
-            for(var i = 0; i < checkboxes.length; i++){
-                if(checkboxes[i].checked == true){
-                    console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
-                    removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
+            let checkboxes = document.getElementsByName("delCategory")
+            
+                for(var i = 0; i < checkboxes.length; i++){
+                    if(checkboxes[i].checked == true){
+                        
+                        console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
+                        removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
+                        deleteCategorys.innerHTML = ""
+                        btnContainer.innerHTML = ""
+                        name.innerText = "success to remove!"
+                    }
                 }
-            }
-        
         })
+        
+        
 }
 
 //--------------------ACCEPT ADMIN REQUEST---------------------------------
@@ -240,18 +270,22 @@ async function acceptAdminRequest(user){
 
 
 
-//------------EventListener-------------------------------------
+//------------EventListener---------------
 
 optionProductList.addEventListener('change', () => {
+    let btnContainer = document.getElementById("addCategoryBTN")
+    btnContainer.innerHTML = ""
     addNewCategory(dataProductList.value)
   });
 
 optionDelList.addEventListener('change', () => {
+    let btnContainer = document.getElementById("delCategoryBTN")
+    btnContainer.innerHTML = ""
     deleteCategory(dataRemoveCategoryList.value)
 });
 
 
-//----------------------------
+//----------------- NEWSLETTER SECTION --------------------------------------------
 
 
 async function newNewsletter(){
@@ -337,42 +371,90 @@ async function getNewsletterSubsEmail(){
 async function getOrder(){ 
 
     let orderList = document.getElementById("orderList")
-    let orderId = document.getElementById("orderId")
-    let orderDate = document.getElementById("orderDate")
-    let orderStatus = document.getElementById("orderStatus")
+    
 
     let action = "getAllOrder";
 
     let response = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, "GET");
     console.log(response);
     for (let i = 0; i < response.length; i++) {
+        let orderId = document.createElement("div")
+        let orderDate = document.createElement("div")
+        let orderStatus = document.createElement("div")
+        let markAsSentBtns = document.createElement("div")
         let idOrder = document.createElement("p")
         let dateOrder = document.createElement("p")
         let statusOrder = document.createElement("p")
+        let markAsComplete = document.createElement("button")
+        let singleOrder = document.createElement("div")
+        singleOrder.classList.add("singleOrder")
+        orderId.classList.add("orderId")
+        orderDate.classList.add("orderDate")
+        orderStatus.classList.add("orderStatus")
+        markAsSentBtns.classList.add("markAsSentBtns")
         idOrder.classList.add("order")
         dateOrder.classList.add("order")
         statusOrder.classList.add("order")
+        markAsComplete.classList.add("button")
         idOrder.append(response[i].ID)
         dateOrder.append(response[i].DateCreated)
         statusOrder.append(response[i].OrderStatus)
         orderId.append(idOrder)
         orderDate.append(dateOrder)
         orderStatus.append(statusOrder)
-        orderList.append(orderId, orderDate, orderStatus)
+        markAsSentBtns.append(markAsComplete)
+        singleOrder.append(orderId, orderDate, orderStatus, markAsSentBtns)
+        orderList.append(singleOrder)
 
         if (response[i].OrderStatus === "orderPlaced") {
-            let markAsComplete = document.createElement("button")
-            markAsComplete.classList.add("button")
-            markAsComplete.innerHTML = "Mark as complete"
-            orderList.append(orderId, orderDate, orderStatus, markAsComplete)
+            
+            markAsComplete.innerHTML = "Mark as sent"
 
+
+            markAsComplete.addEventListener("click", function(){
+                orderSent(response[i])
+                
+                location.reload("1000")
+            })
         }
+
+        if (response[i].OrderStatus === "Sent") {
+            markAsComplete.innerHTML = "Sent!"
+            markAsComplete.style.backgroundColor = "whitesmoke"
+            
+        }
+
+        if (response[i].OrderStatus === "Received") {
+            markAsComplete.innerHTML = "Received!"
+            markAsComplete.style.backgroundColor = "green"
+            
+        }
+
+
+    
         
     }
     console.log(response);
     
 
 }
+
+
+async function orderSent(response){
+
+    console.log(response.ID)
+    const action = "sendOrderSent";
+    let method = "POST"
+    let body = new FormData()
+    body.set("orderID", JSON.stringify(response.ID))
+
+    let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
+
+    console.log(result)
+}
+
+
+
 
 
 
