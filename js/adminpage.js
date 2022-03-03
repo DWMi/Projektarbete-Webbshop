@@ -387,7 +387,7 @@ async function getOrder(){
         let statusOrder = document.createElement("p")
         let markAsComplete = document.createElement("button")
         let singleOrder = document.createElement("div")
-        singleOrder.classList.add("singleOrder")
+        singleOrder.classList.add("singleOrder", "flexWrap")
         orderId.classList.add("orderId")
         orderDate.classList.add("orderDate")
         orderStatus.classList.add("orderStatus")
