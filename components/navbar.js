@@ -56,10 +56,10 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
                     class="naveIconSize fas fa-shopping-bag"></i>
             </a><span id="count"></span>
         </div>
-
+          <div id="hambDropDown">&#9776;</div>
     </div>
 
-    <div id="hambDropDown">&#9776;</div>
+   
     
         <div id="hambContainer">
             <div id="brands"></div>
