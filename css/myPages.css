@@ -13,8 +13,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height:100vh;
     position: relative;
+    margin-bottom: 30px;
 }
 .parentReceivedBtn{
     display: flex;

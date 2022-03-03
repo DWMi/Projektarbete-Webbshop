@@ -67,7 +67,7 @@ let adminMsg = document.createElement('p')
             parentReceivedBtn = document.createElement('div'),
             productCard = document.createElement('div'),
             totalSum = document.createElement('h5'),
-            notSentResponse = document.createElement("p")
+            notSentResponse = document.createElement("p"),
             totalSumContainer = document.createElement("div"),
             orderDate = document.createElement("h4")
 
