@@ -162,6 +162,7 @@
         order: 2;
         display: flex;
         justify-content: center;
+        
         width: 100%;
     }
     
@@ -175,6 +176,12 @@
         
         object-fit:cover;
     } 
+    .swiper-footer-div img {
+        display: block;
+        width: 350px;
+        height: 400px;
+        
+    }
     .productInfo-container {
         
         
@@ -242,10 +249,11 @@
         order: 2;
         display: flex;
         justify-content: center;
-       
+        flex-wrap: wrap;
         width: 100%;
     }
-    
+    .productSize-container { order: 3; width: auto;}
+
     .productInfo-wrapper {
         justify-content: flex-start;
      }
@@ -253,9 +261,9 @@
       
     .swiper-footer-div img {
         display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: 350px;
+        height: 350px;
+        
     }
     
     /* Title */
