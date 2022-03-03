@@ -332,7 +332,7 @@ async function renderFreightOptions(cart){
       
       if (localStorage.getItem("freightOption")) {
         localStorage.setItem("freightOption", JSON.stringify(freightOption));
-        renderFreightOptions();
+        renderFreightOptions(cart);
         renderTotalPrice(cart);
       } else {
         localStorage.setItem("freightOption", JSON.stringify(freightOption))
