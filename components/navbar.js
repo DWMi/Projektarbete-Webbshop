@@ -102,6 +102,7 @@ async function logOutUser() {
 
   if (result == true) {
     window.location.href = "index.html";
+    localStorage.clear();
   }
 }
 

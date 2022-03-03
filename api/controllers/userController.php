@@ -35,7 +35,12 @@ class UserController extends MainController {
 
     public function addNewsLetter($user){
         if($user->Newsletter == 1){
-            $this->database->insertNewsLetter(json_encode($user->UserEmail));
+            $name = json_encode($user->UserFirstName);
+            $email = json_encode($user->UserEmail);
+            $query = "INSERT INTO subtonewsletter (Name, Email) VALUES ($name, $email)";
+            $result = $this->database->freeQuery($query, null);
+            return $result;
+            
         }
     }
 
