@@ -37,7 +37,7 @@ if(resultUser != false) {
 
 let btnAdmin = document.createElement('button')
 let adminMsg = document.createElement('p')
-
+let orderMsg = document.getElementById("orderMsg")
 
 
 
@@ -51,9 +51,17 @@ let adminMsg = document.createElement('p')
         btnAdmin.setAttribute("class", "adminBtn")
         adminMsg.setAttribute("class", "adminMsg")
 
-        
+       
         
         let orders = await getOrders(UserLoggedInObject)
+
+        if(orders.length < 1){
+            orderMsg.innerText = "You have not made any orders yet!"
+        }
+
+        if(UserLoggedInObject[0].UserIsAdmin == 1 && orders.length < 1){
+            productCardContainer.style.display = "none"; 
+        }
         console.log(orders);
        
     
@@ -79,13 +87,25 @@ let adminMsg = document.createElement('p')
                 location.reload();
                 })
         
-            } else {
+            } 
+            
+            if (orders[i].OrderStatus == "Placed"){
                 receivedBtn.addEventListener("click", () =>{
-                    console.log("This order is not sent!")
                     notSentResponse.classList.add("notSentResponse")
                     parentReceivedBtn.append(notSentResponse)
-                    notSentResponse.innerText = "This order is not sent!"
+                    notSentResponse.innerText = "This order is not sent !"
+                    notSentResponse.style.color = "red"
 
+                })
+            } 
+            
+
+            if (orders[i].OrderStatus == "Received"){
+                receivedBtn.addEventListener("click", () =>{
+                    notSentResponse.classList.add("notSentResponse")
+                    parentReceivedBtn.append(notSentResponse)
+                    notSentResponse.innerText = "This order is already received!"
+                    notSentResponse.style.color = "green"
                 })
             }
         
@@ -109,7 +129,7 @@ let adminMsg = document.createElement('p')
         orderDate.innerText = `Order date: ${orders[i].DateCreated}`
         totalSum.innerText = `Total Price: ${orders[i].TotalPrice}$`     
         orderNr.innerText = `Order number: ${orders[i].ID}` 
-        orderStatus.innerText = `Order Status: ${orders[i].OrderStatus}`
+        orderStatus.innerText = `Order status: ${orders[i].OrderStatus}`
         
 
 
