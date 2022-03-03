@@ -1,4 +1,4 @@
-import {navbar, checkIsNormalUser, checkUserIsAdmin} from '../components/navbar.js';
+import {navbar, checkIsNormalUser, checkUserIsAdmin, showNumberCart} from '../components/navbar.js';
 import {getCart, makeRequest} from '../js/main.js';
 async function initSite(){
   navbar;
@@ -332,7 +332,7 @@ async function renderFreightOptions(cart){
       
       if (localStorage.getItem("freightOption")) {
         localStorage.setItem("freightOption", JSON.stringify(freightOption));
-        renderFreightOptions();
+        renderFreightOptions(cart);
         renderTotalPrice(cart);
       } else {
         localStorage.setItem("freightOption", JSON.stringify(freightOption))
@@ -469,6 +469,7 @@ async function quantityPlus(cartItem) {
   body.append("cartItem", JSON.stringify(cartItem));
 
   let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+  showNumberCart();
 
   return response;
 
@@ -482,6 +483,7 @@ async function quantityMinus(cartItem) {
   body.append("cartItem", JSON.stringify(cartItem));
 
   let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+  showNumberCart();
 
   return response;
 
@@ -495,7 +497,9 @@ async function removeCartItem(cartItem) {
   body.append("cartItem", JSON.stringify(cartItem));
 
   let response = await makeRequest(`../api/receivers/cartReciever.php?action=${action}`, "POST", body);
+  showNumberCart();
 
+  location.reload();
   return response;
 
 }

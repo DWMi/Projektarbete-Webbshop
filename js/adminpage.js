@@ -13,6 +13,7 @@ async function initSite(){
     gettAllProductDel()
     localStorage.clear();
     renderAllProducts();
+    getAdminRequests();
 }
 
 //---------------------------
@@ -211,6 +212,61 @@ async function deleteCategory(id){
         
 }
 
+//--------------------ACCEPT ADMIN REQUEST---------------------------------
+
+
+
+async function getAdminRequests() {
+    const action = "getAdminRequests";
+    let method = "GET"
+
+    let result = await makeRequest(`../api/receivers/adminRequestReceiver.php?action=${action}`, method, undefined)
+
+    renderAdminRequests(result)
+    
+
+}
+
+async function renderAdminRequests(userObj){
+    let parentDiv = document.getElementById("container")
+    parentDiv.classList.add("class", "parentDiv")
+
+    userObj.forEach(user => {
+        let userContainer = document.createElement("div")
+        userContainer.classList.add("class", "userContainer")
+        let userEmail = document.createElement("li")
+        let approveBtn = document.createElement("button")
+        approveBtn.classList.add("button")
+
+        
+        userEmail.innerText = `User email: ${user.UserEmail}`
+        approveBtn.innerText = "Accept request"
+
+        userContainer.append(userEmail, approveBtn)
+        parentDiv.append(userContainer)
+
+        approveBtn.addEventListener("click", () =>{
+              acceptAdminRequest(user)
+              approveBtn.innerText = "Accept request ✔️"
+              userEmail.style.color = "green"
+              userEmail.innerText = `User email: ${user.UserEmail} ✔️`
+            
+
+          })
+    });
+
+}
+
+async function acceptAdminRequest(user){
+
+    const action = "acceptAdminRequest";
+    let method = "POST"
+    let body = new FormData()
+    body.set("userID", JSON.stringify(user.ID))
+
+    let result = await makeRequest(`../api/receivers/adminRequestReceiver.php?action=${action}`, method, body)
+    console.log(result)
+}
 
 
 
@@ -350,7 +406,7 @@ async function getOrder(){
         singleOrder.append(orderId, orderDate, orderStatus, markAsSentBtns)
         orderList.append(singleOrder)
 
-        if (response[i].OrderStatus === "orderPlaced") {
+        if (response[i].OrderStatus === "Order Placed") {
             
             markAsComplete.innerHTML = "Mark as sent"
 

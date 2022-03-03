@@ -145,10 +145,6 @@ class Database {
         
     }
 
-    public function insertNewsLetter($email){
-        $query = $this->db->prepare("INSERT INTO subtonewsletter(`Email`) VALUES ($email)");
-        $query->execute();
-    }
 
 
     public function updateAdminRequestRow($id, $adminReq){
