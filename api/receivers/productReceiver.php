@@ -1,7 +1,7 @@
 <?php
 
     try {
-
+        session_start();
         include_once("../controllers/productController.php");
 
         if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -20,61 +20,71 @@
         }
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(isset($_SESSION["loggedInAdmin"]) ){
+                include_once("../controllers/fileController.php");
 
-            include_once("../controllers/fileController.php");
+                if($_GET["action"] == "newProduct") {
 
-            if($_GET["action"] == "newProduct") {
+                    $body = json_decode($_POST["product"], true);
 
-                $body = json_decode($_POST["product"], true);
+                    $productController = new ProductController();
+                    echo json_encode($productController->newProduct($body));
 
-                $productController = new ProductController();
-                echo json_encode($productController->newProduct($body));
+                }
 
+                if($_GET["action"] == "checkImage") {
+
+
+                    $uploadStatus = checkImage($_FILES["image"], "PRODUCTS/");
+
+                    echo json_encode($uploadStatus);
+
+                
+
+
+                }
+
+                if($_GET["action"] == "uploadImage") {
+
+
+                    $uploadStatus = uploadImage($_FILES["image"], "PRODUCTS/");
+
+                    echo json_encode($uploadStatus);
+
+                }
+
+                if($_GET["action"] == "updateStock") {
+
+                    $body = json_decode($_POST["sizes"], true);
+
+                    $productController = new ProductController();
+
+                    echo json_encode($productController->updateStock($body));
+
+                }
+            }else{
+                echo json_encode("Unauthorized");
             }
-
-            if($_GET["action"] == "checkImage") {
-
-                $uploadStatus = checkImage($_FILES["image"], "PRODUCTS/");
-
-                echo json_encode($uploadStatus);
-
-            }
-
-            if($_GET["action"] == "uploadImage") {
-
-
-                $uploadStatus = uploadImage($_FILES["image"], "PRODUCTS/");
-
-                echo json_encode($uploadStatus);
-
-            }
-
-            if($_GET["action"] == "updateStock") {
-
-                $body = json_decode($_POST["sizes"], true);
-
-                $productController = new ProductController();
-
-                echo json_encode($productController->updateStock($body));
-
-            }
-            
             
         }
         
         if($_SERVER["REQUEST_METHOD"] == "DEL"){
-            if($_GET["action"] == "deleteProduct") {
+            if(isset($_SESSION["loggedInAdmin"]) ){
 
-                $body = json_decode($_POST["product"], true);
+                if($_GET["action"] == "deleteProduct") {
 
-                
+                    $body = json_decode($_POST["product"], true);
 
-                $productController = new ProductController();
+                    
 
-                echo json_encode($productController->deleteProduct($body));
+                    $productController = new ProductController();
 
+                    echo json_encode($productController->deleteProduct($body));
+
+                }
+            }else{
+                echo json_encode("Unauthorized");
             }
-
         }
 
 

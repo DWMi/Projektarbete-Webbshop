@@ -50,14 +50,20 @@
 
             
         }
-
+        //block
         if($_SERVER["REQUEST_METHOD"] == "GET"){
+            if(isset($_SESSION["loggedInAdmin"]) ){
 
-            if($_GET["action"] == "getAllOrder") {
-                $orderController = new OrderController();
-                echo json_encode($orderController->getAllOrder());
 
-            } 
+                if($_GET["action"] == "getAllOrder") {
+                    $orderController = new OrderController();
+                    echo json_encode($orderController->getAllOrder());
+    
+                } 
+
+            }else{
+                echo json_encode("Unauthorized");
+            }
 
         }   
 

@@ -100,7 +100,7 @@ async function addNewCategory(id){
     //filter that show getAllCategory that is not = to productCategory
     let getCategory = getAllCategory.filter((getAllCategory) => !productCategory.find(productCategory => getAllCategory.ID === productCategory.CategoryId ))
     
-    if(getCategory === ""){
+    if(getCategory == "" || getCategory == []){
         name.innerText = "The product all ready have all categories!"
     }
     getCategory.forEach(element => {
@@ -134,7 +134,7 @@ async function addNewCategory(id){
                     
                     console.log("Product ID:",optionProductList.value,"Category ID:",checkboxes[i].value)
                     addCategoryByProductId(optionProductList.value,checkboxes[i].value)
-                    addNewCategorys.innerHTML = ""
+                    
                     btnContainer.innerHTML = ""
                     name.innerText = "success to Add!"
                 }
@@ -202,7 +202,7 @@ async function deleteCategory(id){
                         
                         console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
                         removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
-                        deleteCategorys.innerHTML = ""
+                        
                         btnContainer.innerHTML = ""
                         name.innerText = "success to remove!"
                     }
