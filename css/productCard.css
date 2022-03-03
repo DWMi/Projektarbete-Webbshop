@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-*{
-  font-family: 'Poppins', sans-serif;  }
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap");
 
-h4 {
-  font-size: large;
+* {
+  font-family: "Heebo", sans-serif;
 }
+
+
 
 /* ---------- Product card WRAPPERS ----------- */
 .productInfo-wrapper {
@@ -12,11 +12,7 @@ h4 {
   justify-content: center;
   flex-direction: column;
 }
-.productInfo-wrapper h2, h3,
 
-h4 {
-  padding: 4%;
-}
 
 .productPrice{
   font-size: 40px;

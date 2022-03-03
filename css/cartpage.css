@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-*{
-  font-family: 'Poppins', sans-serif;  }
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;800&display=swap");
+
+* {
+  font-family: "Heebo", sans-serif;
+}
+
   
 /* TEXT FOR ITEMS IN CART */
 .cartItem p {
@@ -122,19 +125,17 @@ display: flex;
   background-color: rgba(0, 0, 0, 0.068);
   border-radius: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 20px;
   
 }
 
-.checkout-info h3 {
-  letter-spacing: 4px;
-  padding: 4%;
 
-}
 
 .checkout-subtotal-wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 
@@ -143,6 +144,7 @@ display: flex;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 
