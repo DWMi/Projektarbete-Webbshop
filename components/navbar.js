@@ -148,7 +148,7 @@ export async function UserIsAdmin() {
 
   if (result) {
     
-    if (user.UserIsAdmin === 0) {
+    if (   0) {
         const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
         const myAcc = document.createElement("a");
     

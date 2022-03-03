@@ -99,6 +99,14 @@
   .cartItem p {
     font-size: 1.5vw;
   }
+
+  /* ----------------NAVBAR----------- */
+
+  .user-dropdown-content{
+
+    right:10%;
+  }
+
 }
 
 @media only screen and (max-width: 1439px) {
@@ -164,6 +172,7 @@
 }
 
 @media only screen and (max-width: 1032px) {
+
   .productCard-container {
     flex-wrap: wrap;
     justify-content: center;
@@ -240,7 +249,10 @@
     font-size: 20px;
   }
 
-  
+   .user-dropdown-content{
+
+    right:8%;
+  }
 
 }
 
@@ -399,7 +411,10 @@
 
     }
    
-    
+    .user-dropdown-content{
+
+        right:0;
+      }
 }
  
 
