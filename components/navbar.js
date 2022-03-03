@@ -1,6 +1,7 @@
 //the navbar.js file needs render.js to work aswell
 import { getAllCategories } from "../js/main.js";
 import { makeRequest } from "../js/main.js";
+import { getCart } from "../js/main.js";
 
 export let navbar = (document.getElementById("navbar").innerHTML = `
 
@@ -47,7 +48,8 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
 
         </div>
         </div>
-        <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
+        <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i>
+        </a><span id="count"></span></div>
         
         </div>
         
@@ -90,6 +92,7 @@ async function initSite() {
   isAUser();
   UserIsAdmin();
   renderCategory();
+  showNumberCart()
 }
 
 
@@ -209,6 +212,22 @@ export async function checkIsNormalUser() {
     return result;
   }
 }
+
+export async function showNumberCart(){
+  let cart = await getCart()
+  console.log(cart);
+  if (cart && cart.length > 0) {
+    let cartNumber = 0;
+    for (let index = 0; index < cart.length; index++) {
+      cartNumber = cartNumber + cart[index].Quantity;
+      console.log(cartNumber);
+    }
+    document.getElementById("count").style.display = "block";
+    document.getElementById("count").innerHTML = cartNumber;
+  } 
+  
+}
+
 
 
 window.addEventListener("load", initSite);
