@@ -202,4 +202,24 @@ display: none;
     flex-direction: column;
 }
 
+.userContainer{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    
+    
+}
+
+.parentDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+li {
+    font-size: 18px;
+}
+
 

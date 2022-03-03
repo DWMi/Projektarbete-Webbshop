@@ -19,6 +19,21 @@ public function sendAdminRequest($adminRequestValues){
     
 }
 
+public function getAdminRequests(){
+    $query = "SELECT * FROM users WHERE AdminRequest = 1";
+    $result = $this->database->freeQuery($query, "createUser");
+    return $result;
+}
+
+
+public function acceptAdminRequest($id){
+    $query = "UPDATE users SET AdminRequest = '0', UserIsAdmin = '1' WHERE ID = $id";
+    $result = $this->database->freeQuery($query, null);
+    return $result;
+}
+
+
+
 
 
 }
