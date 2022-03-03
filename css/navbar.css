@@ -157,7 +157,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  right: 130px;
+  right: 0px;
   width: 200px;
   text-align: center;
   top: 80px;
@@ -166,6 +166,7 @@
   z-index: 13;
   background-color: #f8f8f8;
   cursor: pointer;
+  padding:10px;
   
 }
 
