@@ -336,4 +336,10 @@
     }
 
 
+    #productSelect, #dataProductList, #dataRemoveCategoryList{
+        width: 230px;
+    }
+
+
+
 }
