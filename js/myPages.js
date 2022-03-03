@@ -143,6 +143,7 @@ let orderMsg = document.getElementById("orderMsg")
         productCardContainer.appendChild(parentProductCard).setAttribute("class", "parentProductCard")
         totalSumContainer.append(orderDate, totalSum)
         parentProductCard.append(totalSumContainer)
+        
 
        
 
