@@ -137,6 +137,7 @@ export async function newProduct(){
     
                 }
                 document.getElementById("productResponse").innerHTML = "Product saved!";
+                setTimeout(function(){ location.reload(); }, 2500);
             } else {
                 document.getElementById("productResponse").innerHTML = "Something went wrong saving your new product..";
             }

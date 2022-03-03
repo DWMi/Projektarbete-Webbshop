@@ -166,9 +166,10 @@ display: none;
     margin: 10px 20px;
 }
 
-#orderId, #orderStatus, #markAsSentBtns, #orderDate{
+.orderId, #orderStatus, #markAsSentBtns, #orderDate{
     display: flex;
     flex-direction: row;
+    width: 200px;
 
 }
 
@@ -176,6 +177,7 @@ display: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 }
 
 .orderStatus{
