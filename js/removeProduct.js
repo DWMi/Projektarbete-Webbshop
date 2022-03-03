@@ -68,6 +68,7 @@ async function renderSizes(id) {
     updateButton.addEventListener("click", async function() {
 
         await updateStock(sizes)
+        setTimeout(function(){ location.reload(); }, 2500);
 
         //UPDATE size SET SizesInStock=10 WHERE ID = 1
 
@@ -81,6 +82,7 @@ async function renderSizes(id) {
     deleteButton.addEventListener("click", async function() {
 
         await removeProduct(product);
+        setTimeout(function(){ location.reload(); }, 2500);
 
     })
 

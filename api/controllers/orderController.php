@@ -46,7 +46,7 @@
 
             $shippingId = $cart[0][ID];
 
-            $orderStatus = "Order Placed";
+            $orderStatus = "Placed";
 
             $order = new Order(null, $userId, $shippingId, null, $orderStatus);
 

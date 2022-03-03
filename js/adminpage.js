@@ -78,7 +78,7 @@ async function gettAllProductDel(){
 
 
 async function addNewCategory(id){
-   
+
     addNewCategorys.innerHTML = ""
     addCategoryText.innerText = "" 
     //text 
@@ -138,7 +138,7 @@ async function addNewCategory(id){
                     btnContainer.innerHTML = ""
                     name.innerText = "success to Add!"
                 }
-            }
+            }setTimeout(function(){ location.reload(); }, 2500);
             
     })
     
@@ -206,7 +206,7 @@ async function deleteCategory(id){
                         btnContainer.innerHTML = ""
                         name.innerText = "success to remove!"
                     }
-                }
+                } setTimeout(function(){ location.reload(); }, 2500);
         })
         
         
@@ -406,7 +406,7 @@ async function getOrder(){
         singleOrder.append(orderId, orderDate, orderStatus, markAsSentBtns)
         orderList.append(singleOrder)
 
-        if (response[i].OrderStatus === "Order Placed") {
+        if (response[i].OrderStatus === "Placed") {
             
             markAsComplete.innerHTML = "Mark as sent"
 
@@ -414,7 +414,7 @@ async function getOrder(){
             markAsComplete.addEventListener("click", function(){
                 orderSent(response[i])
                 
-                location.reload("1000")
+                setTimeout(function(){ location.reload(); }, 2000);
             })
         }
 
