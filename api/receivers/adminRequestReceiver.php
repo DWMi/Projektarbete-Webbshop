@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once("../controllers/adminRequestController.php");
 
 
@@ -37,10 +37,13 @@ include_once("../controllers/adminRequestController.php");
 
 
     
+
+
+
     
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         
-
+    if(isset($_SESSION["loggedInAdmin"]) ){    
         if($_GET["action"] == "getAdminRequests"){
              
  
@@ -50,11 +53,12 @@ include_once("../controllers/adminRequestController.php");
             
     
          
-        } else {
-            echo json_encode(false);
-        }
-
-        exit;
+        } 
+        
+    }else{
+        echo json_encode("Unauthorized");
+    }
+       
 
     }
 
