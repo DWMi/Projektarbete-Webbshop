@@ -350,7 +350,7 @@ async function getOrder(){
         singleOrder.append(orderId, orderDate, orderStatus, markAsSentBtns)
         orderList.append(singleOrder)
 
-        if (response[i].OrderStatus === "orderPlaced") {
+        if (response[i].OrderStatus === "Order Placed") {
             
             markAsComplete.innerHTML = "Mark as sent"
 

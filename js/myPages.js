@@ -66,10 +66,11 @@ let adminMsg = document.createElement('p')
             parentProductCardText = document.createElement('div'),
             parentReceivedBtn = document.createElement('div'),
             productCard = document.createElement('div'),
-            totalSum = document.createElement('h5')
+            totalSum = document.createElement('h5'),
+            notSentResponse = document.createElement("p")
 
 
-            if(orders[i].OrderStatus == "sent"){
+            if(orders[i].OrderStatus == "Sent"){
                 receivedBtn.addEventListener("click", () =>{
                 sendOrderReceived(orders[i]);
                 location.reload();
@@ -78,6 +79,10 @@ let adminMsg = document.createElement('p')
             } else {
                 receivedBtn.addEventListener("click", () =>{
                     console.log("This order is not sent!")
+                    notSentResponse.classList.add("notSentResponse")
+                    parentReceivedBtn.append(notSentResponse)
+                    notSentResponse.innerText = "This order is not sent!"
+
                 })
             }
         

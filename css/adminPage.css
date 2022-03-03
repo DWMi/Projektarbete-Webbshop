@@ -152,14 +152,21 @@ display: none;
 
 /* Subscribers list */
 
-#emailList, #orderList{
+#orderList{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 10px 20px;
 }
 
-#subEmail, #orderId, #orderStatus, #markAsSentBtns, #orderDate{
+#emailList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+
+#orderId, #orderStatus, #markAsSentBtns, #orderDate{
     display: flex;
     flex-direction: row;
 
@@ -171,7 +178,11 @@ display: none;
     justify-content: space-between;
 }
 
-#subName{
+.orderStatus{
+    width: 200px;
+    align-items: center;}
+
+#subEmail, #subName{
     display: flex;
     flex-direction: column;
 
@@ -181,6 +192,7 @@ display: none;
     font-size: large;
     display: flex;
     margin-top: 10px;
+    text-align: center;
     
 }
 
