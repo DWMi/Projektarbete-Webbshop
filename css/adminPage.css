@@ -152,20 +152,39 @@ display: none;
 
 /* Subscribers list */
 
-#emailList, #orderList{
+#orderList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+
+#emailList{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 10px 20px;
 }
 
-#subEmail, #orderId, #orderStatus{
+.orderId, #orderStatus, #markAsSentBtns, #orderDate{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 200px;
 
 }
 
-#subName, #orderDate{
+.singleOrder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.orderStatus{
+    width: 200px;
+    align-items: center;}
+
+#subEmail, #subName{
     display: flex;
     flex-direction: column;
 
@@ -175,12 +194,34 @@ display: none;
     font-size: large;
     display: flex;
     margin-top: 10px;
+    text-align: center;
+    
 }
 
 
 #subsContainer{
     display: flex;
     flex-direction: column;
+}
+
+.userContainer{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    
+    
+}
+
+.parentDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+li {
+    font-size: 18px;
 }
 
 

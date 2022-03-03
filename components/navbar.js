@@ -1,6 +1,7 @@
 //the navbar.js file needs render.js to work aswell
 import { getAllCategories } from "../js/main.js";
 import { makeRequest } from "../js/main.js";
+import { getCart } from "../js/main.js";
 
 export let navbar = (document.getElementById("navbar").innerHTML = `
 
@@ -33,9 +34,9 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
 
     
     <div class="navBar-user">
-    <div class="user-dropdown">
-    <div id ="navUser" class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
-    <div class="user-dropdown-content">
+      <div class="user-dropdown">
+      <div id ="navUser" class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
+      <div class="user-dropdown-content">
 
         <a id="logInBtn" href="login.html">
         Login
@@ -44,8 +45,15 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
         <button class="selectBtn" id="logOutBtn">Log out</button>
 
         </div>
+      </div>
+
+
+        <div id="userNavIcon" class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i>
+        </a><span id="count"></span>
         </div>
-        <div id="userNavIcon"  class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i></a></div>
+        
+        </div>
+
         
     </div>
 
@@ -97,10 +105,10 @@ const navUserBtn = document.getElementById("navUser");
 async function initSite() {
   navbar;
   isAUser();
-  checkUserIsAdmin();
   hamburger()
-  
-
+  UserIsAdmin();
+  renderCategory();
+  showNumberCart()
 }
 
 
@@ -113,18 +121,29 @@ async function logOutUser() {
 
   if (result == true) {
     window.location.href = "index.html";
+    localStorage.clear();
   }
 }
 
 // CHECK WHAT KIND OF USER IS LOGGED IN
+
 export async function checkUserIsAdmin() {
+  let url = "../api/controllers/authAdmin.php";
+  let method = "GET";
+
+  let result = await makeRequest(url, method, undefined);
+  
+  return result;
+}
+
+export async function UserIsAdmin() {
   let url = "../api/controllers/authAdmin.php";
   let method = "GET";
 
   let result = await makeRequest(url, method, undefined);
   let user = result[0];
 
-  console.log(result, "checkUserIsAdmin");
+  console.log(result,  "checkUserIsAdmin");
 
   if (result) {
     
@@ -169,6 +188,7 @@ export async function checkUserIsAdmin() {
 
       admBtn.style.display = "flex";
       myAcc.style.display = "flex";
+      return result;
     }
   }
 }
@@ -184,7 +204,7 @@ export async function checkIsNormalUser() {
 
 
 
- async function isAUser() {
+ export async function isAUser() {
   let url = "../api/controllers/authUser.php";
   let method = "GET";
 
@@ -212,6 +232,7 @@ export async function checkIsNormalUser() {
     return result;
   }
 }
+
 
 const hamburger=async()=>{
   const hbmenu = document.getElementById('hambDropDown')
@@ -258,5 +279,21 @@ const hamburger=async()=>{
 }
 
 
-renderCategory();
+export async function showNumberCart(){
+  let cart = await getCart()
+  console.log(cart);
+  if (cart && cart.length > 0) {
+    let cartNumber = 0;
+    for (let index = 0; index < cart.length; index++) {
+      cartNumber = cartNumber + cart[index].Quantity;
+      console.log(cartNumber);
+    }
+    document.getElementById("count").style.display = "block";
+    document.getElementById("count").innerHTML = cartNumber;
+  } 
+  
+}
+
+
+
 window.addEventListener("load", initSite);

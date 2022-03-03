@@ -76,5 +76,9 @@ function createOrderDetails($productId, $orderId, $sizesId, $orderDetailsPrice, 
     return new OrderDetails((int)$productId, (int)$orderId, (int)$sizesId, $orderDetailsPrice, $orderDetailsQuantity);
 }
 
+function createOrderMyPages($id, $userId, $shippingId, $dateCreated, $orderStatus, $TotalPrice) {
+    return new OrderMyPages((int)$id, (int)$userId, (int)$shippingId, $dateCreated, $orderStatus, $TotalPrice);
+}
+
 
 ?>

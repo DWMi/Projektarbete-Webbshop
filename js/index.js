@@ -1,7 +1,5 @@
-import  {getAllCategories} from './main.js'
+import {getAllCategories} from './main.js'
 import {navbar} from '../components/navbar.js'
-
-
 
 const initSite=()=>{
     sectionRenderer();
@@ -11,49 +9,44 @@ const initSite=()=>{
 
 
 // Renders section to landing page
- const  sectionRenderer = async ()=>  {
+ async function sectionRenderer()  {
 
-    const catList = await getAllCategories(),
-    divCon = document.getElementById('container'),
-    footer = document.getElementById('lastFooter')
-    
-    
+    let catList = await getAllCategories()
+    let divCon = document.getElementById('container')
+    let footer = document.getElementById('lastFooter')
+    console.log(catList)
 
+    catList.forEach(element => {
+        console.log(element, " element")
+        console.log(element.ID, " element")
+        let sectSnap = document.createElement('section')
+        sectSnap.classList.add("snapper")
 
-    for (let i = 0; i < catList.length ; i++){
-        
-            const sectSnap = document.createElement('section'),
-                imgCon = document.createElement('div'),
-                imgSnap = document.createElement('img')
-                divCon.appendChild(sectSnap)
-                sectSnap.appendChild(imgCon)
-                imgCon.appendChild(imgSnap)
-                sectSnap.setAttribute('class','snapper')
-                imgCon.setAttribute('class','imageContainer')
-                imgSnap.setAttribute('class','imgSnap')
-                // sectSnap.appendChild(document.createElement('div')).setAttribute('class','imgSnap')
-                sectSnap.appendChild(document.createElement('h1')).innerText = `Checkout our shoes by ${catList[i].CategoryName}`    
-               
-            //    fetching catID and giving href to brands
-                document.getElementsByTagName('h1')[catList[i].ID].addEventListener("click",function(){
-                            window.location.href = `./product.html?category=${catList[i].Id}`
-                            })
-    }
+        let imgCon = document.createElement('div')
+        imgCon.classList.add("imageContainer")
 
-        
-        // array to attach attributes to newly created image tags
-        
-        catList.map((data, i) => {
-            document.getElementsByClassName('imgSnap')[i].setAttribute('src',`/ASSETS/Backgrounds/${data.CategoryName}`+ `.jpg`) 
+        let imgSnap = document.createElement('img')
+        imgSnap.classList.add("imgSnap")
+
+        let categoryText = document.createElement('h1')
+        categoryText.innerText = `Checkout our shoes by ${element.CategoryName}`
+
+        //append 
+        divCon.append(sectSnap)
+        sectSnap.append(categoryText,imgCon)
+        imgCon.append(imgSnap)
+        categoryText.addEventListener("click",function(){
+            window.location.href = `./product.html?category=${element.ID}`
         })
-        
-        // divCon.appendChild(footer)
-        const incest = document.createElement('footer')
-        incest.appendChild(footer)
-        divCon.appendChild(incest)
- 
-  
-}
+    });
+    catList.map((data, i) => {
+        document.getElementsByClassName('imgSnap')[i].setAttribute('src',`/ASSETS/Backgrounds/${data.CategoryBackGround}`) 
+    })
+    let incest = document.createElement('footer')
+    incest.append(footer)
+    divCon.append(incest)
+ }
+   
 
 
 window.addEventListener("load", initSite);

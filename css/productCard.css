@@ -118,7 +118,7 @@ h4 {
 .category-container {
   display: flex;
   justify-content: center;
-  height: 250px;
+  height: 400px;
   width: 80%;
   margin: auto;
 }

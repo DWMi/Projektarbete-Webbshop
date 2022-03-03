@@ -153,6 +153,7 @@ async function uploadBackgroundImage(image) {
 
 document.getElementById("saveCategory").addEventListener("click", function(){
     newCategory()
+    setTimeout(function(){ location.reload(); }, 2500);
 })
 
 
