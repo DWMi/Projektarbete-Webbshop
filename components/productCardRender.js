@@ -12,7 +12,7 @@ async function initSite(){
     const category = urlParams.get('category')
     const productURL = urlParams.get('product')
 
-    MQ.addListener(renderProductCard) // Attach listener function on state changes
+    MQ.addListener(renderProductCard) // Attach listener function on state changes 
     localStorage.clear();
     renderProductInCategory(category)
 
@@ -59,9 +59,6 @@ async function renderProductCard(id){
         /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
 
         //inside the wrapper
-        let categoryText = document.createElement("h2")
-        categoryText.innerHTML = "Category"
-        productInfoWrapper.append(categoryText)
 
         let productName = document.createElement("h3")
         productName.innerHTML = product.ProductName
@@ -239,9 +236,6 @@ async function renderProductCard(id){
         productInfoContainer.append(productInfoWrapper)
         /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
         //inside the wrapper
-        let categoryText = document.createElement("h2")
-        categoryText.innerHTML = "Category"
-        productInfoWrapper.append(categoryText)
 
         let productName = document.createElement("h3")
         productName.innerHTML = product.ProductName
@@ -455,10 +449,13 @@ async function renderProductInCategory(id){
     footerContainer.innerHTML = ""
     let allProductsFromCategory  = await getAllProductsByCategory(id) 
     
-    
-    
-    renderProductCard(allProductsFromCategory[0].ProductId)
+    const nextTitle = ""
+    const nextState = {additionalInformation: ""}
 
+    const nextURL = "./product.html?category=" + id + "&product=" + allProductsFromCategory[0].ProductId
+
+    window.history.pushState(nextState,nextTitle,nextURL)
+    renderProductCard(allProductsFromCategory[0].ProductId)
 
     let categoryContainer = document.createElement("div")
     categoryContainer.classList.add("category-container")
@@ -511,13 +508,39 @@ async function renderProductInCategory(id){
     categorySwiperContainer.append(categorySwiperPagination)
 
     let swiper2 = new Swiper(".mySwiper2", {
-        slidesPerView: 3,
+        
         spaceBetween: 10,
+        centeredSlides: true,
+        roundLengths: true,
         loop: true,
         pagination: {
             el: ".swiper-pagination2",
             clickable: true,
         },
+        breakpoints: {
+            // when window width is >= 640px
+            640: {
+
+              slidesPerView: 1,
+            },
+            // when window width is >= 768px
+            768: {
+                centeredSlides: false,
+              slidesPerView: 2,
+            }, 
+            1032: {
+                centeredSlides: false,
+                slidesPerView: 2,
+              },
+            1439: {
+                centeredSlides: true,
+                slidesPerView: 3,
+              },
+            1980: {
+            width: 1980,
+            slidesPerView: 3,
+            }, 
+          },
         navigation: {
             nextEl: ".swiper-button-next-two",
             prevEl: ".swiper-button-prev-two",

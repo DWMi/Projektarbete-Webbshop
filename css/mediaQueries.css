@@ -1,33 +1,74 @@
 /* ----------------Media Querris------------------------ */
 
+
 @media only screen and (max-width: 1630px) {
-  .productCard-container {
-    justify-content: space-evenly;
-  }
+   
+    .productCard-container  {
+        justify-content: space-evenly;
+    }
+   
+    .productSwiper-container{
+        height: 100%;
+        order: 2;
+        top: 20%;
+    }
+    
+    .mySwiper {
+        width: 550px;
+        height: 450px;
+      }
 
-  .productSwiper-container {
-    height: 100%;
-    order: 2;
-    top: 20%;
-  }
+    .swiper-product-div img {
+        display: block;
+        width: 500px;
+        
+        object-fit:cover;
+    }
 
-  .mySwiper {
-    width: 550px;
-    height: 450px;
-  }
+    .productInfo-container {
+        flex-direction: column;
+       
+        order: 1;
+       
+    }
+    
+    .productSize-container {
+        flex-direction: column;    
+        order: 3;
+    }
+    
+    
+    /* Title */
+    h1 {
 
-  .swiper-product-div img {
-    display: block;
-    width: 500px;
+    }
 
-    object-fit: cover;
-  }
+    /* Category */
+    h2 {
+        font-size: 1.5vw;
+    }
 
-  .productInfo-container {
-    flex-direction: column;
+    /* Product title */
+    h3{
+        font-size: 2.5vw;
+    }
 
-    order: 1;
-  }
+    /* product description */
+    h4{
+        font-size: 1.5vw;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+
+   /*  -------- CARTPAGE MQ -------- */
+
+   /* cart Item text */
+    .cartItem p {
+        font-size: 1.5vw;
+      }
+
+
+}
 
   .productSize-container {
     flex-direction: column;
@@ -171,16 +212,9 @@
   /* Title */
   h1 {
   }
-
-  /* Category */
-
-
-  /* Product title */
- 
-
-  /* product description */
-  h4 {
-    font-size: 3vw;
+  
+   h4 {
+        font-size: 3vw;
     color: rgba(0, 0, 0, 0.7);
   }
 
@@ -191,11 +225,16 @@
     font-size: 20px;
   }
 }
-@media only screen and (max-width: 700px) {
+
+
+
+@media only screen and (max-width: 700px){
+  
   .freightContainer,
   .checkout-container {
     width: 80%;
   }
+
 
   .cartItem p {
     font-size: 15px;
@@ -227,7 +266,43 @@
   .freightText {
     font-size: 15px;
   }
+
+
+    .navBar-user{
+
+        margin-left:10px;
+    }
+
+    #userNavIcon, .navBar-category{
+        display:none;
+    }
+
+    #hambContainer {
+    position: absolute;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    }
+    
+
+    #hambDropDown{
+        /* position:relative; */
+        display:flex;
+        justify-content:flex-end;
+        font-size:30px;
+        
+    }
+
+    #brands div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
 }
+
 
 @media only screen and (max-width: 500px) {
   .mySwiper {
@@ -323,4 +398,9 @@
     font-size: 4vw;
     color: rgba(0, 0, 0, 0.7);
   }
+  
+   #productSelect, #dataProductList, #dataRemoveCategoryList{
+        width: 230px;
+    }
 }
+

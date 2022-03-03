@@ -8,55 +8,70 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
 
 <div class="navBar-container">
 
-    <div class="navBar-logo"><a href="./index.html"><h1>SNEAKERS<span>.</span></h1></a></div>
+    <div class="navBar-logo"><a href="./index.html">
+            <h1>SNEAKERS<span>.</span></h1>
+        </a></div>
 
     <div class="navBar-category ">
         <div class="navbtn dropdown">
-            <div id="btnContainer" ><button class="dropbtn"><h5>BRANDS</h5>
-            <i class="fa fa-caret-down"></i> 
-            </button></div>
-            
+            <div id="btnContainer"><button class="dropbtn">
+                    <h5>BRANDS</h5><i class="fa fa-caret-down"></i>
+                </button></div>
+
 
             <div class="dropdown-content">
-     
-
-                <div class="dropdown-content" id="category-dropdown">
-                
 
 
+                <div class="dropdown-content" id="category-dropdown"></div>
+            </div>
+            <div class="navbtn">
+                <h5>ABOUT</h5>
+            </div>
+            <div class="navbtn">
+                <h5>CONTACTS</h5>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="navBar-user">
+        <div class="user-dropdown">
+            <div id="navUser" class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
+            <div class="user-dropdown-content">
+
+                <a id="logInBtn" href="login.html">
+                    Login
+                </a>
+                <div class="userbtn">
+                    <h6 id="name"></h6>
                 </div>
-            </div> 
-        <div class="navbtn"><h5>ABOUT</h5></div>
-        <div class="navbtn"><h5>CONTACTS</h5></div>
-    </div> 
+                <button class="selectBtn" id="logOutBtn">Log out</button>
 
-    </div> 
+            </div>
+        </div>
 
+
+        <div id="userNavIcon" class="userbtn navicon"><a href="./cartpage.html"><i
+                    class="naveIconSize fas fa-shopping-bag"></i>
+            </a><span id="count"></span>
+        </div>
+          <div id="hambDropDown">&#9776;</div>
+    </div>
+
+   
     
-    
-
-<div class="navBar-user">
-    <div class="userbtn"><h6 id="name"></h6></div>
-    <div class="user-dropdown">
-    <div class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
-    <div class="user-dropdown-content">
-
-        <a id="logInBtn" href="login.html">
-        Login
-        </a>
-        <button class="selectBtn" id="logOutBtn">Log out</button>
-
+        <div id="hambContainer">
+            <div id="brands"></div>
+            <div id="about"><a href="#">About</a></div>
+            <div id="contact"><a href="#">Contact</a></div>
+            <div id="cart"><a href="cartPage.html">Your Bag</a></div>
         </div>
-        </div>
-        <div class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i>
-        </a><span id="count"></span></div>
-        
-        </div>
-        
-        </div>
+</div>
         
         
-        `);
+`
+);
 
 export async function renderCategory() {
   let allCategories = await getAllCategories();
@@ -86,10 +101,12 @@ let logOutBtn = document.getElementById("logOutBtn");
 let logInBtn = document.getElementById("logInBtn");
 logOutBtn.addEventListener("click", logOutUser);
 const myAccBtn = document.getElementById("myAcc");
+const navUserBtn = document.getElementById("navUser");
 
 async function initSite() {
   navbar;
   isAUser();
+  hamburger()
   UserIsAdmin();
   renderCategory();
   showNumberCart()
@@ -143,14 +160,16 @@ export async function UserIsAdmin() {
     
         logInBtn.style.display = "none";
         logOutBtn.style.display = "flex";
+        navUserBtn.style.color ="black";
+
       return false
     } else if (user.UserIsAdmin === 1) {
       logInBtn.style.display = "none";
       console.log("ADMIN");
-      userName.innerText = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`;
+      userName.innerHTML = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`;
      
       logOutBtn.style.display = "flex";
-
+      navUserBtn.style.color ="black";
       const btnDropdownRenderer = document.getElementsByClassName(
         "user-dropdown-content"
       )[0];
@@ -195,6 +214,7 @@ export async function checkIsNormalUser() {
 
 
   if (!user) {
+    
     logInBtn.style.display = "flex";
     console.log(false);
   } else if (user.UserIsAdmin === 0) {
@@ -209,9 +229,56 @@ export async function checkIsNormalUser() {
 
     logInBtn.style.display = "none";
     logOutBtn.style.display = "flex";
+    navUserBtn.style.color ="gray";
     return result;
   }
 }
+
+
+const hamburger=async()=>{
+  const hbmenu = document.getElementById('hambDropDown')
+  let state = false
+  hbmenu.addEventListener('click',function(){
+    if(state === false){
+        const hambContainer = document.getElementById('hambContainer')
+        hambContainer.style.display="flex"
+        state = true
+        const hambDropDown = document.getElementById('hambDropDown').innerHTML="&#10006;"
+      }else{
+        const hambContainer = document.getElementById('hambContainer')
+        hambContainer.style.display="none"
+        state = false
+        const hambDropDown = document.getElementById('hambDropDown').innerHTML="&#9776;"
+      }
+    })
+
+    window.addEventListener("resize", () => {
+      if(window.screen.width > 700) {
+        const hambContainer = document.getElementById('hambContainer')
+        hambContainer.style.display="none"
+        state = false
+        const hambDropDown = document.getElementById('hambDropDown').innerHTML="&#9776;"
+      }
+    })
+
+  let renderCategory = await getAllCategories();
+
+  for (let i=0; i < renderCategory.length; i++){
+    const hambDivs = document.createElement('div'),
+    brandDivs = document.getElementById('brands')
+    brandDivs.appendChild(hambDivs)
+    hambDivs.setAttribute('id',`${renderCategory[i].CategoryName}` )
+    hambDivs.innerText=`${renderCategory[i].CategoryName}`
+    
+    hambDivs.addEventListener("click", function () {
+      let id = renderCategory[i].ID;
+      window.location.href = "./product.html?category=" + id;
+    });
+  }
+  
+
+}
+
 
 export async function showNumberCart(){
   let cart = await getCart()
