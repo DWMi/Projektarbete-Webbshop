@@ -51,7 +51,9 @@ btnAdmin.addEventListener("click", sendAdminRequest)
             parentProductCardText = document.createElement('div'),
             parentReceivedBtn = document.createElement('div'),
             productCard = document.createElement('div'),
-            totalSum = document.createElement('h5')
+            totalSum = document.createElement('h5'),
+            totalSumContainer = document.createElement("div"),
+            orderDate = document.createElement("h4")
 
 
             if(orders[i].OrderStatus == "sent"){
@@ -66,7 +68,8 @@ btnAdmin.addEventListener("click", sendAdminRequest)
                 })
             }
         
-        totalSum.setAttribute('class', 'totalSum')
+        totalSumContainer.setAttribute('class', 'totalSum')
+        orderDate.setAttribute("class", "orderdateText")
         productCard.setAttribute('class', 'productCard')
         parentProductCardText.setAttribute('class', 'parentProductCardText')
         parentReceivedBtn.setAttribute('class', 'parentReceivedBtn')
@@ -82,6 +85,7 @@ btnAdmin.addEventListener("click", sendAdminRequest)
         }else {
             receivedBtn.innerText =`I received my order 👍`
         }
+        orderDate.innerText = `Order date: ${orders[i].DateCreated}`
         totalSum.innerText = `Total Price: ${orders[i].TotalPrice}$`     
         orderNr.innerText = `Order number: ${orders[i].ID}` 
         orderStatus.innerText = `Order Status: ${orders[i].OrderStatus}`
@@ -96,7 +100,8 @@ btnAdmin.addEventListener("click", sendAdminRequest)
         productCard.appendChild(parentReceivedBtn)
         parentProductCard.appendChild(productCard)
         productCardContainer.appendChild(parentProductCard).setAttribute("class", "parentProductCard")
-        parentProductCard.append(totalSum)
+        totalSumContainer.append(orderDate, totalSum)
+        parentProductCard.append(totalSumContainer)
 
 
     
