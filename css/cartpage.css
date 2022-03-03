@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 *{
-    font-family: 'Londrina Solid', cursive;
-  
-  }
+  font-family: 'Poppins', sans-serif;  }
   
 /* TEXT FOR ITEMS IN CART */
 .cartItem p {
@@ -21,6 +18,7 @@
 
 .cartProductCard-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 0 10%;
@@ -34,16 +32,18 @@ display: flex;
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .cartItem{
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   background: #f7f7f7;
   height: 210px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  margin: 0 0 10px 4%;
+  border-radius: 5px;
   padding: 10px;
   justify-content: space-around;
 }
@@ -56,34 +56,11 @@ display: flex;
     height: 200px;
 }
 
-.cartItem-name{
-
-}
-
-.cartItem-price{
-
-}
-
-.cartItem-qty{
-
-}
-
-.cartItme-qty-plus{
-
-}
-
-.cartItem-qty-minus{
-
-}
-
-.cartItem-remove{
-
-}
-
 
 .freightContainer {
   background-color: rgba(0, 0, 0, 0.068);
-  border-radius: 15px;
+  width: 80%;
+  border-radius: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin-top: 30px;
@@ -131,23 +108,27 @@ display: flex;
 
 
 .checkout-container{
-  width: 600px;
-  padding: 10px;
+  width: 80%;
+
   margin: 2%;
 }
+
 .checkout-wrapper{
-  
+  width: 100%;
 }
+
 
 .checkout-info{
   background-color: rgba(0, 0, 0, 0.068);
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   
 }
 
 .checkout-info h3 {
   letter-spacing: 4px;
+  padding: 4%;
+
 }
 
 .checkout-subtotal-wrapper{
@@ -156,9 +137,7 @@ display: flex;
   align-items: center;
 }
 
-.checkout-subtotal{
 
-}
 
 .checkout-discount-wrapper{
   display: flex;
@@ -166,9 +145,7 @@ display: flex;
   align-items: center;
 }
 
-.checkout-discount{
 
-}
 
 .checkout-total-wrapper{
   display: flex;
@@ -208,4 +185,3 @@ display: flex;
   width: 200px;
   height: 40px;
 }
-    
