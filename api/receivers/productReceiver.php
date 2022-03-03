@@ -34,7 +34,7 @@
 
             if($_GET["action"] == "checkImage") {
 
-                $uploadStatus = checkImage($_FILES["image"]);
+                $uploadStatus = checkImage($_FILES["image"], "PRODUCTS/");
 
                 echo json_encode($uploadStatus);
 
