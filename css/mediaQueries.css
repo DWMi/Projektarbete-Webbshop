@@ -54,7 +54,7 @@
     }
 
     /* product description */
-    h4{
+    h4 {
         font-size: 1.5vw;
         color: rgba(0, 0, 0, 0.7);
     }
@@ -226,8 +226,10 @@
   h1 {
   }
   
+
    h4 {
     font-size: 3vw;
+
     color: rgba(0, 0, 0, 0.7);
   }
 
@@ -237,8 +239,75 @@
   .cartItem p {
     font-size: 20px;
   }
+
+  
+
 }
 
+@media only screen and (max-width: 850px){
+      
+  
+  /* MY ORDERS */
+
+    .productCard {
+
+        flex-direction: column;
+        
+    }
+  
+  
+  
+    .parentProductCardText {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+    }
+  
+    .totalSum {
+  
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 5px;
+  
+    }
+  
+    #receivedBtn {
+      
+      margin-right: 5px;
+      padding:5px;
+      font-weight: bold;
+      font-size: 15px;
+  
+    }
+  
+    .orderStatusText{
+      font-size: 20px;
+    }
+  
+    .orderNrText {
+  
+    font-size: 20px;
+    } 
+  
+    .orderdateText {
+      font-size: 20px;
+    }
+  
+    .productCardContainer {
+      
+      width: 90%;
+      
+  
+    }
+  
+    #pageBtnContainer {
+  
+      display: flex;
+      justify-content: center;
+    }
+}
 
 
 @media only screen and (max-width: 700px){
@@ -329,8 +398,11 @@
         align-items: center;
 
     }
-
+   
+    
 }
+ 
+
 
 
 @media only screen and (max-width: 500px) {
