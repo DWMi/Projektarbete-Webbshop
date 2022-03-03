@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap");
-
-* {
-  font-family: "Londrina Solid", cursive;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;  }
 
 h4 {
   font-size: large;
@@ -14,8 +12,8 @@ h4 {
   justify-content: center;
   flex-direction: column;
 }
-.productInfo-wrapper h2,
-h3,
+.productInfo-wrapper h2, h3,
+
 h4 {
   padding: 4%;
 }

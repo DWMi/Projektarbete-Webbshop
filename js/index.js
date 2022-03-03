@@ -9,7 +9,7 @@ const initSite=()=>{
 
 
 // Renders section to landing page
- async function sectionRenderer()  {
+async function sectionRenderer()  {
 
     let catList = await getAllCategories()
     let divCon = document.getElementById('container')

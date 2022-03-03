@@ -137,6 +137,7 @@ async function renderCartProductCard(){
       
     //cart qty del
     let cartItemDeleteDiv = document.createElement("div")
+    cartItemDeleteDiv.classList.add("removeBtn")
     //cartItemDeleteDiv.classList.add("cartItem-remove")
     cartItemDeleteDiv.innerHTML = "Remove";
     cartItemDeleteDiv.style.cursor = "pointer";

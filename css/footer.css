@@ -84,3 +84,20 @@
     align-items: center;
     width: 35%;
   }
+
+
+
+/*  <--------- Media Queries ---------->  */
+
+@media only screen and (max-width: 700px) {
+
+  #inputContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+  }
+
+  
+}
