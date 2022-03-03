@@ -8,65 +8,66 @@ export let navbar = (document.getElementById("navbar").innerHTML = `
 
 <div class="navBar-container">
 
-    <div class="navBar-logo"><a href="./index.html"><h1>SNEAKERS<span>.</span></h1></a></div>
+    <div class="navBar-logo"><a href="./index.html">
+            <h1>SNEAKERS<span>.</span></h1>
+        </a></div>
 
     <div class="navBar-category ">
         <div class="navbtn dropdown">
-            <div id="btnContainer" ><button class="dropbtn"><h5>BRANDS</h5>
-            <i class="fa fa-caret-down"></i> 
-            </button></div>
-            
+            <div id="btnContainer"><button class="dropbtn">
+                    <h5>BRANDS</h5><i class="fa fa-caret-down"></i>
+                </button></div>
+
 
             <div class="dropdown-content">
-     
-
-                <div class="dropdown-content" id="category-dropdown">
-                
 
 
-                </div>
-            </div> 
-        <div class="navbtn"><h5>ABOUT</h5></div>
-        <div class="navbtn"><h5>CONTACTS</h5></div>
-    </div> 
+                <div class="dropdown-content" id="category-dropdown"></div>
+            </div>
+            <div class="navbtn">
+                <h5>ABOUT</h5>
+            </div>
+            <div class="navbtn">
+                <h5>CONTACTS</h5>
+            </div>
+        </div>
 
-    </div> 
+    </div>
 
-    
+
     <div class="navBar-user">
-      <div class="user-dropdown">
-      <div id ="navUser" class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
-      <div class="user-dropdown-content">
+        <div class="user-dropdown">
+            <div id="navUser" class="userbtn navicon"><i class="naveIconSize far fa-user-circle"></i></div>
+            <div class="user-dropdown-content">
 
-        <a id="logInBtn" href="login.html">
-        Login
-        </a>
-        <div class="userbtn"><h6 id="name"></h6></div>
-        <button class="selectBtn" id="logOutBtn">Log out</button>
+                <a id="logInBtn" href="login.html">
+                    Login
+                </a>
+                <div class="userbtn">
+                    <h6 id="name"></h6>
+                </div>
+                <button class="selectBtn" id="logOutBtn">Log out</button>
 
-        </div>
-      </div>
-
-
-        <div id="userNavIcon" class="userbtn navicon"><a href="./cartpage.html"><i class="naveIconSize fas fa-shopping-bag"></i>
-        </a><span id="count"></span>
-        </div>
-        
+            </div>
         </div>
 
-        
+
+        <div id="userNavIcon" class="userbtn navicon"><a href="./cartpage.html"><i
+                    class="naveIconSize fas fa-shopping-bag"></i>
+            </a><span id="count"></span>
+        </div>
+
     </div>
 
     <div id="hambDropDown">&#9776;</div>
+    
         <div id="hambContainer">
             <div id="brands"></div>
             <div id="about"><a href="#">About</a></div>
             <div id="contact"><a href="#">Contact</a></div>
-            <div id="cart"><a href="cartPage.html">Your Bag</a></div>     
+            <div id="cart"><a href="cartPage.html">Your Bag</a></div>
         </div>
-    </div>
 </div>
-
         
         
 `
