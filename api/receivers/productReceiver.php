@@ -62,20 +62,9 @@
                     echo json_encode($productController->updateStock($body));
 
                 }
-            }else{
-                echo json_encode("Unauthorized");
-            }
-            
-        }
-        
-        if($_SERVER["REQUEST_METHOD"] == "DEL"){
-            if(isset($_SESSION["loggedInAdmin"]) ){
-
                 if($_GET["action"] == "deleteProduct") {
 
                     $body = json_decode($_POST["product"], true);
-
-                    
 
                     $productController = new ProductController();
 
@@ -85,8 +74,10 @@
             }else{
                 echo json_encode("Unauthorized");
             }
+            
         }
-
+        
+ 
 
     } catch (Exception $e){
         error_log($e);

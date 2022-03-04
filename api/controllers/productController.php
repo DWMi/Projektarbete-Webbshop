@@ -169,14 +169,19 @@ class ProductController extends MainController {
         $id = $product["ProductId"];
         $images = $product["Images"];
 
-        $productQuery = "DELETE FROM product WHERE ID =".$id.";";
-        $this->database->freeQuery($productQuery, $this->createFunction);
+        
 
         $sizesQuery = "DELETE FROM size WHERE ProductID =".$id.";";
-        $this->database->freeQuery($productQuery, "createSize");
+        $this->database->freeQuery($sizesQuery, "createSize");
 
-        $sizesQuery = "DELETE FROM images WHERE ProductID =".$id.";";
-        $this->database->freeQuery($productQuery, "createSize");
+        $imageQuery = "DELETE FROM images WHERE ProductID =".$id.";";
+        $this->database->freeQuery($imageQuery, "createSize");
+
+        $categoryQuery = "DELETE FROM productincategory WHERE ProductID =".$id.";";
+        $this->database->freeQuery($categoryQuery, "createSize");
+
+        $productQuery = "DELETE FROM product WHERE ID =".$id.";";
+        $this->database->freeQuery($productQuery, $this->createFunction);
         
         $array = [];
 
