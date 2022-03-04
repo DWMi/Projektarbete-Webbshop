@@ -1,6 +1,6 @@
 import { makeRequest } from "../js/main.js";
 
-export let navbar = document.getElementById("lastFooter").innerHTML = `
+export let footer = document.getElementById("lastFooter").innerHTML = `
 
 <div id="subContainer">
 <div id="inputContainer">

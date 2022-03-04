@@ -257,7 +257,16 @@
     .productCard {
 
         flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
+    }
+
+    .parentProductCard{
+      display: flex;
+      align-items: center;
+      width: 90%;
     }
   
   
@@ -275,6 +284,7 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 5px;
+      align-items: center;
   
     }
   
@@ -301,7 +311,8 @@
     }
   
     .productCardContainer {
-      
+      display: flex;
+      align-items: center;
       width: 90%;
       
   
@@ -311,6 +322,7 @@
   
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 }
 
@@ -504,12 +516,42 @@
 
   /* product description */
   h4 {
-    font-size: 4vw;
+
     color: rgba(0, 0, 0, 0.7);
   }
   
-   #productSelect, #dataProductList, #dataRemoveCategoryList{
+  #productSelect, #dataProductList, #dataRemoveCategoryList{
         width: 230px;
+    }
+
+    .orderdateText{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .totalSum{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #bottomContainer h6{
+      
+      font-size: 10px;
+    }
+
+    #signUp{
+      margin-top: 6px;
+    }
+
+    .card{
+      box-shadow: none;
+      min-height: 30vh;
+    }
+
+    #login{
+      height: 60vh;
     }
 }
 

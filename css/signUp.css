@@ -9,13 +9,36 @@
 
 }
 
-body {
-  min-height: 100vh;
+a{
+  font-weight: bolder;
+}
+
+option{
+  position: absolute
+}
+
+a:hover{
+  transition: all 200ms ease-in-out;
+  opacity: 70%;
+}
+
+#checkboxContainer {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+#signUp{
+  margin-top: 50px;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1000px;
+
 }
+
 .container {
   width: 80%;
   /* position: absolute; */
@@ -33,12 +56,13 @@ body {
   min-height: 80vh;
   width: 35rem;
   border-radius: 5px;
-  padding: 0rem 5rem;
+  padding: 5%;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
 }
 
 .titleContainer {
   margin-bottom: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,11 +112,13 @@ body {
 #checkboxContainer{
   margin-top: 15px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .checkbox{
   margin-right: 10px;
   margin-left: 10px;
+  text-align: center;
 }
 
 #signInBtn{
@@ -116,4 +142,18 @@ body {
 
 #alreadyAmember{
   margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
+
+#bottomContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+

@@ -2,10 +2,10 @@ document.getElementById("login").innerHTML = `
 
 
 
-<div class="container">
+<div class="loginContainer">
 <div class="card">
     <div class="titleContainer">
-    <h1>SNEAKERS<span>.</span></h1>        
+     
     <h1>LOGIN<span>.</span></h1>
     </div>
     <form id="logInForm">

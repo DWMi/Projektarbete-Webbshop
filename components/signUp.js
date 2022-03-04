@@ -5,7 +5,7 @@ document.getElementById("signUp").innerHTML = `
 <div class="container">
 <div class="card">
     <div class="titleContainer">
-        <h1>SNEAKERS<span>.</span></h1> 
+
         <h1>SIGN UP<span>.</span></h1>
     </div>
     <form id="signUpForm">
