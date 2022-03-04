@@ -4,9 +4,7 @@ import {getAllProducts, getProductById, makeRequest} from "./main.js";
 
 export async function renderAllProducts(){
 
-    let products = await getAllProducts();
-
-    
+    let products = await getAllProducts();  
 
     let select = document.getElementById("productSelect");
 
@@ -69,9 +67,6 @@ async function renderSizes(id) {
 
         await updateStock(sizes)
         setTimeout(function(){ location.reload(); }, 2500);
-
-        //UPDATE size SET SizesInStock=10 WHERE ID = 1
-
 
     })
 

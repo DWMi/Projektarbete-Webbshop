@@ -10,9 +10,7 @@ if(isset($_SERVER['REQUEST_METHOD'])) {
          
              $userObj = unserialize($_SESSION["loggedInUser"]);
              echo json_encode($userObj);
-            
-             
-            /*  echo json_encode(true); */
+
      } else {
          echo json_encode(false);
      }

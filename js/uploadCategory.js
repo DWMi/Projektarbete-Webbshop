@@ -23,7 +23,7 @@ if (categoryName.value === "" && categoryDescription.value === "") {
     document.getElementById("categoryNameResponse").innerHTML = ""
     document.getElementById("logoInformationReturn").innerHTML = ""
     document.getElementById("imageInfoReturn").innerText = ""    
-    console.log("ok");
+    
 
 
     let list = []

@@ -1,6 +1,5 @@
 <?php
 
-    // lägg till empty cart (POST/DELETE).
 
     try {
         session_start();
@@ -58,10 +57,6 @@
 
 
         }
-
-
-
-
 
 
 

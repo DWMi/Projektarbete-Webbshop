@@ -79,7 +79,6 @@ async function renderCartProductCard(){
 
     //cart qty -
     let cartItemQtyMiusDiv = document.createElement("div")
-    //cartItemQtyMlusDiv.classList.add("cartItem-qty-minus")
     cartItemQtyMiusDiv.innerHTML = "-";
     cartItemQtyMiusDiv.style.cursor = "pointer";
     cartItem.append(cartItemQtyMiusDiv)
@@ -99,10 +98,6 @@ async function renderCartProductCard(){
 
     })
 
-    // ICON NOT WORKING..
-    // let cartItemQtyPlus = document.createElement("i")
-    // cartItemQtyPlus.classList.add("fa-solid","fa-circle-chevron-left")
-    // cartItemQtyPlusDiv.append(cartItemQtyPlus)
 
     //cart qty number
     let cartItemQtyDiv = document.createElement("div")
@@ -115,7 +110,6 @@ async function renderCartProductCard(){
     
     //cart qty +
     let cartItemQtyPlusDiv = document.createElement("div")
-    //cartItemQtyPlusDiv.classList.add("cartItem-qty-plus")
     cartItemQtyPlusDiv.innerHTML = "+";
     cartItemQtyPlusDiv.style.cursor = "pointer";
     cartItem.append(cartItemQtyPlusDiv)
@@ -130,15 +124,10 @@ async function renderCartProductCard(){
 
     })
 
-    // ICON NOT WORKING..
-    // let cartItemQtyMinus = document.createElement("i")
-    // cartItemQtyMinus.classList.add("fa-solid","fa-circle-chevron-left")
-    // cartItemQtyMlusDiv.append(cartItemQtyMinus)
       
     //cart qty del
     let cartItemDeleteDiv = document.createElement("div")
     cartItemDeleteDiv.classList.add("removeBtn")
-    //cartItemDeleteDiv.classList.add("cartItem-remove")
     cartItemDeleteDiv.innerHTML = "Remove";
     cartItemDeleteDiv.style.cursor = "pointer";
     cartItem.append(cartItemDeleteDiv)
@@ -150,9 +139,6 @@ async function renderCartProductCard(){
 
     })
 
-    // ICON NOT WORKING..
-    // let cartItemQtyDelete = document.createElement("i")
-    // cartItemDeleteDiv.append(cartItemQtyDelete)
 
 //End forEach
 })
@@ -161,7 +147,6 @@ async function renderCartProductCard(){
 
   let freightContainer = document.createElement("div")
   freightContainer.classList.add("freightContainer")
-  //productCardContainer.append(freightContainer)
 
   productCardContainer.append(freightContainer);
 
@@ -288,7 +273,6 @@ async function renderFreightOptions(cart){
   document.getElementsByClassName("freightContainer")[0].innerHTML = "";
 
   let freightContainer = document.createElement("div")
-  //productCardContainer.append(freightContainer)
 
   let freightInfo = document.createElement("h3");
   freightInfo.innerText = "CHOOSE FREIGHT OPTION:"
@@ -354,88 +338,7 @@ async function renderFreightOptions(cart){
 }
 
 
-// ------------------ NOT IN USE ITS >>>TRASH<<<< BUT KEEP IT ------------THANKS!-----------------
-function cartProductCardsdsads(y) {
-    if (y.matches) { // If media query matches
-        document.getElementById("cartProductCard").innerHTML = `
-  
-        `
-    } else {
-        document.getElementById("cartProductCard").innerHTML = `
-        <div class="cart-title">
-        <h3> YOUR BAG </h3> 
-  </div>
-  <div class="cartProductCard-container">
-        <div class="cartProductCard-wrapper">
-        <div class="cartItem">
-        <div class="cartItem-img"><img src="./ASSETS/ADIDAS/adidas Dame 7 Extply 1.jpeg" alt="" srcset=""></div>
-        <div class="cartItem-info">
-          <div class="cartItem-name"><p>Adidas Dame 7</p></div>
-          <div class="cartItem-price"><p>559$</p></div>
-          <div class="cartItem-size"><p>Size: 43</p></div>
-        </div>
-        <div class="cartItme-qty-plus"><p>+</p></div>
-        <div class="cartItem-qty"><p>1</p></div>
-        <div class="cartItem-qty-minus"><p>-</p></div>
-        <div class="cartItem-remove"><p>X</p></div>
-      </div>
-      <div class="cartItem">
-          <div class="cartItem-img"><img src="./ASSETS/ADIDAS/adidas Dame 7 Extply 1.jpeg" alt="" srcset=""></div>
-          <div class="cartItem-info">
-              <div class="cartItem-name"><p>Adidas Dame 7</p></div>
-              <div class="cartItem-price"><p>559$</p></div>
-              <div class="cartItem-size"><p>Size: 43</p></div>
-          </div>
-          <div class="cartItme-qty-plus"><p>+</p></div>
-          <div class="cartItem-qty"><p>1</p></div>
-          <div class="cartItem-qty-minus"><p>-</p></div>
-          <div class="cartItem-remove"><p>X</p></div>
-      </div>
-      <div class="cartItem">
-          <div class="cartItem-img"><img src="./ASSETS/ADIDAS/adidas Dame 7 Extply 1.jpeg" alt="" srcset=""></div>
-          <div class="cartItem-info">
-              <div class="cartItem-name"><p>Adidas Dame 7</p></div>
-              <div class="cartItem-price"><p>559$</p></div>
-              <div class="cartItem-size"><p>Size: 43</p></div>
-          </div>
-          <div class="cartItme-qty-plus"><p>+</p></div>
-          <div class="cartItem-qty"><p>1</p></div>
-          <div class="cartItem-qty-minus"><p>-</p></div>
-          <div class="cartItem-remove"><p>X</p></div>
-      </div>
-      
-            </div>
-            <div class="checkout-container">
-              <div class="checkout-wrapper">
-                <div class="checkout-info">
-                  <h3>ORDER SUMMARY</h3>
-                  <div class="checkout-subtotal-wrapper">
-                    <h4>Subtotal</h4>
-                    <h4>559$</h4>
-                  </div>
-                  <div class="checkout-discount-wrapper">
-                    <h4>Discount</h4>
-                    <h4>0$</h4>
-                  </div>
-                  <div class="checkout-total-wrapper">
-                    <h4>Estimated Total</h4>
-                    <h4>559$</h4>
-                  </div>
-                  <div class="checkout-btn-wrapper">
-                    <div class="checkout-btn"><span>CHECKOUT NOW</span></div>
-                  </div>
-                </div>
-                <div class="checkout-payment">
-                  <span>PAYMENTS METHODS</span>
-                  <img src="./ASSETS/1.LOGOS/payment logo.png" alt="">
-                </div>
-              </div>
 
-        </div>
-    </div>
-        `
-    }
-  }
 
 function renderTotalPrice(cart){
 

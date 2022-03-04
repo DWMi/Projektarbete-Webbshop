@@ -3,7 +3,6 @@
 function checkImage($image, $pathName){
     $target_dir = "../../ASSETS/" .$pathName;
     $target_file = $target_dir . basename($image["name"]);
-    // php generate random string på namnet
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     $check = getimagesize($image["tmp_name"]);
@@ -25,7 +24,6 @@ function uploadImage($image, $pathName) {
 
 
     $target_dir = "../../ASSETS/" .$pathName;
-    // HASHA INNAN MAN TAR IN NAMNET?? basename image name är vad som ska hashas. 
     $target_file = $target_dir . basename($image["name"]);
 
     $uploadStatus = move_uploaded_file($image["tmp_name"], $target_file);

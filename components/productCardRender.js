@@ -48,7 +48,7 @@ async function renderProductCard(id){
         let mqProductCardContainer = document.createElement("div")
         mqProductCardContainer.classList.add("productCardInfo-MQ-container")
         productCardContainer.append(mqProductCardContainer)
-            //info text container
+        //info text container
         let productInfoContainer = document.createElement("div")
         productInfoContainer.classList.add("productInfo-container")
         mqProductCardContainer.append(productInfoContainer)
@@ -56,7 +56,6 @@ async function renderProductCard(id){
         let productInfoWrapper = document.createElement("div")
         productInfoWrapper.classList.add("productInfo-wrapper")
         productInfoContainer.append(productInfoWrapper)
-        /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
 
         //inside the wrapper
 
@@ -88,7 +87,7 @@ async function renderProductCard(id){
         let productCardSizeBtnWrapper = document.createElement("div")
         productCardSizeBtnWrapper.classList.add("productCardSize-btn-wrapper")
         productCardSizeWrapper.append(productCardSizeBtnWrapper)
-        //LOOOOOOOOOOOOOOOOOOOOOOOOOOOOP SIZE
+
 
 
         product.Sizes.forEach(size => {
@@ -103,7 +102,8 @@ async function renderProductCard(id){
             sizeBtnText.innerHTML = size.Size
             
             if(size.SizesInStock < 1 ){
-                sizeBtn.style.backgroundColor = "whitesmoke";
+                sizeBtn.style.backgroundColor = "grey";
+                sizeBtnText.innerHTML = "X"
                 sizeBtnText.style.color = "black";
             }else{
                 sizeBtn.addEventListener('click', function() {
@@ -174,9 +174,8 @@ async function renderProductCard(id){
         let swiperWrapper = document.createElement("div")
         swiperWrapper.classList.add("swiper-wrapper")
         swiperContainer.append(swiperWrapper)
-        /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
-        //swiper slider 
-        
+
+        //swiper slider         
         product.Images.forEach(productimg => {
 
             let swiperSlide = document.createElement("div")
@@ -234,7 +233,6 @@ async function renderProductCard(id){
         let productInfoWrapper = document.createElement("div")
         productInfoWrapper.classList.add("productInfo-wrapper")
         productInfoContainer.append(productInfoWrapper)
-        /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
         //inside the wrapper
 
         let productName = document.createElement("h3")
@@ -257,9 +255,8 @@ async function renderProductCard(id){
         let swiperWrapper = document.createElement("div")
         swiperWrapper.classList.add("swiper-wrapper")
         swiperContainer.append(swiperWrapper)
-        /// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
-        //swiper slider 
-                        
+
+        //swiper slider           
         product.Images.forEach(productimg => {
 
             let swiperSlide = document.createElement("div")
@@ -308,7 +305,6 @@ async function renderProductCard(id){
         productCardSizeBtnWrapper.classList.add("productCardSize-btn-wrapper")
         productCardSizeWrapper.append(productCardSizeBtnWrapper)
 
-        //LOOOOOOOOOOOOOOOOOOOOOOOOOOOOP SIZE
 
         product.Sizes.forEach(size => {
 
@@ -322,7 +318,8 @@ async function renderProductCard(id){
             sizeBtnText.innerHTML = size.Size
             
             if(size.SizesInStock < 1 ){
-                sizeBtn.style.backgroundColor = "whitesmoke";
+                sizeBtn.style.backgroundColor = "grey";
+                sizeBtnText.innerHTML = "X"
                 sizeBtnText.style.color = "black";
             }else{
                 sizeBtn.addEventListener('click', function() {
@@ -443,7 +440,7 @@ async function saveCart(cart){
 
 let footerContainer = document.getElementById("footer");
 
-// old footer
+
 // This function render out category products controlled by id from renderCategory function
 async function renderProductInCategory(id){
     footerContainer.innerHTML = ""
@@ -488,7 +485,6 @@ async function renderProductInCategory(id){
         const nextState = {additionalInformation: product.ProductName}
         
         const nextURL = "./product.html?category=" + id + "&product=" + product.ProductId
-        /* window.location.href = nextURL */
         
         window.history.pushState(nextState,nextTitle,nextURL)
         renderProductCard(id)
