@@ -14,11 +14,10 @@ async function sectionRenderer()  {
     let catList = await getAllCategories()
     let divCon = document.getElementById('container')
     let footer = document.getElementById('lastFooter')
-    console.log(catList)
+    
 
     catList.forEach(element => {
-        console.log(element, " element")
-        console.log(element.ID, " element")
+    
         let sectSnap = document.createElement('section')
         sectSnap.classList.add("snapper")
 

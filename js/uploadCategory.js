@@ -82,7 +82,7 @@ if (categoryName.value === "" && categoryDescription.value === "") {
             
             let response = await makeRequest(`../api/receivers/categoryReciever.php?action=${action}`, "POST", body);
 
-            console.log(response);
+
 
             if (response > 0){
                 for(let i=0; i<imageFiles.length; i++) {

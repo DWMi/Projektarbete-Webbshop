@@ -23,14 +23,14 @@ let productCard = document.getElementById("productCard")
 
 // Renders top product card.
 async function renderProductCard(id){
-    console.log(id, "Inside renderProductCard")
+
     
     
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const productURL = urlParams.get('product')
     const category = urlParams.get('category')
-    console.log(productURL, "productURL")
+
     productCard.innerHTML = ""
     if(productURL){
         var product = await getProductById(productURL) 

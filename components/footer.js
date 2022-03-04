@@ -1,6 +1,6 @@
 import { makeRequest } from "../js/main.js";
 
-export let footer = document.getElementById("lastFooter").innerHTML = `
+export let navbar = document.getElementById("lastFooter").innerHTML = `
 
 <div id="subContainer">
 <div id="inputContainer">
@@ -21,7 +21,7 @@ export let footer = document.getElementById("lastFooter").innerHTML = `
 
     <h6>Contact us.</h6>
 
-   
+  
 </div>
 `
 
@@ -42,7 +42,7 @@ async function newSubscriber() {
         
     } else {
       subResponse.style.display = "block";
-      console.log(list);
+
       let action = "newSubscriber";
       let body = new FormData();
       body.append("subtonewsletter", JSON.stringify(list));
@@ -53,7 +53,7 @@ async function newSubscriber() {
         body
         );
         
-        console.log(response);
+
       
         document.getElementById("subInfoResponse").innerHTML = response;
       }

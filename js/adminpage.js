@@ -132,7 +132,7 @@ async function addNewCategory(id){
             for(var i = 0; i < checkboxes.length; i++){
                 if(checkboxes[i].checked == true){
                     
-                    console.log("Product ID:",optionProductList.value,"Category ID:",checkboxes[i].value)
+
                     addCategoryByProductId(optionProductList.value,checkboxes[i].value)
                     
                     btnContainer.innerHTML = ""
@@ -200,7 +200,7 @@ async function deleteCategory(id){
                 for(var i = 0; i < checkboxes.length; i++){
                     if(checkboxes[i].checked == true){
                         
-                        console.log("Product ID:",optionDelList.value,"Category ID:",checkboxes[i].value)
+
                         removeCategoryFromProduct(optionDelList.value,checkboxes[i].value)
                         
                         btnContainer.innerHTML = ""
@@ -265,7 +265,7 @@ async function acceptAdminRequest(user){
     body.set("userID", JSON.stringify(user.ID))
 
     let result = await makeRequest(`../api/receivers/adminRequestReceiver.php?action=${action}`, method, body)
-    console.log(result)
+
 }
 
 
@@ -376,7 +376,7 @@ async function getOrder(){
     let action = "getAllOrder";
 
     let response = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, "GET");
-    console.log(response);
+
     for (let i = 0; i < response.length; i++) {
         let orderId = document.createElement("div")
         let orderDate = document.createElement("div")
@@ -434,7 +434,7 @@ async function getOrder(){
     
         
     }
-    console.log(response);
+
     
 
 }
@@ -442,7 +442,7 @@ async function getOrder(){
 
 async function orderSent(response){
 
-    console.log(response.ID)
+
     const action = "sendOrderSent";
     let method = "POST"
     let body = new FormData()
@@ -450,7 +450,7 @@ async function orderSent(response){
 
     let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
 
-    console.log(result)
+
 }
 
 
