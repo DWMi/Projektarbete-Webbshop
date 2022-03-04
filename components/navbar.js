@@ -148,7 +148,7 @@ export async function UserIsAdmin() {
 
   if (result) {
     
-    if (   0) {
+    if (user.UserIsAdmin === 0) {
         const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
         const myAcc = document.createElement("a");
     
@@ -216,6 +216,7 @@ export async function checkIsNormalUser() {
   if (!user) {
     
     logInBtn.style.display = "flex";
+    navUserBtn.style.color ="gray";
     console.log(false);
   } else if (user.UserIsAdmin === 0) {
     const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
@@ -229,7 +230,6 @@ export async function checkIsNormalUser() {
 
     logInBtn.style.display = "none";
     logOutBtn.style.display = "flex";
-    navUserBtn.style.color ="gray";
     return result;
   }
 }

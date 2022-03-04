@@ -1,3 +1,12 @@
+import {navbar} from '../components/navbar.js'
+import {footer} from '../components/footer.js'
+
+
+function initSite(){
+    navbar;
+    footer;
+}
+
 let errorMsg = document.getElementById("errorMsg")
 let signUpForm = document.getElementById("signUpForm")
 
@@ -40,3 +49,5 @@ async function addNewUser() {
     }
 
 }
+
+window.addEventListener("load", initSite)

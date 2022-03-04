@@ -1,10 +1,19 @@
+import {navbar} from '../components/navbar.js'
+import {footer} from '../components/footer.js'
+
+
+function initSite(){
+    navbar;
+    footer;
+}
+
 let errorMsg = document.getElementById("errorMsg");
 let logInForm = document.getElementById("logInForm")
 
 logInForm.addEventListener("submit", (e) => {
     e.preventDefault(e);
-     logInUser();
-          
+    logInUser();
+    
 });
 
 
@@ -45,5 +54,7 @@ async function logInUser(){
     
 
 }
+
+window.addEventListener("load", initSite)
 
 
