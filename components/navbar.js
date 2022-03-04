@@ -90,7 +90,7 @@ export async function renderCategory() {
 
     categoryImg.addEventListener("click", function () {
       let id = category.ID;
-      console.log(category);
+      
       window.location.href = "./product.html?category=" + id;
     });
   });
@@ -144,7 +144,7 @@ export async function UserIsAdmin() {
   let result = await makeRequest(url, method, undefined);
   let user = result[0];
 
-  console.log(result,  "checkUserIsAdmin");
+
 
   if (result) {
     
@@ -165,9 +165,9 @@ export async function UserIsAdmin() {
       return false
     } else if (user.UserIsAdmin === 1) {
       logInBtn.style.display = "none";
-      console.log("ADMIN");
+
       userName.innerHTML = `${user.UserFirstName} ${user.UserLastName} (ADMIN)`;
-     
+    
       logOutBtn.style.display = "flex";
       navUserBtn.style.color ="black";
       const btnDropdownRenderer = document.getElementsByClassName(
@@ -217,7 +217,7 @@ export async function checkIsNormalUser() {
     
     logInBtn.style.display = "flex";
     navUserBtn.style.color ="gray";
-    console.log(false);
+
   } else if (user.UserIsAdmin === 0) {
     const btnRend = document.getElementsByClassName("user-dropdown-content")[0];
     const myAcc = document.createElement("a");
@@ -282,12 +282,12 @@ const hamburger=async()=>{
 
 export async function showNumberCart(){
   let cart = await getCart()
-  console.log(cart);
+
   if (cart && cart.length > 0) {
     let cartNumber = 0;
     for (let index = 0; index < cart.length; index++) {
       cartNumber = cartNumber + cart[index].Quantity;
-      console.log(cartNumber);
+
     }
     document.getElementById("count").style.display = "block";
     document.getElementById("count").innerHTML = cartNumber;

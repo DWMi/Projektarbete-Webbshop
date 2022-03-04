@@ -155,5 +155,9 @@ a:hover{
   font-size: 20px;
 }
 
+#errorMsg{
+  margin-top: 10px;
+}
+
 
 

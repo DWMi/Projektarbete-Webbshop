@@ -1,10 +1,10 @@
 import {navbar} from '../components/navbar.js'
-import {footer} from '../components/footer.js'
+
 
 
 function initSite(){
     navbar;
-    footer;
+
 }
 
 let errorMsg = document.getElementById("errorMsg");

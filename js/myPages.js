@@ -62,7 +62,7 @@ let orderMsg = document.getElementById("orderMsg")
         if(UserLoggedInObject[0].UserIsAdmin == 1 && orders.length < 1){
             productCardContainer.style.display = "none"; 
         }
-        console.log(orders);
+
        
     
     for(let i = 0; i < orders.length; i++) {
@@ -194,7 +194,7 @@ async function getOrders(UserLoggedInObject){
 
 async function sendOrderReceived(orders){
 
-    console.log(orders.ID)
+
     const action = "sendOrderReceived";
     let method = "POST"
     let body = new FormData()
@@ -202,7 +202,7 @@ async function sendOrderReceived(orders){
 
     let result = await makeRequest(`../api/receivers/orderReciever.php?action=${action}`, method, body)
 
-    console.log(result)
+
 }
 
 
@@ -227,7 +227,7 @@ async function sendAdminRequest(UserLoggedInObject){
     adminMsg.style.display = "flex"
     
 
-    console.log(result);
+
     }
     
 

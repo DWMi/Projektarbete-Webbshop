@@ -1,10 +1,10 @@
 import {navbar} from '../components/navbar.js'
-import {footer} from '../components/footer.js'
+
 
 
 function initSite(){
     navbar;
-    footer;
+
 }
 
 let errorMsg = document.getElementById("errorMsg")
@@ -46,6 +46,9 @@ async function addNewUser() {
         errorMsg.style.color = "red";
     } else {
         errorMsg.innerText = "New user created, please log in below"
+        setTimeout(function(){ location.href = "./login.html"; }, 2000);
+
+
     }
 
 }
