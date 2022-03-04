@@ -119,8 +119,6 @@ export async function newProduct(){
         let choosenCategory = localStorage.getItem("choosenCategory");
 
         list.push(productInformation, sizes, images, choosenCategory)
-            /* productResponse.style.display = "block";
-            setTimeout(function(){ location.reload(); }, 2500); */
 
             let action = "newProduct";
             let body = new FormData();
@@ -128,7 +126,7 @@ export async function newProduct(){
             
             let response = await makeRequest(`../api/receivers/productReceiver.php?action=${action}`, "POST", body);
 
-            console.log(response);
+            
 
             if (response > 0){
                 for(let i=0; i<imageFiles.length; i++) {
@@ -240,8 +238,6 @@ document.getElementById("saveProduct").addEventListener("click", function(){
     newProduct();
 });
 
-/* document.getElementById("saveCategory").addEventListener("click", function(){
-    console.log("test");
-}); */
+
 
 

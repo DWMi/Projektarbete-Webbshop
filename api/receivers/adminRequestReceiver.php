@@ -35,11 +35,6 @@ include_once("../controllers/adminRequestController.php");
     } 
 
 
-
-    
-
-
-
     
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
         

@@ -157,8 +157,6 @@ class Database {
 
   
 
-    // freeQuery som bara ger tillbaka en assosiativ lista
-
 
 }
 

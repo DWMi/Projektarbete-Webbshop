@@ -5,6 +5,10 @@ Hello and welcome to Sneakers! This is a web shop made as an assignment for Medi
 
 We are five guys who together have developed this site from scratch. The project has been a great way to learn how to plan and execute a full scale project. There has been a couple of setbacks during the time of the project but one by one we have been able to solve it and move on.
 
+To be able to log in as an admin we have prepared an account:
+user: admin@test.se
+password: password
+
 The requirements of the assignment is as follows (in Swedish):
 
 [X] Alla sidor ska vara responsiva.
